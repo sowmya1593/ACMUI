@@ -1,0 +1,64 @@
+table {
+  display: table;
+
+}
+
+
+th {
+  font-weight: bold;
+  color: black;
+  background-color: #cecfd5;
+  text-align: left;
+ 
+
+}
+tbody tr:nth-child(even) {
+  background-color: #ffffff; 
+  
+}
+td {
+  text-align: left;
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+
+
+
+.forms{
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  margin: 20px;
+  background-color: #EEEEEE;
+}
+
+table-fixed thead {
+  width: 97%;
+}
+.table-fixed tbody {
+  height: 230px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+

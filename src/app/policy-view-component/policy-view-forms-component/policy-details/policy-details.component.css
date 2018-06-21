@@ -1,0 +1,22 @@
+.asterisk{
+	display: inline;
+	color: red;
+	margin-left: 2px;
+}
+
+.policies{
+	margin-top: 15px;
+}
+
+input[readonly] {
+	background-color: #ffffff;
+	}
+
+table{
+	background-color: #ffffff;
+	text-align: center;
+}
+
+table thead tr th{
+	font-weight: 500;
+}

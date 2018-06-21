@@ -1,0 +1,25 @@
+<form class="forms">
+  <table class="fixed_header">
+    <thead>
+    <tr>
+      <th>Vendor Name</th>
+      <th>Contact Name</th>
+      <th>Email Id</th>
+      <th>Phone Number</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let vendor of vendors">
+                       <td>{{ vendor.name }}</td>
+                         <td>{{vendor.vendorId}}</td>
+                         <td>{{ vendor.vendorContact.firstName +" "+ vendor.vendorContact.lastName }}
+                         <td>{{ vendor.vendorContact.emailId }}</td>
+                          <td>{{ vendor.vendorContact.phoneNumber }}</td>
+                          <td><a [routerLink]="['/editVendors/8']">please click here....</a></td>
+                         
+                    </tr>
+    </tbody>
+  </table>
+</form>

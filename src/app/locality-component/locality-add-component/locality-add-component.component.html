@@ -1,0 +1,229 @@
+<form class="former" *ngIf=(!showForm)>
+  <div class="page-description"><p>Locality</p></div>
+  <hr class="after-heading" />
+  <div class="form-row">
+      <div class="form-group col-md-6">
+
+        <label class="label" for="modelSolution"><b>Locality </b></label><div class="asterisk">*</div>
+        <select class="form-control" id="modelSolution" (change)="selectLocality($event.target.value)">
+          <option selected>Choose...</option>
+          <option value="locality1">locality1</option>
+          <option value="locality2">locality2</option>
+          <option value="locality3">locality3</option>
+        </select>
+      </div>
+
+    </div>
+
+</form>
+
+
+
+
+  <div class="form-div" *ngIf = "showForm == 'locality1'" >
+
+    <form class="former">
+      <div class="head">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Locality Details </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  disabled" href="#">Link</a>
+          </li>
+        </ul>
+      </div>
+
+      <p><b>Contact Information</b></p>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+
+          <label for="inputState">Country/City</label><div class="asterisk">*</div>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">Fax</label><div class="asterisk">*</div>
+          <input type="text" class="form-control" id="lastName" value="Value">
+        </div>
+      </div>
+
+
+
+      <div class="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="lastName">Website Address</label><div class="asterisk">*</div>
+          <input type="text" class="form-control" id="lastName" value="Value" >
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Email ID</label><div class="asterisk">*</div>
+          <input type="email" class="form-control" id="email" value="Value">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="phone">Phone Number</label><div class="asterisk">*</div>
+          <input type="text" class="form-control" id="phone" value="Value">
+        </div>
+      </div>
+      <hr />
+      <p><b>Address</b></p>
+      <div class="form-group">
+        <label for="inputAddress">Street Name</label><div class="asterisk">*</div>
+        <input type="text" class="form-control" id="inputAddress" value="Value" >
+        <label for="city">City</label><div class="asterisk">*</div>
+        <input type="text" class="form-control" id="city" value="Value">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">State</label><div class="asterisk">*</div>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputZip">Zip Code</label><div class="asterisk">*</div>
+          <input type="text" class="form-control" id="inputZip" valu="00000">
+
+          <div class="buttons">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="cancel" class="btn btn-primary">Cancel</button>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+  <div class="form-div" *ngIf = "showForm == 'locality2'">
+    <form class="former">
+      locality2
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">Country Name</label><div class="asterisk">*</div>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">City</label>
+          <input type="text" class="form-control" id="lastName" value="Value">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email">Email ID</label><div class="asterisk">*</div>
+          <input type="email" class="form-control" id="email" value="Value">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phone">Phone Number</label><div class="asterisk">*</div>
+          <input type="text" class="form-control" id="phone" value="Value">
+        </div>
+      </div>
+
+      <p><b>Address</b></p>
+      <div class="form-group">
+        <label for="inputAddress">Street Name</label><div class="asterisk">*</div>
+        <input type="text" class="form-control" id="inputAddress" value="Value" >
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" value="Value">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">State</label><div class="asterisk">*</div>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputZip">Zip Code</label><div class="asterisk">*</div>
+          <input type="text" class="form-control" id="inputZip" valu="00000">
+
+
+          <div class="buttons">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="cancel" class="btn btn-primary">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+  <div class="form-div" *ngIf = "showForm == 'locality3'">
+    <form class="former">
+      locality3
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">Country Name</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+
+
+
+
+
+        <div class="form-group col-md-6">
+          <label for="lastName">City</label>
+          <input type="text" class="form-control" id="lastName" value="Value">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email">Email ID</label>
+          <input type="email" class="form-control" id="email" value="Value">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phone">Phone Number</label>
+          <input type="text" class="form-control" id="phone" value="Value">
+        </div>
+      </div>
+
+      <p><b>Address</b></p>
+      <div class="form-group">
+        <label for="inputAddress">Street Name</label>
+        <input type="text" class="form-control" id="inputAddress" value="Value" >
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" value="Value">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">State</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputZip">Zip Code</label>
+          <input type="text" class="form-control" id="inputZip" valu="00000">
+
+
+          <div class="buttons">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="cancel" class="btn btn-primary">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

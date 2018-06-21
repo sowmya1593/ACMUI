@@ -1,0 +1,27 @@
+<form class="forms">
+  <table class="fixed_header">
+    <thead>
+    <tr>
+      <th>Solution/Modal</th>
+      <th>Vendor</th>
+      <th>Solution ID</th>
+      <th>Equipment Type</th>
+      <th>System Type</th>
+      <th>Certificate Date</th>
+      <th>Due Date</th> 
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let solution of solutions">
+                         <td><a routerLink="/editSolutions/{{ solution.solutionId }}">{{ solution.name }}</a></td>
+                         <td>{{solution.solutionId}}</td>
+                         <td>{{ solution.vendor.name }}</td>
+                         <td>{{ solution.systemTypeDTO.name }}</td>
+                         <td>{{ solution.certDt }}</td>
+                         <td>{{ solution.certRenewalDueDt }}</td>
+                    </tr>
+    </tbody>
+  </table>
+</form>

@@ -1,0 +1,50 @@
+.forms{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    margin: 20px;
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+
+.asterisk{
+	display: inline;
+	color: red;
+	margin-left: 2px;
+}
+
+.policies{
+	margin-top: 15px;
+}
+
+input[readonly] {
+	background-color: #ffffff;
+	}
+
+
+.ban{
+	color: #D91E18;
+}
+
+.hover-icon{
+	visibility: hidden;
+}
+
+.hover-icon:hover{
+	visbility: visible;
+}
+
+.help{
+	font-size: 15px;
+	color: #3A539B;
+}
+
+.nav-link{
+	color: black;
+	margin-left: 10px;
+}
+
+.table{
+	
+}
+
