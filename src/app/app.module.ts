@@ -52,12 +52,11 @@ const appRoutes: Routes=[
     {path: 'solutionsView', component: SolutionViewComponentComponent },
     {path: 'editSolutions/:id', component: EditSolutionComponent },
     {path: 'editVendors/:id', component: EditVendorComponent },
-    {path: ':edit/:id', component: EditVendorComponent }
-//    {path: 'policyView', component: PolicyViewComponentComponent, children: [
-//      {path: 'policyDetails', component: PolicyDetailsComponent },
-//      {path: 'review', component: ReviewComponent },
-//      {path: 'documents', component: DocumentsComponent },
-//      {path: 'applications', component: ApplicationsComponent}] },
+    {path: 'policyView', component: PolicyViewComponentComponent, children: [
+      {path: 'policyDetails', component: PolicyDetailsComponent },
+      {path: 'review', component: ReviewComponent },
+      {path: 'documents', component: DocumentsComponent },
+      {path: 'applications', component: ApplicationsComponent}] },
     
   ];
  

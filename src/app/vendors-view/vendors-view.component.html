@@ -14,8 +14,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let vendor of vendors">
-                       <td><a (click)="openVendorEdit(vendor.vendorId)">{{ vendor.name }}</a></td>
-                         <td>{{vendor.vendorId}}</td>
+                       <td><a routerLink="/editVendors/{{ vendor.vendorId }}">{{ vendor.name }}</a></td>
                          <td>{{ vendor.vendorContact.firstName +" "+ vendor.vendorContact.lastName }}
                          <td>{{ vendor.vendorContact.emailId }}</td>
                           <td>{{ vendor.vendorContact.phoneNumber }}</td>
@@ -24,5 +23,5 @@
                     </tr>
     </tbody>
   </table>
-  <a (click)="openVendorEdit(10)">click here...........</a>
+  <!-- <a (click)="openVendorEdit(10)">click here...........</a> -->
 </form>

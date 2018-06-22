@@ -33,9 +33,9 @@ export class VendorsViewComponent implements OnInit {
   }
   
   
-  openVendorEdit(id)
+  /*openVendorEdit(id)
   {
     this.router.navigate(['/editVendors/' + id]);
-  }
+  }*/
 
 }
