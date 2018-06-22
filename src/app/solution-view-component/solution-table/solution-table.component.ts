@@ -14,6 +14,7 @@ export class SolutionTableComponent implements OnInit {
 
   ngOnInit() {
     this.getSolutions();
+    console.log('SolutionTable');
   }
   
   getSolutions()
