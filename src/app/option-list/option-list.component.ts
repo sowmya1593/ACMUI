@@ -11,7 +11,7 @@ export class OptionListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("optionListComponnet");
+  
   }
   
   @HostListener("window:scroll", [])
