@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router, Params } from '@angular/router';
 @Component({
   selector: 'app-locality-add-component',
   templateUrl: './locality-add-component.component.html',
@@ -7,14 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocalityAddComponentComponent implements OnInit {
   public showForm:string;
+  private titus: string;
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit() {
   }
   
   selectLocality(locality){
-    this.showForm = locality;
+   
+     this.router.navigate(['locality/option']);
 
 }
 }

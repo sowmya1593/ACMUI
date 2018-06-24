@@ -10,7 +10,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { VendorsComponentComponent } from './vendors-component/vendors-component.component';
 import { VendorsViewComponent } from './vendors-view/vendors-view.component';
 import { SolutionsComponent } from './solutions/solutions.component';
-import { OptionListComponent } from './option-list/option-list.component';
 import { FormsComponent } from './forms/forms.component';
 import { SolutionsFormsComponentComponent } from './solutions/solutions-forms-component/solutions-forms-component.component';
 import { PolicyComponentComponent } from './policy-component/policy-component.component';
@@ -36,6 +35,7 @@ import { ApplicationsComponent } from './policy-view-component/policy-view-forms
 import { DialogBoxComponent } from './policy-view-component/policy-view-forms-component/documents/dialog-box/dialog-box.component';
 import { EditVendorComponent } from './edit-vendor/edit-vendor.component';
 import { NavigationComponentModule } from './navigation-component/navigation-component.module';
+import { OptionListModule } from './option-list/option-list.module';
 
 //{path: 'locality', component: LocalityComponentComponent },
 
@@ -66,7 +66,6 @@ const appRoutes: Routes=[
     VendorsComponentComponent,
     VendorsViewComponent,
     SolutionsComponent,
-    OptionListComponent,
     FormsComponent,
     SolutionsFormsComponentComponent,
     PolicyComponentComponent,
@@ -102,7 +101,8 @@ const appRoutes: Routes=[
     CoreModule,
     FormsModule,
     BrowserAnimationsModule,
-    NavigationComponentModule
+    NavigationComponentModule,
+    OptionListModule
   ],
   providers: [RegisterService],
   bootstrap: [AppComponent]
