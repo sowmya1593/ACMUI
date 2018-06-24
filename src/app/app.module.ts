@@ -10,7 +10,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { VendorsComponentComponent } from './vendors-component/vendors-component.component';
 import { VendorsViewComponent } from './vendors-view/vendors-view.component';
 import { SolutionsComponent } from './solutions/solutions.component';
-import { NavigationComponentComponent } from './navigation-component/navigation-component.component';
 import { OptionListComponent } from './option-list/option-list.component';
 import { FormsComponent } from './forms/forms.component';
 import { SolutionsFormsComponentComponent } from './solutions/solutions-forms-component/solutions-forms-component.component';
@@ -19,8 +18,6 @@ import { PolicyViewComponentComponent } from './policy-view-component/policy-vie
 import { ContactComponentComponent } from './solutions/solutions-forms-component/contact-component/contact-component.component';
 import { PolicyViewFormsComponentComponent } from './policy-view-component/policy-view-forms-component/policy-view-forms-component.component';
 import { ViewTableComponent } from './vendors-view/view-table/view-table.component';
-import { LocalityComponentComponent } from './locality-component/locality-component.component';
-import { LocalityAddComponentComponent } from './locality-component/locality-add-component/locality-add-component.component';
 import { LocalityViewComponentComponent } from './locality-view-component/locality-view-component.component';
 import { SolutionViewComponentComponent } from './solution-view-component/solution-view-component.component';
 import { MyDatePickerModule } from 'mydatepicker';
@@ -38,8 +35,9 @@ import { DocumentsComponent } from './policy-view-component/policy-view-forms-co
 import { ApplicationsComponent } from './policy-view-component/policy-view-forms-component/applications/applications.component';
 import { DialogBoxComponent } from './policy-view-component/policy-view-forms-component/documents/dialog-box/dialog-box.component';
 import { EditVendorComponent } from './edit-vendor/edit-vendor.component';
+import { NavigationComponentModule } from './navigation-component/navigation-component.module';
 
-
+//{path: 'locality', component: LocalityComponentComponent },
 
 const appRoutes: Routes=[
     {path: '', component: DashboardComponent },
@@ -47,7 +45,7 @@ const appRoutes: Routes=[
     {path: 'solutions', component: SolutionsComponent },
     {path: 'vendorsView', component: VendorsViewComponent },
     {path: 'policy', component: PolicyComponentComponent },
-    {path: 'locality', component: LocalityComponentComponent },
+    {path:"locality", loadChildren:'app/locality-component/locality-component.module#LocalityComponentModule'},
     {path: 'localityView', component: LocalityViewComponentComponent },
     {path: 'solutionsView', component: SolutionViewComponentComponent },
     {path: 'editSolutions/:id', component: EditSolutionComponent },
@@ -68,7 +66,6 @@ const appRoutes: Routes=[
     VendorsComponentComponent,
     VendorsViewComponent,
     SolutionsComponent,
-    NavigationComponentComponent,
     OptionListComponent,
     FormsComponent,
     SolutionsFormsComponentComponent,
@@ -77,8 +74,6 @@ const appRoutes: Routes=[
     ContactComponentComponent,
     PolicyViewFormsComponentComponent,
     ViewTableComponent,
-    LocalityComponentComponent,
-    LocalityAddComponentComponent,
     LocalityViewComponentComponent,
     SolutionViewComponentComponent,
     PolicyFormsComponent,
@@ -107,6 +102,7 @@ const appRoutes: Routes=[
     CoreModule,
     FormsModule,
     BrowserAnimationsModule,
+    NavigationComponentModule
   ],
   providers: [RegisterService],
   bootstrap: [AppComponent]
