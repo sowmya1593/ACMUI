@@ -1,15 +1,15 @@
 import { ApiserviceService } from '../apiservice.service';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-
+import { FormBuilder, FormGroup, Validators,FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-edit-vendor',
   templateUrl: './edit-vendor.component.html',
   styleUrls: ['./edit-vendor.component.css'],
   providers: [ApiserviceService]
 })
-  
-  
+
 
 export class EditVendorComponent implements OnInit {
   activatedRoute: any;
@@ -25,44 +25,107 @@ export class EditVendorComponent implements OnInit {
   public state: string;
   public zipCode: string;
   //public vendorDetails: VendorDetails;
-  
-  
-  
-  
-  constructor(private route: ActivatedRoute, private _apiservice: ApiserviceService) {}
+
+
+  private editVendorForm: FormGroup;
+
+
+
+
+  constructor(private route: ActivatedRoute, private _apiservice: ApiserviceService, private fb: FormBuilder,private modalService: NgbModal) {
+  }
+
+  editorGroup():void{
+  console.log(this.editVendorForm.disabled);
+  if(this.editVendorForm.disabled){
+  this.editVendorForm.enable();
+  }
+  else{
+  this.editVendorForm.disable();
+  }
+  }
+
+
 
   ngOnInit() {
     /*let  vendorDetails: VendorDetails;
       this.getEditVendors(this.userId);
     console.log(this.vendorDetails);*/
-     this.route.params.subscribe(params => {
+     this.createForm();
+
+    this.route.params.subscribe(params => {
       this.userId = params['id'];
+      this.editVendorForm.disable();
     });
     this.onDisplayVendors();
-   
+
   }
-      
-      
-      onDisplayVendors()
-      {
-           this._apiservice.getVendorExtra(this.userId)
+
+  open(content) {
+   this.modalService.open(content);
+
+  }
+
+
+
+
+
+
+
+  createForm() {
+    this.editVendorForm = this.fb.group({
+      name: ['', Validators.required],
+      vendorAddress: this.fb.group({
+        streetName: '',
+        city: '',
+        state: '',
+        zipcode: ''
+      }),
+      vendorContact: this.fb.group({
+        firstName: '',
+        lastName: '',
+        emailId: '',
+        phoneNumber: ''
+      }),
+    });
+  }
+
+
+
+
+
+
+ createVendor(value){
+ value['vendorId']= this.userId;
+ this._apiservice.postVendorData(value)
       .subscribe((data: any) => {
         console.log(data);
-        this.name = data.name;
-        console.log(this.name);
-        this.firstName = data.vendorContact.firstName;
-        this.lastName = data.vendorContact.lastName;
-        this.emailId = data.vendorContact.emailId;
-        this.phoneNumber = data.vendorContact.phoneNumber;
-        this.address = data.vendorAddress.streetName;
-        this.city = data.vendorAddress.city;
-        this.state = data.vendorAddress.state;
-        this.zipCode = data.vendorAddress.zipcode;
+        open(data.responseString);
       }, error => console.log(error));
-     
-    
-      }
-  
+
+}
+cancelButton(){
+	this.editVendorForm.disable();
+
+	}
+
+
+
+
+  onDisplayVendors() {
+
+
+
+    this._apiservice.getVendorExtra(this.userId)
+      .subscribe((data: any) => {
+        console.log(data);
+        (<FormGroup>this.editVendorForm)
+            .patchValue(data, { onlySelf: true });
+      }, error => console.log(error));
+
+
+  }
+
   @HostListener("window:scroll", [])
   onWindowScroll() {
 
@@ -71,8 +134,8 @@ export class EditVendorComponent implements OnInit {
       this.color = 'online';
       console.log('You are 100px from the top to bottom');
     } else {
-        this.color = 'offline';
-        console.log('You are 500px from the top to bottom');
+      this.color = 'offline';
+      console.log('You are 500px from the top to bottom');
     }
 
   }
@@ -80,7 +143,7 @@ export class EditVendorComponent implements OnInit {
   getColor() {
     return this.color === 'online' ? '#ffffff' : 'white';
   }
-  
+
   getOpacity() {
     return this.color === 'online' ? 0.8 : 1;
   }
@@ -101,7 +164,7 @@ export class EditVendorComponent implements OnInit {
   zipcode : string;
   }
 
-   export interface VendorContact {
+   export interface Ve0ndorContact {
        contactId : number;
   firstName : string;
   lastName : string;

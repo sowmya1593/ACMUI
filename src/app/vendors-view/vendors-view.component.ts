@@ -25,10 +25,11 @@ export class VendorsViewComponent implements OnInit {
   {
      this._apiservice.getVendors()
     .subscribe((data:any) => {
-     this.vendors = data.vendorsDTOs;
+    this.vendors = data.vendorsDTOs.sort(function(val1, val2){
+    return val1.name > val2.name
+});
       this.vendorsContact=data.vendorsDTOs.vendorContact;
-      console.log(data);
-      
+      console.log("this.vendors",this.vendors);
     },error => console.log(error));
   }
   

@@ -2,7 +2,7 @@ import { APP_CONFIG } from './app.config';
 import { HttpService } from './core/http.service';
 import { Injectable } from '@angular/core';
 import { Http,HttpModule, Headers } from '@angular/http';
-
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -45,5 +45,10 @@ export class ApiserviceService {
     return this._httpService.get(url + '?' + 'vendorId' + '=' + id)
     .map(res =><Response>res.json());
   }
-
+  postVendorData(body) {
+  console.log("body",body);
+  let url =APP_CONFIG.postVendor;
+return this._httpService.post(url,body)                          .map((res:Response) => res.json()) 
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+                         }
 }

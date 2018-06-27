@@ -7,12 +7,57 @@
     overflow: hidden;
 }
 
+
+
+.save-edit{
+	float:right;
+}
+.navigate{
+    margin: 15px;
+    padding: 5px;
+}
+
+.sticky-top{
+	height: 30px;
+	border-radius: 5px;
+}
+
+
+
+.home-back{
+	float: left;
+}
+
+.save-edit{
+	float: right;
+}
+
+a{
+	text-decoration: none;
+}
+.home-icon{
+    color: #3A539B;
+}
+.left-icon{
+    /*margin-left: 10px;*/
+    color: #3A539B;
+}
+
+.icons{
+    vertical-align: middle;
+    font-size: 20px;
+    margin-top: -20px;
+    padding: 2px;
+    margin-left: 5px;
+}
+
+
 .page-description{
     text-align: center;
-    padding: 2%;
     margin-top: 0px;
     margin-bottom: 10px;
 }
+
 
 @keyframes slideInFromCenter {
   0% {
@@ -63,6 +108,10 @@
 	color: red;
 	margin-left: 2px;
 }
+.form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff;
+   
+}
 
 .btn{
 	margin-left: 3px;
@@ -70,72 +119,6 @@
 	border-color: #3A539B;
 }
 
-input[readonly], select[readonly] {
+input[disable], select[disable] {
 	background-color: #ffffff;
 	}
-	
-.navigate{
-    margin: 15px;
-    padding: 5px;
-}
-
-.sticky-top{
-	height: 30px;
-	border-radius: 5px;
-}
-
-.form-options{
-    margin-right: 15px;
-    margin-top: -15px;
-    padding: 5px;
-}
-
-.home-back{
-	float: left;
-}
-
-.save-edit{
-	float: right;
-}
-
-a{
-	text-decoration: none;
-}
-
-.icons{
-    vertical-align: middle;
-    font-size: 20px;
-    margin-top: -20px;
-    padding: 2px;
-    margin-left: 5px;
-}
-
-.left-icons{
-	float: left;
-}
-
-.icons{
-	display: inline-block;
-}
-
-.home-icon{
-    color: #3A539B;
-}
-
-.home-icon:hover{
-	
-}
-
-.edit-icon{
-    margin-left: 10px;
-    color: #3A539B;
-}
-
-.left-icon{
-    margin-left: 10px;
-    color: #3A539B;
-}
-
-.save-icon{
-    color: #3A539B;
-}

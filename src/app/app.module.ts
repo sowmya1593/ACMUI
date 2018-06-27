@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
@@ -25,7 +25,7 @@ import { RegisterComponent } from './services/register.component';
 import { RegisterService } from './services/register.service';
 import {HttpModule} from '@angular/http';
 import { SolutionTableComponent } from './solution-view-component/solution-table/solution-table.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PolicyDetailsComponent } from './policy-view-component/policy-view-forms-component/policy-details/policy-details.component';
 import { EditSolutionComponent } from './edit-solution/edit-solution.component';
 import { EditSolutionFormComponent } from './edit-solution/edit-solution-form/edit-solution-form.component';
@@ -55,9 +55,9 @@ const appRoutes: Routes=[
       {path: 'review', component: ReviewComponent },
       {path: 'documents', component: DocumentsComponent },
       {path: 'applications', component: ApplicationsComponent}] },
-    
+
   ];
- 
+
 
 @NgModule({
   declarations: [
@@ -90,8 +90,8 @@ const appRoutes: Routes=[
   entryComponents: [
     DialogBoxComponent
   ],
-  
- 
+
+
   imports: [
     BrowserModule,
     Angular2FontawesomeModule,
@@ -102,7 +102,9 @@ const appRoutes: Routes=[
     FormsModule,
     BrowserAnimationsModule,
     NavigationComponentModule,
-    OptionListModule
+    OptionListModule,
+    ReactiveFormsModule,
+    NgbModule.forRoot()
   ],
   providers: [RegisterService],
   bootstrap: [AppComponent]

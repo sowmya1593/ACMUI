@@ -12,8 +12,8 @@ export const APP_CONFIG = {
   getVendors: apiBaseUrl + 'getVendors',
   getSolutions: apiBaseUrl + 'getSolutions',
   getSolution: apiBaseUrl +'getSolution',
-  getVendor: apiBaseUrl + 'getVendor'
-  
+  getVendor: apiBaseUrl + 'getVendor',
+  postVendor:apiBaseUrl + 'addNewVendor'
 }
 
 

@@ -1,76 +1,123 @@
 <app-navigation-component></app-navigation-component>
+<ng-template #content>
+<div class="modal-header">
+  <h4 class="modal-title">Success</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Vendor Registered {{name}}!</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
+</ng-template>
+
+
+
+
+
+
+
+
 <div class="navigate sticky-top" [ngStyle]="{'backgroundColor': getColor(), 'opacity': getOpacity()}">
-            <!--<div class="home">
+    <!--<div class="home">
                 <i class="fas fa-home home-icon icons"></i>
                 < class="fas fa-arrow-left left-icon icons"></i>
             </div>-->
-            <div class="form-options">
-                <div class="home-back">
-                	<a routerLink="/"><fa class="left-icons home-icon icons" data-toggle="tooltip" data-placement="right" title="Home" data-animation="true" data-delay="0" [name]="'home'"></fa></a>
-                	<a routerLink="/vendorsView"><fa class="left-icons left-icon icons" data-toggle="tooltip" data-placement="right" title="Back" data-animation="true" data-delay="0" [name]="'arrow-left'"></fa></a>
-                </div>
-                <div class="save-edit">
-                	<fa class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'edit'"></fa>
-                </div>
-               <!--  <fa class="edit-icon icons" [name]="'edit'"></fa> -->
-            </div>
+    <div class="form-options">
+        <div class="home-back">
+            <a routerLink="/">
+                <fa class="left-icons home-icon icons" data-toggle="tooltip" data-placement="right" title="Home" data-animation="true" data-delay="0" [name]="'home'"></fa>
+            </a>
+            <a routerLink="/vendorsView">
+                <fa class="left-icons left-icon icons" data-toggle="tooltip" data-placement="right" title="Back" data-animation="true" data-delay="0" [name]="'arrow-left'"></fa>
+            </a>
         </div>
+
+        <div class="save-edit">
+           <fa class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'edit'"  (click)="editorGroup()"></fa>
+
+        </div>
+        <!--  <fa class="edit-icon icons" [name]="'edit'"></fa> -->
+    </div>
+</div>
 <div class="form-div">
-            <form class="forms" #form="ngForm">
-            <div class="page-description"><h3>Vendors</h3>
-    		<hr class="after-heading" />
-    		</div>
-            <div class="tip"><p class="tip-text"><fa class="light-bulb" [name]="'lightbulb-o'"></fa>Tip:</p></div>
-            <div class="form-row">
-                <div class="form-group col-12">
-                <label for="vendorName"><b>Vendor Name</b></label><div class="asterisk">*</div>
-                <input type="text" class="form-control" id="vendorName" placeholder="Vendor Name" value="{{name}}" readonly>
+    <form  class="forms" [formGroup]="editVendorForm" (ngSubmit)="createVendor(editVendorForm.value)">
+        <div class="page-description">
+            <h3>Vendors</h3>
+            <hr class="after-heading" />
+        </div>
+        <div class="tip">
+            <p class="tip-text">
+                <fa class="light-bulb" [name]="'lightbulb-o'"></fa>Tip:</p>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <label for="vendorName"><b>Vendor Name</b></label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="vendorName" placeholder="Vendor Name" formControlName="name">
             </div>
         </div>
         <hr />
         <!-- <h3>Contact Information</h3> -->
-        <p><b>Contact Person</b></p>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="firstName">First Name</label><div class="asterisk">*</div>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" value="{{firstName}}" readonly>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="lastName">Last Name</label><div class="asterisk">*</div>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" value="{{lastName}}" readonly>
-            </div>
-         </div>
-         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="email">Email ID</label><div class="asterisk">*</div>
-                <input type="email" class="form-control" id="email" placeholder="Email ID" value="{{emailId}}" readonly>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="phone">Phone Number</label><div class="asterisk">*</div>
-                <input type="text" class="form-control" id="phone" placeholder="Phone Number" value="{{phoneNumber}}" readonly>
-            </div>
-         </div>
-         <hr />
-        <p><b>Address</b></p>
-        <div class="form-group">
-            <label for="inputAddress">Street Name</label><div class="asterisk">*</div>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Street Name" value="{{address}}" readonly>
-            <label for="city">City</label><div class="asterisk">*</div>
-            <input type="text" class="form-control" id="city" placeholder="City" value="{{city}}" readonly>
-        </div>
-        <div class="form-row">
+        <div formGroupName="vendorContact">
+            <p><b>Contact Person</b></p>
+
+            <div class="form-row">
                 <div class="form-group col-md-6">
-            <label for="inputState">State</label><div class="asterisk">*</div>
-            <input type="text" class="form-control" id="inputState" placeholder="City" value="{{state}}" readonly>
+                    <label for="firstName">First Name</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email ID</label>
+                    <div class="asterisk">*</div>
+                    <input type="email" class="form-control" id="email" placeholder="Email ID" formControlName="emailId">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone Number</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="phone" placeholder="Phone Number" formControlName="phoneNumber">
+                </div>
+            </div>
         </div>
-        <div class="form-group col-md-6">
-            <label for="inputZip">Zip Code</label><div class="asterisk">*</div>
-            <input type="text" class="form-control" id="inputZip" value="{{zipCode}}" readonly>
-        </div>
+        <hr />
+        <div formGroupName="vendorAddress" >
+            <p><b>Address</b></p>
+            <div class="form-group">
+                <label for="inputAddress">Street Name</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Street Name" formControlName="streetName">
+                <label for="city">City</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="city" placeholder="City" formControlName="city">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputState">State</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="inputState" placeholder="City" formControlName="state">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputZip">Zip Code</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="inputZip" formControlName="zipcode">
+                </div>
+            </div>
         </div>
         <div class="buttons">
-        	<button type="cancel" class="btn btn-primary">Cancel</button>
-        	<button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+            <button type="cancel" class="btn btn-primary"(click)="cancelButton()">Cancel</button>
+            <button (click)="open(content)"  type="submit" class="btn btn-primary"  *ngIf="!editVendorForm.disabled">Submit</button>
+
         </div>
-</form>
-        </div>
+    </form>
+</div>
