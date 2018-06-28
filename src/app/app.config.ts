@@ -13,7 +13,11 @@ export const APP_CONFIG = {
   getSolutions: apiBaseUrl + 'getSolutions',
   getSolution: apiBaseUrl +'getSolution',
   getVendor: apiBaseUrl + 'getVendor',
-  postVendor:apiBaseUrl + 'addNewVendor'
+  postVendor:apiBaseUrl + 'addNewVendor',
+  postSolution: apiBaseUrl + 'updateSolution',
+  getSolutionTypes: apiBaseUrl + 'getSolutionTypes',
+  getSolutionsOnload: apiBaseUrl + 'getSolutionsOnload',
+  addSolutions: apiBaseUrl + 'registerSolution'
 }
 
 

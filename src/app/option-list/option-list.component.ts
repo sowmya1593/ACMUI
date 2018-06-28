@@ -1,4 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-option-list',
@@ -8,7 +10,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 export class OptionListComponent implements OnInit {
   color: String;
 
-  constructor() { }
+  constructor(private _location: Location) { }
 
   ngOnInit() {
   }
@@ -34,5 +36,9 @@ export class OptionListComponent implements OnInit {
   getOpacity(){
     return this.color === 'online'? 0.8 : 1;
   }
+  
+  backClicked() {
+        this._location.back();
+    }
 
 }

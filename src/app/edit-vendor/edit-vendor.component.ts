@@ -105,9 +105,9 @@ export class EditVendorComponent implements OnInit {
 
 }
 cancelButton(){
-	this.editVendorForm.disable();
+  this.editVendorForm.disable();
 
-	}
+  }
 
 
 

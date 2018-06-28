@@ -36,6 +36,7 @@ import { DialogBoxComponent } from './policy-view-component/policy-view-forms-co
 import { EditVendorComponent } from './edit-vendor/edit-vendor.component';
 import { NavigationComponentModule } from './navigation-component/navigation-component.module';
 import { OptionListModule } from './option-list/option-list.module';
+import { EditNavigationComponent } from './edit-navigation/edit-navigation.component';
 
 //{path: 'locality', component: LocalityComponentComponent },
 
@@ -85,7 +86,8 @@ const appRoutes: Routes=[
     DocumentsComponent,
     ApplicationsComponent,
     DialogBoxComponent,
-    EditVendorComponent
+    EditVendorComponent,
+    EditNavigationComponent
   ],
   entryComponents: [
     DialogBoxComponent

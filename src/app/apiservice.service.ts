@@ -51,4 +51,30 @@ export class ApiserviceService {
 return this._httpService.post(url,body)                          .map((res:Response) => res.json()) 
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
                          }
+  
+  updateSolution(body){
+    console.log(body);
+    let url = APP_CONFIG.postSolution;
+    return this._httpService.post(url, body).map((res: Response) => res.json())
+                            .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  
+  getSolutionTypes(){
+    let url = APP_CONFIG.getSolutionTypes;
+    return this._httpService.get(url)
+    .map(res =><Response>res.json());
+  }
+  
+  getSolutionsOnload(){
+    let url = APP_CONFIG.getSolutionsOnload;
+    return this._httpService.get(url)
+    .map(res =><Response>res.json());
+  }
+  
+  addSolutions(body){
+    console.log(body);
+    let url = APP_CONFIG.addSolutions;
+    return this._httpService.post(url, body).map((res: Response) => res.json())
+                            .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
+  }
 }
