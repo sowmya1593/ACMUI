@@ -1,5 +1,5 @@
 import { ApiserviceService } from '../apiservice.service';
-import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
@@ -12,6 +12,7 @@ import { File } from 'babel-types';
   providers: [ ApiserviceService]
 })
 export class EditSolutionComponent implements OnInit {
+  @ViewChild('fileInput') inputEl: ElementRef;
   color: String;
   public userId: number;
   public solutionInput: any;
@@ -33,6 +34,8 @@ export class EditSolutionComponent implements OnInit {
   public vendorDTO: any;
   public hostingTypeDTO: any;
   public labVendorDTO: any;
+  //static readonly files;
+  //static file;
   
   
   public solutionData: solution;
@@ -70,9 +73,17 @@ export class EditSolutionComponent implements OnInit {
     this.getSolutionsOnload();
     }
   
+  /*updated($event) {
+   const files = $event.target.files || $event.srcElement.files;
+   const file = files[0];
+    //const formData = new FormData();
+    //formData.append('file', file);
+  }*/
+  
    createForm() {
     this.editSolution = this.fb.group({
       name: ['', Validators.required],
+      file: ['', Validators.required],
       versionNumber: ['', Validators.required],
       solutionTypeName: ['', Validators.required],
       systemTypeDTO: this.fb.group({
@@ -91,16 +102,22 @@ export class EditSolutionComponent implements OnInit {
   }
   
   createSolution(value){
-    
-    
     value['solutionId']=this.userId;
-    let formData = new FormData();
-    let normalfile: File;
-    formData.append('solution',JSON.stringify(value));
-    formData.append('files',normalfile);
-    console.log(value);
+    var formData = new FormData();
+    //var files:File[]=[];
+    //let inputEl = this.inputEl.nativeElement;
+   // files.push(inputEl.files.item(0));
     console.log(JSON.stringify(value));
+    formData.append('solution',JSON.stringify(value));
+   // for(let i=0;i<files.length;i++){
+     // formData.append('file[]',files[i]);
+      
+  //  }
+//    formData.append('file',files);
+    console.log(formData);
+    
     this._apiservice.updateSolution(formData)
+     
         .subscribe((data : any) => {
           console.log(data);
         }, error => console.log(error));

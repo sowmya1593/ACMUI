@@ -1,7 +1,7 @@
 import { APP_CONFIG } from './app.config';
 import { HttpService } from './core/http.service';
 import { Injectable } from '@angular/core';
-import { Http,HttpModule, Headers } from '@angular/http';
+import { Http,HttpModule, Headers,RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
@@ -48,14 +48,16 @@ export class ApiserviceService {
   postVendorData(body) {
   console.log("body",body);
   let url =APP_CONFIG.postVendor;
-return this._httpService.post(url,body)                          .map((res:Response) => res.json()) 
+return this._httpService.post(url,body).map((res:Response) => res.json()) 
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
                          }
   
   updateSolution(body){
     console.log(body);
     let url = APP_CONFIG.postSolution;
-    return this._httpService.post(url, body).map((res: Response) => res.json())
+    let headers = new Headers({ 'Content-Type': 'multipart/mixed' });
+    let options = new RequestOptions({ headers: headers });
+    return this._httpService.post(url, body, options).map((res: Response) => res.json())
                             .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
   }
   

@@ -162,7 +162,8 @@
          </div>
             <hr />
          <h4>Attachments</h4>
-         <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>	
+         <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
+         <input type="file" #fileInput formControlName="file" *ngIf="!editSolution.disabled">
             </div>
          <div class="buttons">
          	<button type="cancel" class="cancel btn btn-primary" (click)="cancelButton()">Cancel</button>
