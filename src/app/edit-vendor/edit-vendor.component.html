@@ -1,4 +1,4 @@
-<app-navigation-component></app-navigation-component>
+<app-navigation-component ></app-navigation-component>
 <ng-template #content let-c="close" let-d="dismiss">
 <div class="modal-header">
   <h4 class="modal-title">Success</h4>
@@ -13,8 +13,8 @@
   <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
 </div>
 </ng-template>
-<app-edit-navigation></app-edit-navigation>
-<div class="form-div">
+<app-edit-navigation (editClick)="editClicked($event)"></app-edit-navigation>
+<div class="form-div" >
     <form  class="forms" [formGroup]="editVendorForm" (ngSubmit)="createVendor(editVendorForm.value)">
         <div class="page-description">
             <h3>Vendors</h3>

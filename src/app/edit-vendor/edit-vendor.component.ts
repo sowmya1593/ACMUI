@@ -35,16 +35,16 @@ export class EditVendorComponent implements OnInit {
   constructor(private route: ActivatedRoute, private _apiservice: ApiserviceService, private fb: FormBuilder,private modalService: NgbModal) {
   }
 
-  editorGroup():void{
-  console.log(this.editVendorForm.disabled);
-  if(this.editVendorForm.disabled){
-  this.editVendorForm.enable();
+ 
+  editClicked(event): void {
+    console.log(this.editVendorForm.disabled);
+	  if(this.editVendorForm.disabled){
+	 	 this.editVendorForm.enable();
+	  }
+	  else{
+	 	 this.editVendorForm.disable();
+	  }
   }
-  else{
-  this.editVendorForm.disable();
-  }
-  }
-
 
 
   ngOnInit() {

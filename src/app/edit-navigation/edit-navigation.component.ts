@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 export class EditNavigationComponent implements OnInit {
   color: String;
 
+  @Output() editClick = new EventEmitter<any>();
   constructor(private _location: Location) { }
 
   ngOnInit() {
@@ -41,5 +42,6 @@ export class EditNavigationComponent implements OnInit {
   backClicked() {
         this._location.back();
     }
+
 
 }

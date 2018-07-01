@@ -1,110 +1,78 @@
-<div class="form-div">
-            <form class="forms" (ngSubmit)="onSubmit()" #form="ngForm">
-            <div class="page-description"><h3>Vendors</h3>
-    		<hr class="after-heading" />
-    		</div>
-            <div class="tip"><p class="tip-text"><fa class="light-bulb" [name]="'lightbulb-o'"></fa>Tip:</p></div>
-            <div class="form-row">
-                <div class="form-group col-12">
-                <label for="vendorName"><b>Vendor Name</b></label><div class="asterisk">*</div>
-                <input type="text" class="form-control" id="vendorName" placeholder="Vendor Name" ngModel name="vendorName" required>
+<div class="form-div" >
+    <form  class="forms" [formGroup]="editVendorForm" (ngSubmit)="createVendor(editVendorForm.value)">
+        <div class="page-description">
+            <h3>Vendors</h3>
+            <hr class="after-heading" />
+        </div>
+        <div class="tip">
+            <p class="tip-text">
+                <fa class="light-bulb" [name]="'lightbulb-o'"></fa>Tip:</p>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <label for="vendorName"><b>Vendor Name</b></label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="vendorName" placeholder="Vendor Name" formControlName="name">
             </div>
         </div>
         <hr />
         <!-- <h3>Contact Information</h3> -->
-        <p><b>Contact Person</b></p>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="firstName">First Name</label><div class="asterisk">*</div>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" ngModel name="firstName" required>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="lastName">Last Name</label><div class="asterisk">*</div>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" ngModel name="lastName" required>
-            </div>
-         </div>
-         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="email">Email ID</label><div class="asterisk">*</div>
-                <input type="email" class="form-control" id="email" placeholder="Email ID" ngModel name="email" required>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="phone">Phone Number</label><div class="asterisk">*</div>
-                <input type="text" class="form-control" id="phone" placeholder="Phone Number" ngModel name="phoneNumber" required>
-            </div>
-         </div>
-         <hr />
-        <p><b>Address</b></p>
-        <div class="form-group">
-            <label for="inputAddress">Street Name</label><div class="asterisk">*</div>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Street Name" ngModel name="address" required>
-            <label for="city">City</label><div class="asterisk">*</div>
-            <input type="text" class="form-control" id="city" placeholder="City" ngModel name="city" required>
-        </div>
-        <div class="form-row">
+        <div formGroupName="vendorContact">
+            <p><b>Contact Person</b></p>
+
+            <div class="form-row">
                 <div class="form-group col-md-6">
-            <label for="inputState">State</label><div class="asterisk">*</div>
-            <select id="inputState" class="form-control" ngModel name="inputState" required>
-                <option selected>Choose...</option>
-                <option>Alabama</option>
-                <option>Alaska</option>
-                <option>Arizona</option>
-                <option>California</option>
-                <option>Colorado</option>
-         		<option>Connecticut</option>
-         		<option>Delaware</option>
-                <option>Florida</option>
-                <option>Georgia</option>
-                <option>Hawaii</option>
-                <option>Idaho</option>
-         		<option>Illinois</option>
-         		<option>Indiana</option>
-                <option>Iowa</option>
-                <option>Kansas</option>
-                <option>Kentucky</option>
-                <option>Louisiana</option>
-         		<option>Maine</option>
-         		<option>Maryland</option>
-                <option>Massachusetts</option>
-                <option>Michigan</option>
-                <option>Minnesota</option>
-                <option>Mississippi</option>
-         		<option>Missouri</option>
-         		<option>Montana</option>
-                <option>Nebraska</option>
-                <option>Nevada</option>
-                <option>New Hampshire</option>
-                <option>New Jersey</option>
-         		<option>New Mexico</option>
-         		<option>New York</option>
-                <option>North Carolina</option>
-                <option>North Dakota</option>
-                <option>Ohio</option>
-                <option>Oklahoma</option>
-         		<option>Oregon</option>
-         		<option>Pennsylvania</option>
-                <option>Rhode Island</option>
-                <option>South Carolina</option>
-                <option>South Dakota</option>
-                <option>Tennessee</option>
-         		<option>Texas</option>
-         		<option>Utah</option>
-                <option>Vermont</option>
-                <option>Virginia</option>
-                <option>Washington</option>
-                <option>West Virginia</option>
-         		<option>Wisconsin</option>
-         		<option>Wyoming</option>
-            </select>
+                    <label for="firstName">First Name</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email ID</label>
+                    <div class="asterisk">*</div>
+                    <input type="email" class="form-control" id="email" placeholder="Email ID" formControlName="emailId">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone Number</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="phone" placeholder="Phone Number" formControlName="phoneNumber">
+                </div>
+            </div>
         </div>
-        <div class="form-group col-md-6">
-            <label for="inputZip">Zip Code</label><div class="asterisk">*</div>
-            <input type="text" class="asterisk form-control" id="inputZip" ngModel name="inputZip" required>
-        </div>
+        <hr />
+        <div formGroupName="vendorAddress" >
+            <p><b>Address</b></p>
+            <div class="form-group">
+                <label for="inputAddress">Street Name</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Street Name" formControlName="streetName">
+                <label for="city">City</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="city" placeholder="City" formControlName="city">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputState">State</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="inputState" placeholder="City" formControlName="state">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputZip">Zip Code</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="inputZip" formControlName="zipcode">
+                </div>
+            </div>
         </div>
         <div class="buttons">
-        	<button type="cancel" class="btn btn-primary">Cancel</button>
-        	<button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+            <button type="cancel" class="btn btn-primary"(click)="cancelButton()">Cancel</button>
+            <button   type="submit" class="btn btn-primary"  [disabled]="editVendorForm.invalid">Submit</button>
+
         </div>
-</form>
-        </div>
+    </form>
+</div>

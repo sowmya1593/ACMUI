@@ -4,6 +4,7 @@ import { LocalityComponentComponent } from './locality-component.component';
 import { LocalityAddComponentComponent } from "./locality-add-component/locality-add-component.component"
 import { LocalityTabComponent } from './locality-tab/locality-tab.component';
 import { LocalityDetailsComponent } from './locality-tab/locality-details/locality-details.component';
+import { LocalitySolutionsComponent } from './locality-tab/locality-solutions/locality-solutions.component';
 
 const routes: Routes = [ 
      {  
@@ -21,7 +22,11 @@ const routes: Routes = [
              {
               path: '',
               component: LocalityDetailsComponent
-             }
+             },
+             {
+              path: 'solutions',
+              component: LocalitySolutionsComponent
+              }
             
             ]
           }

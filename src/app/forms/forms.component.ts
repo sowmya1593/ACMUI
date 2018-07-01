@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+
+import { FormBuilder, FormGroup, Validators,FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-forms',
@@ -7,15 +8,39 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./forms.component.css']
 })
 export class FormsComponent implements OnInit {
-  @ViewChild('form') vendorsForm: NgForm;
-
-  constructor() { }
+  
+  @Output() submitClick = new EventEmitter<object>();
+   private editVendorForm: FormGroup;
+  constructor( private fb: FormBuilder) { }
 
   ngOnInit() {
+   this.createForm();
   }
   
-  onSubmit(){
-    console.log(this.vendorsForm);
+   createVendor(value){
+   console.log(this.editVendorForm.value);
+    this.submitClick.emit(value);
+    console.log(value);
+  }
+
+
+
+  createForm() {
+    this.editVendorForm = this.fb.group({
+      name: ['', Validators.required],
+      vendorAddress: this.fb.group({
+        streetName: '',
+        city: '',
+        state: '',
+        zipcode: ''
+      }),
+      vendorContact: this.fb.group({
+        firstName: '',
+        lastName: '',
+        emailId: '',
+        phoneNumber: ''
+      }),
+    });
   }
 
 }

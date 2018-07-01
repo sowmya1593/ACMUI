@@ -9,6 +9,7 @@ import { LocalityTabComponent } from './locality-tab/locality-tab.component'
 import { OptionListModule } from '../option-list/option-list.module';
 import { LocalityComponentComponent } from './locality-component.component';
 import { LocalityDetailsComponent } from './locality-tab/locality-details/locality-details.component';
+import { LocalitySolutionsComponent } from './locality-tab/locality-solutions/locality-solutions.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,6 @@ import { LocalityDetailsComponent } from './locality-tab/locality-details/locali
     Angular2FontawesomeModule,
     OptionListModule
   ],
-  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent]
+  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent]
 })
 export class LocalityComponentModule { }
