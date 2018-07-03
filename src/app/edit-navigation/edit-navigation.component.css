@@ -21,7 +21,9 @@
 .save-edit{
 	float: right;
 }
-
+.save-times{
+	float: right;
+}
 a{
 	text-decoration: none;
 }
@@ -62,4 +64,8 @@ a{
 
 .save-icon{
     color: #3A539B;
+}
+
+.times-icon{
+	color: #3A539B;
 }

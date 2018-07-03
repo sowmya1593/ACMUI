@@ -84,8 +84,8 @@ export class EditVendorComponent implements OnInit {
       vendorContact: this.fb.group({
         firstName: '',
         lastName: '',
-        emailId: '',
-        phoneNumber: ''
+        emailId: ['', Validators.email],
+        phoneNumber: ['', Validators.required]
       }),
     });
   }
