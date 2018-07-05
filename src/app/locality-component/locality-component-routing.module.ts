@@ -8,6 +8,9 @@ import { LocalitySolutionsComponent } from './locality-tab/locality-solutions/lo
 import { LocalitySolutionsLinkComponent } from './locality-tab/locality-solutions/locality-solutions-link/locality-solutions-link.component';
 import { LocalitySolutionstablelinkComponent } from './locality-tab/locality-solutionstablelink/locality-solutionstablelink.component';
 import { LocalityBusinessComponent } from './locality-tab/locality-business/locality-business.component';
+import { LocalityAuditComponent } from './locality-tab/locality-audit/locality-audit.component';
+import { AuditDetailsComponent } from './locality-tab/locality-audit/audit-details/audit-details.component';
+
 const routes: Routes = [ 
      {  
        path: '', 
@@ -36,6 +39,16 @@ const routes: Routes = [
               {
               path: 'business' ,
               component:LocalityBusinessComponent
+              },
+              {
+              path: 'Audit' ,
+              component:LocalityAuditComponent,
+              children: [
+                {
+                  path:'',
+                  component:AuditDetailsComponent
+                }
+              ]
               }
             
             ]

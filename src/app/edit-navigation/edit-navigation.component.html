@@ -12,7 +12,7 @@
                 	<fa class="edit-icon icons"   data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'edit'" (click)="editClick.emit(true)"></fa>
                 </div>
                 <div class="save-times">
-                	<fa class="times-icon icons"   data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'times'" ></fa>
+                	<fa class="times-icon icons"   data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'times'" (click)="cancelClick.emit(true)"></fa>
                 </div>
                 <div class="save-edit">
                 	<fa class="save-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'save'"></fa>
@@ -20,11 +20,7 @@
                 <!-- <fa class="edit-icon icons" [name]="'edit'"></fa> -->
             </div>
             
-            
-            
-            
-            
-        </div> 
-        
+          </div> 
+       
         
         

@@ -10,6 +10,8 @@ export class EditNavigationComponent implements OnInit {
   color: String;
 
   @Output() editClick = new EventEmitter<any>();
+  @Output() cancelClick = new EventEmitter<any>();
+  
   constructor(private _location: Location) { }
 
   ngOnInit() {

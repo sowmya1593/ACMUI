@@ -13,6 +13,8 @@ import { LocalitySolutionsComponent } from './locality-tab/locality-solutions/lo
 import { LocalitySolutionsLinkComponent } from './locality-tab/locality-solutions/locality-solutions-link/locality-solutions-link.component';
 import { LocalitySolutionstablelinkComponent } from './locality-tab/locality-solutionstablelink/locality-solutionstablelink.component';
 import { LocalityBusinessComponent } from './locality-tab/locality-business/locality-business.component';
+import { LocalityAuditComponent } from './locality-tab/locality-audit/locality-audit.component';
+import { AuditDetailsComponent } from './locality-tab/locality-audit/audit-details/audit-details.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,6 +23,6 @@ import { LocalityBusinessComponent } from './locality-tab/locality-business/loca
     Angular2FontawesomeModule,
     OptionListModule
   ],
-  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent]
+  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent, LocalityAuditComponent, AuditDetailsComponent]
 })
 export class LocalityComponentModule { }

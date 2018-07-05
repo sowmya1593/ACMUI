@@ -10,3 +10,8 @@
 	background-color: #3A539B;
 	margin-top: -15px;
 }*/
+
+.modal-header{
+	background-color:#3A539B !important;
+	color:white;
+}

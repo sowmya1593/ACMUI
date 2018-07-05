@@ -6,7 +6,10 @@
     background-color: #EEEEEE;
     overflow: hidden;
 }
-
+.modal-header{
+	background-color:#3A539B !important;
+	color:white;
+}
 
 
 .save-edit{

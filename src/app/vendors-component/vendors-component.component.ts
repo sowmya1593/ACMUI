@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { ApiserviceService } from '../apiservice.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-vendors-component',
   templateUrl: './vendors-component.component.html',
@@ -10,7 +11,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class VendorsComponentComponent implements OnInit {
   @ViewChild('content') content:TemplateRef<any>;
-  constructor( private _apiservice: ApiserviceService,private modalService: NgbModal) { }
+  constructor( private _apiservice: ApiserviceService,private modalService: NgbModal,private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,5 +24,10 @@ export class VendorsComponentComponent implements OnInit {
         this.modalService.open(this.content);
         open(data.responseString);
       }, error => console.log(error));
+  }
+  
+  goToPage(){
+  this.router.navigate(['/vendorsView']);
+  console.log("333333333333333333333333333");
   }
 }

@@ -14,7 +14,7 @@ export class LocalityAddComponentComponent implements OnInit {
   ngOnInit() {
   }
   
-  selectLocality(locality){
+  selectLocal(locality){
    
      this.router.navigate(['locality/option']);
 

@@ -24,23 +24,21 @@ export class FormsComponent implements OnInit {
   }
 
 
-
-  createForm() {
+ createForm() {
     this.editVendorForm = this.fb.group({
       name: ['', Validators.required],
       vendorAddress: this.fb.group({
         streetName: '',
         city: '',
         state: '',
-        zipcode: ''
+        zipcode: ['', Validators.required]
       }),
       vendorContact: this.fb.group({
         firstName: '',
         lastName: '',
-        emailId: '',
-        phoneNumber: ''
+        emailId: ['', Validators.email],
+        phoneNumber: ['', Validators.required]
       }),
     });
   }
-
 }

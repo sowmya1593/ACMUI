@@ -79,7 +79,7 @@ export class EditVendorComponent implements OnInit {
         streetName: '',
         city: '',
         state: '',
-        zipcode: ''
+        zipcode: ['', Validators.required]
       }),
       vendorContact: this.fb.group({
         firstName: '',
@@ -95,8 +95,9 @@ export class EditVendorComponent implements OnInit {
 
 
 
- createVendor(value){
+ createVendor(value):void{
  value['vendorId']= this.userId;
+ 
  this._apiservice.postVendorData(value)
       .subscribe((data: any) => {
         console.log(data);
@@ -107,7 +108,10 @@ export class EditVendorComponent implements OnInit {
 cancelButton(){
   this.editVendorForm.disable();
 
+
+
   }
+  
 
 
 

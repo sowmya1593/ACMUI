@@ -10,10 +10,10 @@
   </button>
 </div>
 <div class="modal-body">
-  <p>Vendor Registered {{name}}!</p>
+  <p>The Vendor has been successfully added {{name}}!</p>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+  <button type="button" class="btn btn-outline-dark" (click)="c();goToPage()">Close</button>
 </div>
 </ng-template>
 <app-forms (submitClick) = "submitClicked($event)"></app-forms>
