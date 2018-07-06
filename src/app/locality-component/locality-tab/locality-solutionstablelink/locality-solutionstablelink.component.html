@@ -1,4 +1,12 @@
-<form class="form">
+
+
+<div class="plus">
+   
+        <i class="fa fa-plus-square-o" aria-hidden="true" style="font-size: 24px;" (click)="selectLocality()"></i>
+   
+</div>
+
+<form class="form" [formGroup]="invoiceForm">
 <p><b>APPLICATION SOLUTION</b></p>
 <div class="form-row">
              <div class="form-group col-md-6">
@@ -42,38 +50,23 @@
             <div class="form-row">
              <div class="form-group col-md-6">
                 <label for="lastName">No of Units</label>
-                <input type="number" class="form-control" id="lastName" value="Value">
+                <input type="number" class="form-control" id="lastName" value="Value" (input)="onUnitsChange($event.target.value)">
             </div>
             </div>
             <hr/>
- <table class="table table-striped table-hover table-border">
-  <thead>
-    <tr>
-     
-      <th scope="col">Model#</th>
-      <th scope="col">Serial#</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <th><a routerLink="/locality/option/link">1</a></th>
-      <td>Mark</td>
-    
-      
-    </tr>
-    <tr>
-       <th> <a routerLink="/locality/option">1</a></th>
-      <td>Jacob</td>
-     
-      
-    </tr>
-    <tr>
-       <th> <a routerLink="/locality/option">1</a></th>
-      <td>Larry</td>
-      
-      
-    </tr>
-  </tbody>
-</table>
+  <table formArrayName="itemRows" *ngIf="invoiceForm.controls.itemRows.controls.length > 0" class="table table-bordered">
+            <!-- Check the correct way to iterate your form array -->
+            <thead>
+                <tr>
+                    <th>Model #</th>
+                    <th>Serial #</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let itemrow of invoiceForm.controls.itemRows.controls; let i=index" [formGroupName]="i">
+                    <td><input type='text' class="form-control" formControlName="one"></td>
+                    <td><input type='text' class="form-control" formControlName="two"></td>
+                </tr>
+            </tbody>
+        </table>
 </form>

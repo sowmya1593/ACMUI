@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LocalityComponentRoutingModule } from './locality-component-routing.module';
 import { NavigationComponentModule } from '../navigation-component/navigation-component.module';
@@ -24,7 +25,9 @@ import { LocalityLegalComponent } from './locality-tab/locality-legal/locality-l
     LocalityComponentRoutingModule,
     NavigationComponentModule,
     Angular2FontawesomeModule,
-    OptionListModule
+    OptionListModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent, LocalityAuditComponent, AuditDetailsComponent, AuditFindingsComponent, AuditRecomendationsComponent, LocalityLegalComponent]
 })

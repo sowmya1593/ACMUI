@@ -5,9 +5,43 @@
   margin: 20px;
   background-color: #EEEEEE;
 }
-.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
+tbody tr:nth-of-type(odd) {
+    background-color: #EEEEEE !important;
 }
+
+tr{
+	background-color:#cecfd5;
+}
+tbody tr:nth-child(even) {
+  background-color:white;
+}
+
+
+.plus{
+	float:right;
+	 vertical-align: middle;
+    font-size: 20px;
+    margin-top: -15px;
+    padding: 10px;
+    margin-left: 50px;
+    color: #3A539B;
+}
+
+
+
+i.fa {
+    text-decoration: none !important;
+    padding: 5px 4px;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+   }
+
+
+
 
 
 #searchtable table, th, td {
@@ -61,11 +95,4 @@ table {
 
 
 
-.css-serial {
-  counter-reset: serial-number;  /* Set the serial number counter to 0 */
-}
 
-.css-serial td:first-child:before {
-  counter-increment: serial-number;  /* Increment the serial number counter */
-  content: counter(serial-number);  /* Display the counter */
-}

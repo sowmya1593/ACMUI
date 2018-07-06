@@ -1,23 +1,6 @@
 <form class="former">
-    <div class="page-description">
-       
-    </div>
    
-    <div class="form-row">
-        <div class="form-group col-md-6">
-
-            <label class="label" for="modelSolution"><b>Locality </b></label>
-            <div class="asterisk">*</div>
-            <select class="form-control" id="modelSolution" (change)="selectLocal($event.target.value)">
-          <option selected>Choose...</option>
-          <option  *ngFor="let county of counties">
-          {{ county.county_name}}
-          </option> 
-        </select>
-        </div>
-
-    </div>
-<img src="assets/img/virginia-county-map.gif" usemap="#image-map">
+<img  width=100% src="assets/img/virginia-county-map.gif" usemap="#image-map">
 
 <map name="image-map">
     <area target="" alt="Wise" title="Wise" routerLink="/localityView" coords="113,324,14" shape="circle">
@@ -55,10 +38,27 @@
 </map>
 
 </form>
+<form class="former">
+ <div class="page-description">
+       
+    </div>
+   
+    <div class="form-row">
+        <div class="form-group col-md-6">
 
+            <label class="label" for="modelSolution"><b>Please Select Your Locality </b></label>
+            <div class="asterisk">*</div>
+            <select class="form-control" id="modelSolution" (change)="selectLocal($event.target.value)">
+          <option selected>Choose...</option>
+          <option  *ngFor="let county of counties">
+          {{ county.county_name}}
+          </option> 
+        </select>
+        </div>
 
+    </div>
 
-
+</form>
 
 
 

@@ -1,12 +1,13 @@
 .plus{
 	float:right;
+	 vertical-align: middle;
+    font-size: 20px;
+    margin-top: -15px;
+    padding: 10px;
+    margin-left: 50px;
+    color: #3A539B;
 }
 
-
-a {
-    color: #337ab7;
-    text-decoration: none;
-}
 
 
 i.fa {
@@ -18,9 +19,7 @@ i.fa {
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
     text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+   }
 
 th{
     font-weight: bold;
@@ -36,10 +35,6 @@ th{
     border-collapse: collapse;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #EEEEEE; 
-  
-}
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     padding: 8px;
@@ -80,9 +75,13 @@ tbody tr:nth-child(even) {
   background-color: #EEEEEE;
 }
 
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #EEEEEE !important;
+}
 
-
-
+tbody tr:nth-of-type(odd) {
+    background-color: #EEEEEE !important;
+}
 
 
 
