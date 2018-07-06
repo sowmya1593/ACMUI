@@ -10,7 +10,9 @@ import { LocalitySolutionstablelinkComponent } from './locality-tab/locality-sol
 import { LocalityBusinessComponent } from './locality-tab/locality-business/locality-business.component';
 import { LocalityAuditComponent } from './locality-tab/locality-audit/locality-audit.component';
 import { AuditDetailsComponent } from './locality-tab/locality-audit/audit-details/audit-details.component';
-
+import { AuditFindingsComponent } from './locality-tab/locality-audit/audit-findings/audit-findings.component';
+import { AuditRecomendationsComponent } from './locality-tab/locality-audit/audit-recomendations/audit-recomendations.component';
+import { LocalityLegalComponent } from './locality-tab/locality-legal/locality-legal.component';
 const routes: Routes = [ 
      {  
        path: '', 
@@ -27,6 +29,10 @@ const routes: Routes = [
              {
               path: '',
               component: LocalityDetailsComponent
+             },
+             {
+             path: 'legal',
+             component: LocalityLegalComponent
              },
              {
               path: 'solutions',
@@ -47,7 +53,15 @@ const routes: Routes = [
                 {
                   path:'',
                   component:AuditDetailsComponent
-                }
+                },
+                {
+                	path:'find',
+                	component:AuditFindingsComponent
+                	},
+                	{
+                	path:'recomendation',
+                	component:AuditRecomendationsComponent
+                	}
               ]
               }
             

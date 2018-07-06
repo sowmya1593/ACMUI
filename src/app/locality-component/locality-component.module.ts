@@ -15,6 +15,9 @@ import { LocalitySolutionstablelinkComponent } from './locality-tab/locality-sol
 import { LocalityBusinessComponent } from './locality-tab/locality-business/locality-business.component';
 import { LocalityAuditComponent } from './locality-tab/locality-audit/locality-audit.component';
 import { AuditDetailsComponent } from './locality-tab/locality-audit/audit-details/audit-details.component';
+import { AuditFindingsComponent } from './locality-tab/locality-audit/audit-findings/audit-findings.component';
+import { AuditRecomendationsComponent } from './locality-tab/locality-audit/audit-recomendations/audit-recomendations.component';
+import { LocalityLegalComponent } from './locality-tab/locality-legal/locality-legal.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,6 +26,6 @@ import { AuditDetailsComponent } from './locality-tab/locality-audit/audit-detai
     Angular2FontawesomeModule,
     OptionListModule
   ],
-  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent, LocalityAuditComponent, AuditDetailsComponent]
+  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent, LocalityAuditComponent, AuditDetailsComponent, AuditFindingsComponent, AuditRecomendationsComponent, LocalityLegalComponent]
 })
 export class LocalityComponentModule { }

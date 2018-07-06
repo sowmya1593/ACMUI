@@ -1,16 +1,20 @@
 <div class="form-div">
     <form class="former">
-        <p><b>Contact Information</b></p>
+     <div class="tip">
+            <p class="tip-text">
+                <fa class="light-bulb" [name]="'lightbulb-o'"></fa>Tip:</p>
+        </div>
+    <p><b>Contact Information</b></p>
         <div class="form-row">
             <div class="form-group col-md-6">
-
-                <label for="inputState">Acronym</label>
+				
+                <label for="inputState">First Name</label>
                 <div class="asterisk">*</div>
                <input type="text" class="form-control" id="lastName" value="Value">
             </div>
             <div class="form-group col-md-6">
-                <label for="lastName">Last updated by</label>
-                
+                <label for="lastName">Last Name</label>
+                 <div class="asterisk">*</div>
                 <input type="text" class="form-control" id="lastName" value="Value">
             </div>
         </div>
@@ -19,42 +23,80 @@
 
         <div class="form-row">
              <div class="form-group col-md-6">
-                <label for="lastName">Name</label>
+                <label for="lastName">Email Id</label>
                 <div class="asterisk">*</div>
                 <input type="text" class="form-control" id="lastName" value="Value">
             </div>
             <div class="form-group col-md-6">
-                <label for="email">Updated at</label>
+         
+                <label for="email">Phone No</label>
+                    <div class="asterisk">*</div>
+                    <input type="email" class="form-control" id="email" value="Value">
+            </div>
+        </div>
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                <label for="lastName">Website Address</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="lastName" value="Value">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">Veris Id</label>
+                 <div class="asterisk">*</div>
+                    <input type="email" class="form-control" id="email" value="Value">
+            </div>
+          
+        </div>
+          <hr/>
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                <label for="lastName">Central Absentee Perceived(CAP)</label>
+               <div class="asterisk">*</div><br>
+                <input type="radio" name="yes" value="male">Yes<br>
+                 <input type="radio" name="no" value="male"> No
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">Bail out</label>
+                <div class="asterisk">*</div><br>
+                     <input type="radio" name="yes" value="male">Yes<br>
+                 <input type="radio" name="no" value="male"> No
+            </div>
+        </div>
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                <label for="lastName">Automate</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="lastName" value="Value">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">COMET/Penality</label>
+                    <input type="email" class="form-control" id="email" value="Value">
+            </div>
+        </div>
+         <div class="form-row">
+             <div class="form-group col-md-6">
+                <label for="lastName">County/City Code</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="lastName" value="Value">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">FIPS Code</label>
                     <input type="email" class="form-control" id="email" value="Value">
             </div>
         </div>
         
-    
-        
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputState">Division</label>
-               
-                <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
+         <div class="form-row">
+             <div class="form-group col-md-6">
+                <label for="lastName">VEBA region/VRAV region</label>
+               <div class="asterisk">*</div><br>
+                <input type="radio" name="yes" value="male">Yes<br>
+                 <input type="radio" name="no" value="male"> No
             </div>
             <div class="form-group col-md-6">
-                <label for="inputZip">Zip Code</label>
-              
-               
-                <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-
-                <div class="buttons">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="cancel" class="btn btn-primary">Cancel</button>
-                </div>
-
+                <label for="email">Hours of Operation</label>
+                    <input type="email" class="form-control" id="email" value="Value">
             </div>
         </div>
-    </form>
-</div>
+        
+        
+        </form>

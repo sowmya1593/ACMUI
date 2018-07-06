@@ -11,8 +11,8 @@ export class EditNavigationComponent implements OnInit {
 
   @Output() editClick = new EventEmitter<any>();
   @Output() cancelClick = new EventEmitter<any>();
-  
-  constructor(private _location: Location) { }
+@Output() submitClick = new EventEmitter<any>();
+    constructor(private _location: Location) { }
 
   ngOnInit() {
   }

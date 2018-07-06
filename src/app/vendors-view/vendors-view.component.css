@@ -9,9 +9,13 @@ th {
   color: black;
   background-color: #cecfd5;
   text-align: left;
+  border:1px solid;
  
 
 }
+
+
+
 tbody tr:nth-child(even) {
   background-color: #ffffff; 
   

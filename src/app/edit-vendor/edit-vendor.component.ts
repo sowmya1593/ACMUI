@@ -96,6 +96,7 @@ export class EditVendorComponent implements OnInit {
 
 
  createVendor(value):void{
+ console.log("form value",value);
  value['vendorId']= this.userId;
  
  this._apiservice.postVendorData(value)

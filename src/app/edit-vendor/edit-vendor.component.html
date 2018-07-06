@@ -13,7 +13,7 @@
   <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
 </div>
 </ng-template>
-<app-edit-navigation (editClick)="editClicked($event)" (cancelClick)="cancelButton()"></app-edit-navigation>
+<app-edit-navigation (editClick)="editClicked($event)" (cancelClick)="cancelButton()" (submitClick)="createVendor(editVendorForm.value)"></app-edit-navigation>
 <div class="form-div" >
     <form  class="forms" [formGroup]="editVendorForm" (ngSubmit)="createVendor(editVendorForm.value)">
         <div class="page-description">
@@ -141,7 +141,7 @@
             </div>
         </div>
         <div class="buttons">
-          <button (click)="open(content)" [disabled]="editVendorForm.invalid" type="submit" class="btn btn-primary"  *ngIf="!editVendorForm.disabled">Submit</button>
+          <button [disabled]="editVendorForm.invalid" type="submit" class="btn btn-primary"  *ngIf="!editVendorForm.disabled">Submit</button>
             <button type="cancel" class="btn btn-primary"(click)="cancelButton()" >Cancel</button>
              
          

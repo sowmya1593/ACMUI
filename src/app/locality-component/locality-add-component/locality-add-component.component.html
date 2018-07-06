@@ -10,14 +10,49 @@
             <div class="asterisk">*</div>
             <select class="form-control" id="modelSolution" (change)="selectLocal($event.target.value)">
           <option selected>Choose...</option>
-          <option value="locality1">Rockingham</option>
-          <option value="locality2">locality2</option>
-          <option value="locality3">locality3</option>
+          <option  *ngFor="let county of counties">
+          {{ county.county_name}}
+          </option> 
         </select>
         </div>
 
     </div>
-    <iframe src="https://makeaclickablemap.com/map.php?e4eee16582645ece4e434d3f64e7293a231b573f" frameborder="0" scrolling="no" height="720" width="100%"></iframe>
+<img src="assets/img/virginia-county-map.gif" usemap="#image-map">
+
+<map name="image-map">
+    <area target="" alt="Wise" title="Wise" routerLink="/localityView" coords="113,324,14" shape="circle">
+    <area target="" alt="Dickerson" title="Dickerson" href="Dickerson" coords="144,305,11" shape="circle">
+    <area target="" alt="Lee" title="Lee" href="Lee" coords="60,349,21" shape="circle">
+    <area target="" alt="Bucharan" title="Bucharan" href="Bucharan" coords="189,297,164,263" shape="rect">
+    <area target="" alt="Scott" title="Scott" href="Scott" coords="142,366,86,339" shape="rect">
+    <area target="" alt="Russell" title="Russell" href="Russell" coords="152,338,195,311" shape="rect">
+    <area target="" alt="Tazwell" title="Tazwell" href="Tazwell" coords="199,305,257,277" shape="rect">
+    <area target="" alt="Smyth" title="Smyth" href="Smyth" coords="210,344,250,324" shape="rect">
+    <area target="" alt="Washington" title="Washington" href="Washington" coords="155,367,205,342" shape="rect">
+    <area target="" alt="Grayson" title="Grayson" href="Grayson" coords="231,370,292,352" shape="rect">
+    <area target="" alt="Caroll" title="Caroll" href="Caroll" coords="295,339,338,368" shape="rect">
+    <area target="" alt="Wythe" title="Wythe" href="Wythe" coords="301,335,254,318" shape="rect">
+    <area target="" alt="Pulaski" title="Pulaski" href="Pulaski" coords="307,292,332,320" shape="rect">
+    <area target="" alt="Bland" title="Bland" href="Bland" coords="291,305,263,277" shape="rect">
+    <area target="" alt="Floyd" title="Floyd" href="Floyd" coords="342,339,372,304" shape="rect">
+    <area target="" alt="Franklin" title="Franklin" href="Franklin" coords="379,333,429,299" shape="rect">
+    <area target="" alt="Patrick" title="Patrick" href="Patrick" coords="344,343,381,370" shape="rect">
+    <area target="" alt="Henry" title="Henry" href="Henry" coords="387,340,420,371" shape="rect">
+    <area target="" alt="Pittslyvania" title="Pittslyvania" href="Pittslyvania" coords="437,309,475,370" shape="rect">
+    <area target="" alt="halifax" title="halifax" href="Halifax" coords="489,321,521,368" shape="rect">
+    <area target="" alt="Macklenburg" title="Macklenburg" href="macklenburg" coords="532,345,599,369" shape="rect">
+    <area target="" alt="Brunswick" title="Brunswick" href="Brunswick" coords="605,320,635,374" shape="rect">
+    <area target="" alt="Greensville" title="Greensville" href="Greensville" coords="643,335,664,372" shape="rect">
+    <area target="" alt="southhampton" title="southhampton" href="SouthHampton" coords="683,376,719,332" shape="rect">
+    <area target="" alt="IsleofWight" title="IsleofWight" href="ISleofwight" coords="731,318,766,347" shape="rect">
+    <area target="" alt="Albemarle" title="Albemarle" href="Albemarle" coords="526,164,564,201" shape="rect">
+    <area target="" alt="Lousia" title="Lousia" href="Luoisa" coords="587,179,630,202" shape="rect">
+    <area target="" alt="Buckingham" title="Buckingham" href="Buckingham" coords="533,227,565,256" shape="rect">
+    <area target="" alt="Cambell" title="Cambell" href="Campbell" coords="476,273,515,307,506,294" shape="rect">
+    <area target="" alt="PrinceEdward" title="PrinceEdward" href="PrinceEdward" coords="545,281,580,301" shape="rect">
+    <area target="" alt="Augusta" title="Augusta" href="Augusta" coords="464,137,509,193" shape="rect">
+    <area target="" alt="Rockridge" title="Rockridge" href="Rockridge" coords="441,185,461,226" shape="rect">
+</map>
 
 </form>
 

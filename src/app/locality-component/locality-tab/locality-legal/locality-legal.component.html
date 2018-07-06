@@ -1,0 +1,89 @@
+<div class="form-div">
+    <form class="former">
+        <p><b>Contact Information</b></p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Acronym</label>
+                <div class="asterisk">*</div>
+               <input type="text" class="form-control" id="lastName" value="Value">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Last updated by</label>
+                
+                <input type="text" class="form-control" id="lastName" value="Value">
+            </div>
+        </div>
+
+
+
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                <label for="lastName">Name</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="lastName" value="Value">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">Updated at</label>
+                    <input type="email" class="form-control" id="email" value="Value">
+            </div>
+        </div>
+        <hr/>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+               <label for="inputState">MOU Name</label>
+                
+               <input type="text" class="form-control" id="lastName" value="enter here">
+            </div>
+            </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+               <label for="inputState">Signed</label>
+              
+               <input type="text" class="form-control" id="lastName" value="Value">
+            </div>
+            </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+               <label for="inputState">Date of Receipt</label>
+               
+               <input type="text" class="form-control" id="lastName" value="mm/dd/yyyy">
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+               <label for="inputState">Recertification Date</label>
+              
+               <input type="text" class="form-control" id="lastName" value="mm/dd/yyyy">
+            </div>
+            </div>
+         <div class="panel-heading">
+
+			<span class=" title elipsis pull-right"> <a ng-click="saveMOU()" ng-hide="MOUForm.$invalid" title="Save MOU" class="ng-hide"> <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i></a>
+			</span>
+			
+			<span class=" title elipsis pull-right">
+						      	
+									<a data-ng-click="showMOUList()" title="Go back to audit section.">
+									<i class="fa fa-arrow-circle-o-left" aria-hidden="true" style="font-size: 24px;"></i> </a>
+						      	</span>
+						      	
+		</div>
+        <hr class="former"/>
+        <p><b>MOU Attachments</b></p>
+        <div>
+        <div class="col-sm-5 col-md-5 col-lg-5">
+							<label class="input"> <input type="file" file-model="attachment" data-btn-text="Select a File"  accept=".pdf,.doc,.docx">
+
+							</label>
+						</div>
+						<div class="col-sm-5 col-md-5 col-lg-5">
+							<label class="input"> <input type="button" id="savebtn" value="Attach File" >
+							</label>
+						</div>
+        </div>
+       
+        </form>
+        </div>
+       
+        

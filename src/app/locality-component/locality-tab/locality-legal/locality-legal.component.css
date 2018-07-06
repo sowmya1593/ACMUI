@@ -1,0 +1,32 @@
+.elipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+i.fa {
+    text-decoration: none !important;
+    padding: 5px 4px;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.pull-right {
+    float: right!important;
+}
+#middle div.panel-heading {
+    color: #1E252D !important;
+    height: 51px;
+}
+.panel-default>.panel-heading {
+    padding: 15px 15px;
+    background: #fff;
+}
+
+.former{
+	padding:5px;
+}
