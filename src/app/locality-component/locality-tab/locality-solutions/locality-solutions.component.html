@@ -4,8 +4,7 @@
    
 </div>
 
-
-<form class="former" *ngIf="showMainTable">
+<form class="former clear-right" *ngIf="showMainTable">
     <table class="table table-striped table-hover table-bordere">
         <thead>
             <tr>
@@ -39,7 +38,8 @@
 </form>
 
 
-<form class="forms" *ngIf="showTable" [formGroup]="invoiceForm">
+<form class="forms  clear-right" *ngIf="showTable" [formGroup]="invoiceForm"  >
+
     <p><b>APPLICATION SOLUTIONS</b></p>
     <div class="form-row">
         <div class="form-group col-md-6">
@@ -100,14 +100,13 @@
             </thead>
             <tbody>
                 <tr *ngFor="let itemrow of invoiceForm.controls.itemRows.controls; let i=index" [formGroupName]="i">
-                    <td><input type='text' class="form-control" formControlName="one"></td>
-                    <td><input type='text' class="form-control" formControlName="two"></td>
+                    <td><input type='text' placeholder="Equipment Model Number" class="form-control" formControlName="one"></td>
+                    <td><input type='text' placeholder="Equipment Serial Number" class="form-control" formControlName="two"></td>
                 </tr>
             </tbody>
         </table>
-        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
        
     </div>
  </form>
- 
-   
+

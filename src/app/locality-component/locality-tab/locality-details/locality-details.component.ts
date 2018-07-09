@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./locality-details.component.css']
 })
 export class LocalityDetailsComponent implements OnInit {
-
+  private time;
   constructor() { }
 
   ngOnInit() {
   }
-
+  setTime() {
+    console.log(this.time);
+  }
 }

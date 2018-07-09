@@ -37,7 +37,13 @@ export class LocalitySolutionsComponent implements OnInit {
     console.log(value)
    
      let control = <FormArray>this.invoiceForm.controls['itemRows'];
-     control.push(this.initItemRows());
+    
+     if(value<control.length){
+control.removeAt(control.length-1);
+}else{
+control.push(this.initItemRows());
+}
+     
      
      
   }
