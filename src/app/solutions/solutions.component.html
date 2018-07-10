@@ -5,4 +5,183 @@
         <div class="version"><p><b>Version: D-Suite 4.14-E System</b></p></div>
         </div>
         <hr />-->
-    <app-solutions-forms-component></app-solutions-forms-component>
+   <!--  <app-solutions-forms-component></app-solutions-forms-component> -->
+   <form (ngSubmit)="createSolution()" enctype="multipart/form-data" #form="ngForm">
+			<div class="page-description"><h3>Solutions</h3>
+    		<hr class="after-heading" />
+    		</div>
+        	<div class="tip"><p class="tip-text"><fa class="light-bulb" [name]="'lightbulb-o'"></fa>Tip:</p></div>
+        	<h4>General Information</h4>
+            <div class="model-solution-row form-row">
+            	<div class="model form-group col-md-6">
+            <label class="label-form" for="modelSolution"><b>Model/Solution</b></label><div class="asterisk">*</div>
+              <input type="text" class="form-control" name="solutionName" id="modelSolution" (change)="solution.name = $event.target.value" required>
+            	</div>
+            	<div class="version form-group col-md-6">
+            		<label class="label-form" for="version"><b>Version</b></label><div class="asterisk">*</div>
+		              <input type="text" class="form-control" name="versionNumber" id="version" (change)="solution.versionNumber = $event.target.value" required>
+            	</div>
+            	<div class="form-group col-md-6">
+            <label class="label-form" for="systemType"><b>System Type</b></label><div class="asterisk">*</div>
+              <select class="form-control" id="systemType" (change)="solution.systemTypeDTO.systemTypeId = $event.target.value"  required>
+               <option *ngFor="let systemType of systemTypeDTO" value="{{ systemType.systemTypeId }}">
+		                {{ systemType.name }} 
+		                </option> 
+              </select>
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="equipmentType"><b>Equipment Type</b></label><div class="asterisk">*</div>
+		              <select class="form-control" id="equipmentType" (change)="solution.solutionType = $event.target.value" required>
+		                <option *ngFor="let equipmentType of solutionType" value="{{ equipmentType.solutionTypeId }}">
+		               	  {{ equipmentType.typeName }}
+		              </select>
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="vendor"><b>Vendor</b></label><div class="asterisk">*</div>
+		              <select class="form-control" id="vendor" (change)="solution.vendorId = $event.target.value" required>
+		           <option *ngFor="let vendor of vendorDTO" value="{{ vendor.vendorId }}">
+		                {{ vendor.name }}
+
+		                </option>
+		                </select>
+            		
+            	</div>
+            </div>
+        	<!-- <div class="second-row form-row">
+            	<div class="form-group col-md-6">
+            <label class="label-form" for="systemType"><b>System Type</b></label><div class="asterisk">*</div>
+              <select class="form-control" id="systemType" required>
+                <option selected>Choose...</option>
+                <option value="1">EVS</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="equipmentType"><b>Equipment Type</b></label><div class="asterisk">*</div>
+		              <select class="form-control" id="equipmentType" required>
+		                <option selected>Choose...</option>
+		                <option value="1">Optical/Digital Scan</option>
+		                <option value="2">Two</option>
+		                <option value="3">Three</option>
+		              </select>
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="vendor"><b>Vendor</b></label><div class="asterisk">*</div>
+		              <select class="form-control" id="vendor" required>
+		                <option selected>Choose...</option>
+		                <option value="1">Dominion Voting</option>
+		                <option value="2">Two</option>
+		                <option value="3">Three</option>
+		              </select>
+            		
+            	</div>
+            </div> -->
+            <hr />
+           <h4>Installation and Hosting</h4>
+            <div class="installation form-group col-md-6">
+            <label for="hostingType"><b>Hosting Type</b></label><div class="asterisk">*</div>
+            <select class="form-control" id="hostingType" (change) = "solution.hostingTypeDTO.hostingTypeId = $event.target.value" required>
+		                <option *ngFor="let hostingType of hostingTypeDTO" value = "{{ hostingType.hostingTypeId }}">
+		                {{ hostingType.name }}
+		                </option>
+		              </select>
+            </div>
+            <div class="installation form-group">
+            <label class="hosting-notes" for="hostingNotes"><b>Hosting Notes</b></label><!-- <div class="asterisk-inline asterisk">*</div> -->
+            <textarea cols="156" rows="7" id="hostingNotes" required></textarea>
+            <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
+            	<input type="file" #fileInput (change)="createCertDTO($event,'hosting')">
+            </div>
+          </div>
+            <!-- <p><b>Hosting Notes</b></p>
+            <textarea cols="100" rows="7" id="hostingNotes"></textarea> -->
+            <hr />
+            <h4>Certification Information</h4>
+            <div class="certification-test form-row">
+            <div class="form-group col-md-6">
+                <label for="approvedDate"><b>DoEL Approved Date</b></label>
+                <my-date-picker name="myname"></my-date-picker> 
+                <!-- <input type="date" class="form-control" id="approvedDate"> -->
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dueDate"><b>Renewal Due Date</b></label>
+                <my-date-picker name="myname"></my-date-picker> 
+                <!-- <input type="date" class="form-control" id="dueDate"> -->
+            </div>
+         </div>
+         <hr />
+         <h4>Voting System Test Laboratory - VSTL</h4>
+          <div class="certification-test form-group col-md-6">
+            <label for="label-form labVendor"><b>Lab Vendor</b></label>
+            <select class="form-control" id="labVendor" (change) = "solution.labVendorsDTO.labVendorId = $event.target.value">
+		                <option *ngFor="let lab of labVendorsDTO" value = "{{ lab.labVendorId }}">
+		                {{ lab.name }}
+		                </option>
+		              </select>
+          </div> 
+        <div class="contact" *ngIf="labForm =='PROV&V' || 'SLI' || 'Wyle Laboratories/NTS'">
+        <!--  <div class="contact"> -->
+          	<div class="certification-test form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName"><b>First Name</b></label><div class="asterisk">*</div>
+                <input type="text" class="asterisk form-control" id="firstName" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName"><b>Last Name</b></label><div class="asterisk">*</div>
+                <input type="text" class="asterisk form-control" id="lastName" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email"><b>Email Id</b></label><div class="asterisk">*</div>
+                <input type="email" class="asterisk form-control" id="email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="phone"><b>Phone Number</b></label><div class="asterisk">*</div>
+                <input type="text" class="asterisk form-control" id="phone" required>
+            </div>
+         </div>  
+          <!-- <div class="certification-test form-row">
+            <div class="form-group col-md-6">
+                <label for="email"><b>Email Id</b></label><div class="asterisk">*</div>
+                <input type="email" class="asterisk form-control" id="email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="phone"><b>Phone Number</b></label><div class="asterisk">*</div>
+                <input type="text" class="asterisk form-control" id="phone" required>
+            </div>
+         </div> -->
+          </div> 
+         <hr />
+         <h4>Standard</h4>
+         <div class="installation form-group">
+            <label class="hosting-notes" for="standard"><b>Notes</b></label>
+            <textarea cols="156" rows="7" id="standard" required></textarea>
+            <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
+         <input type="file" #fileInput (change)="createCertDTO($event,'standard')">
+            </div>
+          </div>
+            <hr />
+        <h4>Patches</h4>
+         <div class="installation form-group">
+            <label class="hosting-notes" for="patches"><b>Patches</b></label>
+            <textarea cols="156" rows="7" id="patches" required></textarea>
+            <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
+         		<input type="file" #fileInput (change)="createCertDTO($event,'patches')">
+            </div>
+          </div>
+            <hr />
+         <div>
+         	<h4>Notes</h4>
+         <div class="installation form-group">
+         <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
+         <input type="file" #fileInput (change)="createCertDTO($event,'solution')">
+            </div>
+          </div>
+         </div>
+            <hr />
+         <div class="buttons">
+         	<button type="cancel" class="cancel btn btn-primary">Cancel</button>
+        	<!-- <button type="submit" class="submit btn btn-primary" [disabled]="!form.valid">Submit</button> -->
+        	<button type="submit" class="submit btn btn-primary">Submit</button>
+        </div>
+</form>

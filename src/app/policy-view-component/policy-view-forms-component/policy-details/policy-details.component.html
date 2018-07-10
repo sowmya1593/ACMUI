@@ -1,7 +1,43 @@
 <div class="policies">
 				<span><b>POLICIES</b></span>
+				<div class="policy-edit">
+				<fa *ngIf="plus" [name]="'download'" class="download-icon icons"></fa>
+				<fa class="edit-icon icons" (click)="changeButton()" *ngIf="plus" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'edit'"></fa>
+						<fa (click)="open(content)" *ngIf="!plus" [name]="'upload'" class="upload-icon icons"></fa>
+						<fa *ngIf="!plus" [name]="'plus'" class="plus-icon icons"></fa>
+						<fa *ngIf="!plus" class="save-icon icons" [name]="'save'"></fa>
+						<fa (click)="close()" *ngIf="!plus" class="close-icon icons" [name]="'times-circle'"></fa>
+					</div>
 			<hr />
 			</div>
+			<ng-template #content let-c="close" let-d="dismiss">
+			  <div class="modal-header">
+			    <h4 class="modal-title" id="modal-basic-title">Policy File</h4>
+			    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			      <span aria-hidden="true">&times;</span>
+			    </button> -->
+			  </div>
+			  <div class="modal-body">
+			    <form>
+			    	<div class="form-row">
+			    		<div class="form-group col-12">
+			    			<!-- <label for="attachments"><b>Attachment</b></label> -->
+			    			<input id="attachments" class="form-control" type="file" />
+			    		</div>
+			    	</div>
+			    	<hr />
+			    	<!-- <div class="form-row">
+			    		<div class="form-group col-12">
+			    			<label for="fileList"><b>Attachment</b></label>
+			    		</div>
+			    	</div> -->
+			    </form>
+			  </div>
+			  <div class="modal-footer">
+			    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+			    <button type="button" class="btn btn-outline-dark">Upload</button>
+			  </div>
+</ng-template>
 			<!-- <div class="model-solution-row form-row">
             	<div class="model form-group col-md-6">
             <label class="label-form" for="definitiveSourceInput">Definitive Source</label><div class="asterisk">*</div>

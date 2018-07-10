@@ -13,88 +13,137 @@
                 	<a href="javascript:void(0)" (click)="backClicked()"><fa class="left-icons left-icon icons" data-toggle="tooltip" data-placement="right" title="Back" data-animation="true" data-delay="0" [name]="'arrow-left'"></fa></a>
                 </div>
                 <div class="save-edit">
-                	<fa class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'edit'" (click)="editorGroup()"></fa>
+                	<fa class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0"  (click)="editorGroup()" [name]="'edit'"></fa>
                 </div>
                 <!-- <fa class="edit-icon icons" [name]="'edit'"></fa> -->
             </div>
         </div> 
-<form [formGroup]="editSolution" (ngSubmit)="createSolution(editSolution.value)">
+<form  (ngSubmit)="createSolution()" enctype="multipart/form-data">
 			<div class="page-description"><h3>Solutions</h3>
     		<hr class="after-heading" />
     		</div>
-        	<div class="tip"><p class="tip-text"><fa class="light-bulb" [name]="'lightbulb-o'"></fa>Tip:</p></div>
+        	<div class="tip"><p class="tip-text"><fa class="light-bulb"></fa>Tip:</p></div>
         	<h4>General Information</h4>
             	<div class="model-solution-row form-row">
             	<div class="model form-group col-md-6">
             <label class="label-form" for="modelSolution"><b>Model/Solution</b></label>
-              <input type="text" class="form-control" id="modelSolution" formControlName="name">
+              <input type="text" class="form-control" name="solutionName" [(ngModel)] = "solution.name">
             	</div>
             	<div class="version form-group col-md-6">
             		<label class="label-form" for="version"><b>Version</b></label>
-		              <input type="text" class="form-control" id="version" formControlName="versionNumber">
+		              <input type="text" class="form-control" id="version" name="versionNumber" [(ngModel)] = "solution.versionNumber">
+		              
             	</div>
-            </div>
-            <div class="second-row form-row" >
-    		<div class="form-group col-md-6" formGroupName="systemTypeDTO">
+            	<div class="form-group col-md-6">
             	<label class="label-form" for="systemType"><b>System Type</b></label><div class="asterisk">*</div>
-              	<input type="text" class="form-control" id="systemType" *ngIf="editSolution.disabled" formControlName="name">
-              	<select class="form-control" id="systemType" name="systemType" *ngIf="!editSolution.disabled" required>
-		           <option>Choose</option>
-		           <option *ngFor="let systemType of systemTypeDTO">
-		                {{ systemType.name }}
-
-		                </option>
+              	<input type="text" class="form-control" id="systemType" *ngIf="editSolution.disabled" [(ngModel)] = "solution.systemTypeDTO.name" [name]="'system_name'">
+              	<select class="form-control" id="systemType" name="systemType" *ngIf="!editSolution.disabled" 
+              	[(ngModel)]="solution.systemTypeDTO.systemTypeId" (change)="solution.systemTypeDTO.systemTypeId = $event.target.value" required>
+		           
+		           <option *ngFor="let systemType of systemTypeDTO" value="{{ systemType.systemTypeId }}">
+		                {{ systemType.name }} 
+		                </option> 
 		                </select>
             	</div>
             	<div class="form-group col-md-6">
             		<label class="label-form" for="equipmentType"><b>Equipment Type</b></label><div class="asterisk">*</div>
+		              <input type="text" class="form-control" id="equipmentType" *ngIf="editSolution.disabled" [(ngModel)] = "solution.solutionTypeName" [name] = "'solution_type'"> 
+		              <select class="form-control" id="equipmentType" name="equipmentType" *ngIf="!editSolution.disabled"
+		               [(ngModel)] = "solution.solutionType" (change)="solution.solutionType = $event.target.value" required>
+		               <option *ngFor="let equipmentType of solutionType" value="{{ equipmentType.solutionTypeId }}">
+		               	  {{ equipmentType.typeName }}
+		               </option>
+		               <!--  <option *ngFor="let sol of solution.solutionTypeName" value="{{solution.solutionType}}">
+		                	{{ sol }}
+		                </option> -->
+		              </select>
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="vendor"><b>Vendor</b></label><div class="asterisk">*</div>
+		              <input type="text" class="form-control" id="vendor" *ngIf="editSolution.disabled" [(ngModel)] = "solution.vendor.name" [name] = "'vendor_details'">
+		              <select class="form-control" id="vendor" name="vendor" *ngIf="!editSolution.disabled" 
+		              [(ngModel)]="solution.vendorId" (change)="solution.vendorId = $event.target.value" required>
+		           <option *ngFor="let vendor of vendorDTO" value="{{ vendor.vendorId }}">
+		                {{ vendor.name }}
+
+		                </option>
+		                </select>
+            	</div>
+            	</div>
+             <!-- <div class="second-row form-row"> 
+     		<div class="form-group col-md-6" formGroupName="systemType"> 
+             	<label class="label-form" for="systemType"><b>System Type</b></label><div class="asterisk">*</div> 
+               	<input type="text" class="form-control" id="systemType" *ngIf="editSolution.disabled">
+               	<select class="form-control" id="systemType" name="systemType" *ngIf="!editSolution.disabled"  required> 
+ 		          <option>Choose</option> 
+ 		           <option *ngFor="let systemType of systemTypeDTO"> 
+ 		                {{ systemType.name }} 
+ 		                </option>  
+ 		                </select> 
+             	</div> 
+            	</div>
+            	 -->
+            	<!-- <div class="form-group col-md-6">
+            		<label class="label-form" for="equipmentType"><b>Equipment Type</b></label><div class="asterisk">*</div>
 		              <input type="text" class="form-control" id="equipmentType" *ngIf="editSolution.disabled" formControlName="solutionTypeName"> 
-		              <select class="form-control" id="equipmentType" name="equipmentType" *ngIf="!editSolution.disabled" required>
-		              	<option>Choose</option>
-		                <option *ngFor="let solution of solutionType">
+		              <select class="form-control" id="equipmentType" name="equipmentType" *ngIf="!editSolution.disabled" formControlName="solutionTypeName" required>
+		              	<option [(ngModel)]="solutionTypeName" selected></option>
+		                <option *ngFor="let solution of solutionType" [ngValue]="solution.solutionId">
 		               
 		                {{ solution.typeName }}
 		              
 		                
 		                </option>
-		                <!-- <option>{{ solution.typeName }}</option>
 		                <option>{{ solution.typeName }}</option>
 		                <option>{{ solution.typeName }}</option>
-		                <option>{{ solution.typeName }}</option> -->
+		                <option>{{ solution.typeName }}</option>
+		                <option>{{ solution.typeName }}</option>
 		              </select>
             	</div>
             		<div class="form-group col-md-6" formGroupName="vendor">
             		<label class="label-form" for="vendor"><b>Vendor</b></label><div class="asterisk">*</div>
 		              <input type="text" class="form-control" id="vendor" *ngIf="editSolution.disabled" formControlName="name">
-		              <select class="form-control" id="vendor" name="vendor" *ngIf="!editSolution.disabled" required>
+		              <select class="form-control" id="vendor" name="vendor" *ngIf="!editSolution.disabled" [(ngModel)]="vendorId" required>
 		           <option>Choose</option>
-		           <option *ngFor="let vendor of vendorDTO">
+		           <option *ngFor="let vendor of vendorDTO" [ngValue]="vendor.id">
 		                {{ vendor.name }}
 
 		                </option>
 		                </select>
             	</div>
             </div>
-            <hr />
+            <hr /> -->
            <div>
            	<h4>Installation and Hosting</h4>
-            	 <div class="installation form-group col-md-6" formGroupName="hostingTypeDTO">
+            	 <div class="installation form-group col-md-6">
 	            <label for="hostingType"><b>Hosting Type</b></label>
-	            <input type="text" class="form-control" id="hostingType" *ngIf="editSolution.disabled" formControlName="name">
-	             <select class="form-control" id="hostingType" name="hostingType" *ngIf="!editSolution.disabled" required>
-		           <option>Choose</option>
-		           <option *ngFor="let hosting of hostingTypeDTO">
-		                {{ hosting.name }}
+	            <input type="text" class="form-control" id="hostingType" *ngIf="editSolution.disabled" [(ngModel)] = "solution.hostingTypeDTO.name" [name] = "'hosting_name'">
+	             <select class="form-control" id="hostingType" name="hostingType" *ngIf="!editSolution.disabled"
+	             	[(ngModel)] = "solution.hostingTypeDTO.hostingTypeId" (change) = "solution.hostingTypeDTO.hostingTypeId = $event.target.value" required>
+		           <option *ngFor="let hostingType of hostingTypeDTO" value = "{{ hostingType.hostingTypeId }}">
+		                {{ hostingType.name }}
 
 		                </option>
 		                </select>
             </div>
             <div class="installation form-group">
             <label class="hosting-notes" for="hostingNotes"><b>Hosting Notes</b></label>
+            <textarea *ngIf="!editSolution.disabled" cols="156" rows="7" id="hostingNotes" required></textarea>
+            <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
+            <div class="display-file">
+            	<ul
+								*ngFor=" let certDocDTO of solution.certDocDTOs ">
+								<li
+									*ngIf="certDocDTO.section == 'hosting'">
+									<a (click)="showFile(certDocDTO.certDocId)">{{certDocDTO.fileName}}</a></li>
+							</ul>
+            </div>
+         	<input type="file" #fileInput *ngIf="!editSolution.disabled" (change)="createCertDTO($event,'hosting')">
+            </div>
           </div>
            </div>
             <hr />
-            <div>
+           <div>
             	<h4>Certification Information</h4>
             <div class="certification-test form-row">
             <div class="form-group col-md-6">
@@ -107,66 +156,108 @@
             </div>
          </div>
             </div>
-         <hr />
+         <hr /> 
           <div>
           	<h4>Voting System Test Laboratory - VSTL</h4>
-          	<div class="certification-test form-group col-md-6" formGroupName="labVendorsDTO">
+          	<div class="certification-test form-group col-md-6">
             <label for="label-form labVendor"><b>Lab Vendor</b></label>
-            <input type="text" class="form-control" id="labVendor" *ngIf="editSolution.disabled" formControlName="name">
-            <select class="form-control" id="labVendor" name="labVendor" *ngIf="!editSolution.disabled" required>
-		           <option>Choose</option>
-		           <option *ngFor="let lab of labVendorDTO">
+            <input type="text" class="form-control" id="labVendor" *ngIf="editSolution.disabled" [(ngModel)] = "solution.labVendorsDTO.name" [name] = "'lab_name'">
+            <select class="form-control" id="labVendor" name="labVendor" *ngIf="!editSolution.disabled"
+             [(ngModel)]="solution.labVendorsDTO.labVendorId" (change) = "solution.labVendorsDTO.labVendorId = $event.target.value" required>
+		           <option *ngFor="let lab of labVendorsDTO" value = "{{ lab.labVendorId }}">
 		                {{ lab.name }}
-
 		                </option>
 		                </select>
           </div>
-          <div class="contact">
+         <div class="contact">
           	<div class="certification-test form-row">
             <div class="form-group col-md-6">
                 <label for="firstName"><b>First Name</b></label>
-                <input type="text" class="form-control" id="firstName">
+                <input type="text" class="form-control" id="firstName" [(ngModel)] = "solution.labVendorsDTO.firstName" [name] = "'firstName'">
             </div>
             <div class="form-group col-md-6">
                 <label for="lastName"><b>Last Name</b></label>
-                <input type="text" class="form-control" id="lastName">
+                <input type="text" class="form-control" id="lastName" [(ngModel)] = "solution.labVendorsDTO.lastName" [name] = "'lastName'">
             </div>
             <div class="form-group col-md-6">
                 <label for="email"><b>Email Id</b></label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" id="email" [(ngModel)] = "solution.labVendorsDTO.emailId" [name] = "'emailId'">
             </div>
             <div class="form-group col-md-6">
                 <label for="phone"><b>Phone Number</b></label>
-                <input type="text" class="form-control" id="phone">
+                <input type="text" class="form-control" id="phone" [(ngModel)] = "solution.labVendorsDTO.phoneNumber" [name] = "'phoneNumber'">
             </div>
          </div>
           </div>
           </div>
          <hr />
-         <div>
+          <div>
          	<h4>Standard</h4>
          <div class="installation form-group">
             <label class="hosting-notes" for="standard"><b>Notes</b></label>
+            <textarea *ngIf="!editSolution.disabled" cols="156" rows="7" id="standard" required></textarea>
+            <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
+         <input type="file" #fileInput *ngIf="!editSolution.disabled" (change)="createCertDTO($event,'standard')">
+         <div class="display-file">
+            	<ul
+								*ngFor=" let certDocDTO of solution.certDocDTOs ">
+								<li
+									*ngIf="certDocDTO.section == 'standard'">
+									<a href="#">{{certDocDTO.fileName}}</a></li>
+							</ul>
+            </div>
+            </div>
           </div>
             <hr />
          <h4>Patches</h4>
          <div class="installation form-group">
             <label class="hosting-notes" for="patches"><b>Patches</b></label>
+            <textarea *ngIf="!editSolution.disabled" cols="156" rows="7" id="patches" required></textarea>
+            <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
+            	<div class="display-file">
+            	<table>
+            		<tbody>
+            			<tr *ngFor="let certDocDTO of solution.certDocDTOs">
+            				<td *ngIf="certDocDTO.section == 'patches'"><a (click)="showFile(certDocDTO.certDocId)" style="cursor:pointer;">{{certDocDTO.fileName}}</a></td>
+            				<td><fa *ngIf="!editSolution.disabled" class="download-icon icons" [name]="'trash'"></fa></td>
+            			</tr>
+            		</tbody>
+            	</table>
+            	<!-- <ul
+								*ngFor=" let certDocDTO of solution.certDocDTOs ">
+								<li
+									*ngIf="certDocDTO.section == 'patches'">
+									<a href="#">{{certDocDTO.fileName}}</a><fa *ngIf="!editSolution.disabled" class="download-icon icons" [name]="'trash'"></fa></li>
+							</ul> -->
+            </div>
+         		<input type="file" #fileInput *ngIf="!editSolution.disabled" (change)="createCertDTO($event,'patches')">
+            </div>
           </div>
          </div>
             <hr />
          <div>
          	<h4>Notes</h4>
          <div class="installation form-group">
+         <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
+         <div class="display-file">
+            	<ul
+								*ngFor=" let certDocDTO of solution.certDocDTOs ">
+								<li
+									*ngIf="certDocDTO.section == 'solution'">
+									<a (click)="openFile(certDocDTO.certDocId)">{{certDocDTO.fileName}}</a></li>
+							</ul>
+            </div>
+         <input type="file" #fileInput *ngIf="!editSolution.disabled" (change)="createCertDTO($event,'solution')">
+            </div>
           </div>
          </div>
             <hr />
-         <h4>Attachments</h4>
+         <!-- <h4>Attachments</h4>
          <div class="attachments-div"><p class="attachments"><b>Attachments</b></p>
-         <input type="file" #fileInput formControlName="file" *ngIf="!editSolution.disabled">
-            </div>
+         <input type="file" #fileInput *ngIf="!editSolution.disabled">
+            </div>  -->
          <div class="buttons">
-         	<button type="cancel" class="cancel btn btn-primary" (click)="cancelButton()">Cancel</button>
+         	<button type="cancel" class="cancel btn btn-primary">Cancel</button>
          	<button type="submit" class="cancel btn btn-primary" *ngIf="!editSolution.disabled">Submit</button>
         </div>
 </form>

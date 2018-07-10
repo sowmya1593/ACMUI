@@ -21,6 +21,6 @@ export class PolicyViewFormsComponentComponent implements OnInit {
 }
   
   selectType(policy){
-    this.policy=true;
+    this.policy =true;
 }
 }

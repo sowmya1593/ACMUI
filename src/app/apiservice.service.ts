@@ -1,5 +1,6 @@
 import { APP_CONFIG } from './app.config';
 import { HttpService } from './core/http.service';
+import { Solution } from './data_model';
 import { Injectable } from '@angular/core';
 import { Http,HttpModule, Headers,RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
@@ -8,7 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ApiserviceService {
 
-  constructor(private _httpService : HttpService) { }
+  constructor(private _httpService : HttpService, private http : Http) { }
   
   
   getVendors()
@@ -28,9 +29,9 @@ export class ApiserviceService {
   
    getSolutionExtra(id)
   {
-    let url = APP_CONFIG.getSolution;
+    const url = APP_CONFIG.getSolution;
     return this._httpService.get(url + '?' + 'solutionID' + '=' + id)
-    .map(res =><Response>res.json());
+    .map(res => res.json() as Solution) ;
   }
   
    /*getSolution()
@@ -55,15 +56,18 @@ return this._httpService.post(url,body).map((res:Response) => res.json())
   updateSolution(body){
     console.log(body);
     let url = APP_CONFIG.postSolution;
-    let headers = new Headers({ 'Content-Type': 'multipart/mixed' });
-    let options = new RequestOptions({ headers: headers });
-    return this._httpService.post(url, body, options).map((res: Response) => res.json())
-                            .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
+    let headers = new Headers({ 'Content-Type': 'multipart/form-data' });
+    const options = new RequestOptions({ headers: headers });
+    
+    
+    this.http.post(url, body);    
+    //return this.http.post(url, body).map((res: Response) => res.json())
+                            //.catch((error : any) => Observable.throw(error.json().error || 'Server error'));
   }
   
-  getSolutionTypes(){
+  getSolutionTypes(id){
     let url = APP_CONFIG.getSolutionTypes;
-    return this._httpService.get(url)
+    return this._httpService.get(url + '?' + 'solutionID' + '=' + id)
     .map(res =><Response>res.json());
   }
   
@@ -78,5 +82,11 @@ return this._httpService.post(url,body).map((res:Response) => res.json())
     let url = APP_CONFIG.addSolutions;
     return this._httpService.post(url, body).map((res: Response) => res.json())
                             .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  
+  getSolutionFile(id){
+    let url = APP_CONFIG.getSolutionFile;
+    return this._httpService.get(url + '?' + 'fileId' + '=' + id)
+    .map(res =><Response>res.json());
   }
 }

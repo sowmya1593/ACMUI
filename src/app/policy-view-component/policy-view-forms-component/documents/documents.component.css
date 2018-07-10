@@ -25,6 +25,18 @@
     color: #3A539B;
 }
 
+.download-icon{
+	color: #3A539B;
+}
+
+.save-icon{
+	color: #3A539B;
+}
+
+.close-icon{
+	color: #3A539B;
+}
+
 .installation{
 	padding: 1%;
 }
@@ -32,4 +44,14 @@
 .hosting-notes{
 	display: block;
 	/*margin-top: 20px;*/
+}
+
+.modal-header{
+	background-color: #3A539B;
+	color: #ffffff;
+}
+
+.btn{
+	background-color: #3A539B;
+	border-color: #3A539B;
 }
