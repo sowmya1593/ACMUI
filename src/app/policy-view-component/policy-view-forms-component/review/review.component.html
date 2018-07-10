@@ -1,0 +1,57 @@
+<div class="review">
+				<span><b>POLICY REVIEWER(S)</b></span>
+				<div class="policy-edit"><!-- <fa (click)="open(content)" *ngIf="plus" class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'edit'"></fa> -->
+				<fa (click)="changeButton()" *ngIf="plus" class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'edit'"></fa>
+				<fa (click)="open(content)" *ngIf="!plus" class="plus-icon" [name]="'plus'"></fa>
+				</div>
+			<hr />
+			</div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Adding Policy Reviewer(s)</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <form  #form="ngForm">
+      <div class="form-row">
+            <div class="form-group col-12">
+                <label for="searchUser"><b>Search User</b></label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="searchUser" ngModel name="searchUser" placeholder="Search Users" required>
+            </div>
+            <div class="form-group col-12">
+                <label for="dueDate"><b>Due Date</b></label>
+                <my-date-picker name="myname"></my-date-picker>
+            </div>
+        </div>
+        <button type="submit" class="add btn btn-primary" [disabled]="!form.valid">Add</button>
+    </form>
+    <hr />
+    <table class="table table-bordered table-dark">
+	<thead>
+		    <tr>
+		      <th scope="col">Assign To</th>
+		      <th scope="col">Due Date</th>
+		    </tr>
+		  </thead>
+</table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+    <button type="button" class="btn btn-outline-dark">Assign</button>
+  </div>
+</ng-template>
+<table class="table table-bordered table-dark">
+	<thead>
+		    <tr>
+		      <th scope="col">Policy Name</th>
+		      <th scope="col">Assigned To</th>
+		      <th scope="col">Assigned On</th>
+		      <th scope="col">Due Date</th>
+		      <th scope="col">Status</th>
+		      <th scope="col">Notify</th>
+		    </tr>
+		  </thead>
+</table>

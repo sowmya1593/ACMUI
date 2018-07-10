@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-review',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
+  @ViewChild('form') popUpForm: NgForm;
+  plus=true;
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+  }
+  
+  open(content) {
+   this.modalService.open(content);
+   //this.plus=false;
+
+  }
+  
+  changeButton(){
+    this.plus=false;
+  }
+  
+  onSubmit(){
+    console.log(this.popUpForm);
   }
 
 }
