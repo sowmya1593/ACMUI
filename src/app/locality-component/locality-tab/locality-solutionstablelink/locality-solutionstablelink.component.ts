@@ -1,24 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-locality-solutionstablelink',
   templateUrl: './locality-solutionstablelink.component.html',
   styleUrls: ['./locality-solutionstablelink.component.css']
 })
 export class LocalitySolutionstablelinkComponent implements OnInit {
- public invoiceForm: FormGroup;
-  constructor(private _fb: FormBuilder) { }
+ public showTable: boolean = false;
+  public showSection: boolean = false;
+  public showMainTable: boolean = true;
+  public invoiceForm: FormGroup;
+  public modalForm: FormGroup
+
+  constructor(private _fb: FormBuilder,private modalService: NgbModal) { }
 
   ngOnInit() {
     this.invoiceForm = this._fb.group({
       itemRows: this._fb.array([])
     });
+    
+    this.modalForm = this._fb.group({
+      model:[''],
+      serial:['']
+    });
   }
- onUnitsChange(value) {
+  selectLocality(locality) {
+    this.showTable = true;
+    this.showMainTable = false;
+
+  }
+  selectBox(systemType) {
+    this.showSection = true;
+
+
+  }
+  onUnitsChange(value) {
     console.log(value)
+   
      let control = <FormArray>this.invoiceForm.controls['itemRows'];
-     control.push(this.initItemRows());
+    
+     if(value<control.length){
+control.removeAt(control.length-1);
+}else{
+control.push(this.initItemRows());
+}
+     
+     
+     
   }
 
   initItemRows() {
@@ -30,4 +60,21 @@ export class LocalitySolutionstablelinkComponent implements OnInit {
   onSubmit() {
     console.log(this.invoiceForm.value);
   }
+   editClick(): void {
+    console.log(this.modalForm.disabled);
+	  if(this.modalForm.disabled){
+	 	 this.modalForm.enable();
+	  }
+	  else{
+	 	 this.modalForm.disable();
+	  }
+  }
+   open(content) {
+   this.modalForm.disable();
+   this.modalForm.get('model').setValue("1");
+   this.modalService.open(content);
+ 
+
+  }
+  
 }

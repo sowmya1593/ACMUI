@@ -19,6 +19,8 @@ import { AuditDetailsComponent } from './locality-tab/locality-audit/audit-detai
 import { AuditFindingsComponent } from './locality-tab/locality-audit/audit-findings/audit-findings.component';
 import { AuditRecomendationsComponent } from './locality-tab/locality-audit/audit-recomendations/audit-recomendations.component';
 import { LocalityLegalComponent } from './locality-tab/locality-legal/locality-legal.component';
+import { AuditManagementComponent } from './locality-tab/locality-audit/audit-management/audit-management.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -29,6 +31,6 @@ import { LocalityLegalComponent } from './locality-tab/locality-legal/locality-l
     ReactiveFormsModule,
     FormsModule
   ],
-  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent, LocalityAuditComponent, AuditDetailsComponent, AuditFindingsComponent, AuditRecomendationsComponent, LocalityLegalComponent]
+  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent, LocalityAuditComponent, AuditDetailsComponent, AuditFindingsComponent, AuditRecomendationsComponent, LocalityLegalComponent, AuditManagementComponent]
 })
 export class LocalityComponentModule { }

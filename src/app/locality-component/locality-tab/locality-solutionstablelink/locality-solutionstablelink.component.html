@@ -6,67 +6,104 @@
    
 </div>
 
-<form class="form" [formGroup]="invoiceForm">
-<p><b>APPLICATION SOLUTION</b></p>
-<div class="form-row">
-             <div class="form-group col-md-6">
-                <label for="lastName">System Type</label>
-                
-                <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>EVS</option>
-              <option>EPB</option>
-          </select>
-            </div>
-           </div>
-           <div class="form-row">
-             <div class="form-group col-md-6">
-                <label for="lastName">Model/Solution</label>
-                
-                <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>EVS</option>
-              <option>EPB</option>
-          </select>
-            </div>
-           </div>
-            <div class="form-row">
-             <div class="form-group col-md-6">
-                <label for="lastName">Equipment Type</label>
-                <input type="text" class="form-control" id="lastName" value="Value">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="lastName">Vendor</label>
-                <input type="text" class="form-control" id="lastName" value="Value">
-            </div>
-           </div>
-           <hr/>
-           <div class="form-row">
-             <div class="form-group col-md-6">
-                <label for="lastName">Hoisting Type</label>
-                <input type="text" class="form-control" id="lastName" value="Value">
-            </div>
-            </div>
-            <div class="form-row">
-             <div class="form-group col-md-6">
-                <label for="lastName">No of Units</label>
-                <input type="number" class="form-control" id="lastName" value="Value" (input)="onUnitsChange($event.target.value)">
-            </div>
-            </div>
-            <hr/>
-  <table formArrayName="itemRows" *ngIf="invoiceForm.controls.itemRows.controls.length > 0" class="table table-bordered">
-            <!-- Check the correct way to iterate your form array -->
-            <thead>
-                <tr>
-                    <th>Model #</th>
-                    <th>Serial #</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let itemrow of invoiceForm.controls.itemRows.controls; let i=index" [formGroupName]="i">
-                    <td><input type='text' class="form-control" formControlName="one"></td>
-                    <td><input type='text' class="form-control" formControlName="two"></td>
-                </tr>
-            </tbody>
-        </table>
+<form class="forms  clear-right" *ngIf="showTable"
+	[formGroup]="invoiceForm">
+
+	<p>
+		<b>APPLICATION SOLUTIONS</b>
+	</p>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="modelSolution">System Type</label> <select
+				id="modelSolution" class="form-control"
+				(change)="selectBox($event.target.value)">
+				<option selected>Choose...</option>
+				<option>EVS</option>
+				<option>EPB</option>
+			</select>
+		</div>
+	</div>
+	<div *ngIf="showSection">
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="lastName">Model/Solution</label> <select id="inputState"
+					class="form-control">
+					<option selected>Choose...</option>
+					<option>...</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="lastName">Equipment Type</label> <input type="text"
+					class="form-control" id="lastName" value="Value">
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="lastName">Vendor</label> <input type="text"
+					class="form-control" id="lastName" value="Value">
+			</div>
+		</div>
+		<hr />
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="lastName">Hosting Type</label> <input type="text"
+					class="form-control" id="lastName" value="Value">
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="units">Add Unit</label>
+				<table class="table table-striped table-hover table-bordere">
+					<thead>
+						<tr>
+
+							<th scope="col">Model #</th>
+							<th scope="col">Serial #</th>
+							<th scope="col">Next due date</th>
+							<th scope="col">Overall status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th><a style="color: blue" (click)="open(content)">1</a></th>
+							<th>1</th>
+							<th>1</th>
+							<th>1</th>
+
+						</tr>
+						<tr>
+
+							<th><a style="color: blue" (click)="open(content)">1</a></th>
+							<th>1</th>
+							<th>1</th>
+							<th>1</th>
+						</tr>
+						<tr>
+							<th><a style="color: blue" (click)="open(content)">1</a></th>
+							<th>1</th>
+							<th>1</th>
+							<th>1</th>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="plus">
+
+				<i class="fa fa-plus-square-o" aria-hidden="true"
+					style="font-size: 24px;" (click)="open(content)"></i>
+
+			</div>
+
+
+		</div>
+
+		<button type="submit" class="btn btn-primary">Submit</button>
+
+	</div>
 </form>
+

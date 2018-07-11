@@ -1,12 +1,12 @@
 <ng-template #content let-c="close" let-d="dismiss">
 <div class="modal-header">
-<h4 class="modal-title">Enter Device Information</h4>
+	<h4 class="modal-title">Enter Device Information</h4>
 	<button type="button" class="close" aria-label="Close" (click)="d()">
 		<span aria-hidden="true">&times;</span>
 	</button>
 </div>
 <div class="modal-body">
-	<div class="save-edit" style="float:right">
+	<div class="save-edit" style="float: right">
 		<fa class="edit-icon icons" data-toggle="tooltip"
 			data-placement="right" title="Save" data-animation="true"
 			data-delay="0" [name]="'edit'" (click)="editClick()"></fa>
@@ -123,9 +123,18 @@
 				<option value="AL">Passed</option>
 				<option value="AL">Failed</option>
 				<option value="AL">Pending</option>
+				
 			</select>
 		</div>
 		<hr />
+		<div class="form-row">
+		<div class="form-group col-md-6">
+				<label for="inputZip">Next Scanning Date</label>
+				
+				<input type="text" class="form-control"  id="inputZip" placeholder="mm/dd/yyy">
+			</div>
+			</div>
+		<hr/>
 		<p>
 			<b>Notes</b>
 		</p>
@@ -168,26 +177,28 @@
 				<th scope="col">Solution Name</th>
 				<th scope="col">Vendor Name</th>
 				<th scope="col">Equipment Type</th>
+				<th scope="col">Precient Type</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<th><a routerLink="/locality/option/link">1</a></th>
+				<th><a routerLink="/locality/option/link">Name</a></th>
 				<td>Mark</td>
+				<td>Otto</td>
 				<td>Otto</td>
 
 			</tr>
 			<tr>
-				<th><a routerLink="/locality/option">1</a></th>
+				<th><a routerLink="/locality/option">Name</a></th>
 				<td>Jacob</td>
 				<td>Thornton</td>
-
+				<td>Otto</td>
 			</tr>
 			<tr>
-				<th><a routerLink="/locality/option">1</a></th>
+				<th><a routerLink="/locality/option">Name</a></th>
 				<td>Larry</td>
 				<td>the Bird</td>
-
+				<td>Otto</td>
 			</tr>
 		</tbody>
 	</table>
@@ -211,78 +222,102 @@
 			</select>
 		</div>
 	</div>
-	<div *ngIf="showSection">
-		<div class="form-row">
-			<div class="form-group col-md-6">
+	<div>
+		<div class="form-row" *ngIf="showSection">
+			
 				<label for="lastName">Model/Solution</label> <select id="inputState"
-					class="form-control">
+					class="form-control" (click)="equip(content)" (change)="selectForm($event.target.value)">
 					<option selected>Choose...</option>
-					<option>...</option>
+					<option>Model Name</option>
 				</select>
 			</div>
-		</div>
+	
+<div *ngIf="showForm">
 
+<form class="formerx" [formGroup]="modalsForm">
+<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="lastName">Model/Solution</label> <input type="text"
+					class="form-control" id="lastName" placeholder="enter here" formControlName="equipment">
+			</div>
+		
+
+		
+			<div class="form-group col-md-6">
+				<label for="lastName">Version</label> <input type="text"
+					class="form-control" id="lastName" placeholder="enter here" formControlName="vendor">
+			</div>
+			</div>
+	
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="lastName">Equipment Type</label> <input type="text"
-					class="form-control" id="lastName" value="Value">
+					class="form-control" id="lastName" placeholder="enter here" formControlName="equipment">
 			</div>
-		</div>
+		
 
-		<div class="form-row">
+		
 			<div class="form-group col-md-6">
 				<label for="lastName">Vendor</label> <input type="text"
-					class="form-control" id="lastName" value="Value">
+					class="form-control" id="lastName" placeholder="enter here" formControlName="vendor">
 			</div>
-		</div>
+			</div>
+	
 		<hr />
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="lastName">Hosting Type</label> <input type="text"
-					class="form-control" id="lastName" value="Value">
+					class="form-control" id="lastName" placeholder="enter here" formControlName="hosting">
 			</div>
 		</div>
+		</form>
+		
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="units">Add Unit</label>
+				<div class="plus">
+
+				<i class="fa fa-plus-square-o" aria-hidden="true"
+					style="font-size: 24px;" (click)="open(content)"></i>
+
+			</div>
 				<table class="table table-striped table-hover table-bordere">
 					<thead>
 						<tr>
 
 							<th scope="col">Model #</th>
 							<th scope="col">Serial #</th>
-
+							<th scope="col">Next due date</th>
+							<th scope="col">Overall status</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th><a href="">1</a></th>
-							<th><a href="">1</a></th>
-
-
-						</tr>
-						<tr>
-
-							<th><a (click)="open(content)">1</a></th>
-							<th><a href="">1</a></th>
+							<th><a style="color: blue" (click)="open(content)">1</a></th>
+							<th>1</th>
+							<th>1</th>
+							<th>1</th>
 
 						</tr>
 						<tr>
-							<th><a href="">1</a></th>
-							<th><a href="">1</a></th>
 
-
+							<th><a style="color: blue" (click)="open(content)">1</a></th>
+							<th>1</th>
+							<th>1</th>
+							<th>1</th>
+						</tr>
+						<tr>
+							<th><a style="color: blue" (click)="open(content)">1</a></th>
+							<th>1</th>
+							<th>1</th>
+							<th>1</th>
 						</tr>
 					</tbody>
 				</table>
+				</div>
 
 			</div>
-			<div class="plus">
-
-				<i class="fa fa-plus-square-o" aria-hidden="true"
-					style="font-size: 24px;" (click)="open(content)"></i>
-
-			</div>
+			
 
 
 		</div>

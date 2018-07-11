@@ -1,0 +1,38 @@
+.pull-right {
+    float: right!important;
+     font-size: 20px;
+    margin-right: 20px;
+   
+    color: #3A539B;
+  
+}
+#middle div.panel-heading {
+    color: #1E252D !important;
+    height: 51px;
+    
+}
+
+.panel-heading{
+	
+}
+.panel-default>.panel-heading {
+    padding: 15px 15px;
+    background: #fff;
+}
+
+i.fa {
+    text-decoration: none !important;
+    padding: 5px 4px;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.htag{
+	margin-top:50px;
+}

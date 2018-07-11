@@ -13,9 +13,11 @@ export class LocalitySolutionsComponent implements OnInit {
 
   public showTable: boolean = false;
   public showSection: boolean = false;
+  public showForm: boolean = false;
   public showMainTable: boolean = true;
   public invoiceForm: FormGroup;
-  public modalForm: FormGroup
+  public modalForm: FormGroup;
+   public modalsForm: FormGroup
 
   constructor(private _fb: FormBuilder,private modalService: NgbModal) { }
 
@@ -28,6 +30,12 @@ export class LocalitySolutionsComponent implements OnInit {
       model:[''],
       serial:['']
     });
+    
+    this.modalsForm = this._fb.group({
+      equipment:[''],
+      vendor:[''],
+      hosting:['']
+    });
   }
   selectLocality(locality) {
     this.showTable = true;
@@ -38,6 +46,10 @@ export class LocalitySolutionsComponent implements OnInit {
     this.showSection = true;
 
 
+  }
+  
+  selectForm(systemType){
+  this.showForm =true;
   }
   onUnitsChange(value) {
     console.log(value)
@@ -65,19 +77,28 @@ control.push(this.initItemRows());
   }
    editClick(): void {
     console.log(this.modalForm.disabled);
+    
 	  if(this.modalForm.disabled){
 	 	 this.modalForm.enable();
+	 	 this.modalsForm.enable()
 	  }
 	  else{
 	 	 this.modalForm.disable();
+	 	 this.modalsForm.disable();
 	  }
   }
+  
    open(content) {
    this.modalForm.disable();
    this.modalForm.get('model').setValue("1");
    this.modalService.open(content);
+   this.modalsForm.get('equipment').setValue("value");
  
 
   }
-  
+equip(content){
+ this.modalsForm.disable();
+ this.modalsForm.get('equipment').setValue("value");
+}  
 }
+

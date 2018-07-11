@@ -13,6 +13,7 @@ import { AuditDetailsComponent } from './locality-tab/locality-audit/audit-detai
 import { AuditFindingsComponent } from './locality-tab/locality-audit/audit-findings/audit-findings.component';
 import { AuditRecomendationsComponent } from './locality-tab/locality-audit/audit-recomendations/audit-recomendations.component';
 import { LocalityLegalComponent } from './locality-tab/locality-legal/locality-legal.component';
+import { AuditManagementComponent } from './locality-tab/locality-audit/audit-management/audit-management.component';
 const routes: Routes = [ 
      {  
        path: '', 
@@ -61,6 +62,10 @@ const routes: Routes = [
                 	{
                 	path:'recomendation',
                 	component:AuditRecomendationsComponent
+                	},
+                	{
+                	path:'management',
+                	component:AuditManagementComponent
                 	}
               ]
               }
