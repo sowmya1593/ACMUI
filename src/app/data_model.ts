@@ -2,9 +2,11 @@
  * New typescript file
  */
 
+import { IMyDate } from 'mydatepicker';
+
 export class Solution {
   solutionId: number;
-  // certDt:date;
+  certDt: IMyDate = null;
   certStadard: string;
   // certRenewalDueDt:Date;
   name: string;

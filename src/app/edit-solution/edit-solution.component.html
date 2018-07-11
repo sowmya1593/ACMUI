@@ -17,7 +17,21 @@
                 </div>
                 <!-- <fa class="edit-icon icons" [name]="'edit'"></fa> -->
             </div>
-        </div> 
+        </div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Success</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <p>Solution Updated</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+  </div>
+</ng-template>
 <form  (ngSubmit)="createSolution()" enctype="multipart/form-data">
 			<div class="page-description"><h3>Solutions</h3>
     		<hr class="after-heading" />
@@ -135,7 +149,7 @@
 								*ngFor=" let certDocDTO of solution.certDocDTOs ">
 								<li
 									*ngIf="certDocDTO.section == 'hosting'">
-									<a (click)="showFile(certDocDTO.certDocId)">{{certDocDTO.fileName}}</a></li>
+									<a (click)="showFile(certDocDTO.certDocId)" style="cursor:pointer;color:blue;">{{certDocDTO.fileName}}</a></li>
 							</ul>
             </div>
          	<input type="file" #fileInput *ngIf="!editSolution.disabled" (change)="createCertDTO($event,'hosting')">
@@ -203,7 +217,7 @@
 								*ngFor=" let certDocDTO of solution.certDocDTOs ">
 								<li
 									*ngIf="certDocDTO.section == 'standard'">
-									<a href="#">{{certDocDTO.fileName}}</a></li>
+									<a (click)="showFile(certDocDTO.certDocId)" style="cursor:pointer;color:blue;">{{certDocDTO.fileName}}</a></li>
 							</ul>
             </div>
             </div>
@@ -218,7 +232,7 @@
             	<table>
             		<tbody>
             			<tr *ngFor="let certDocDTO of solution.certDocDTOs">
-            				<td *ngIf="certDocDTO.section == 'patches'"><a (click)="showFile(certDocDTO.certDocId)" style="cursor:pointer;">{{certDocDTO.fileName}}</a></td>
+            				<td *ngIf="certDocDTO.section == 'patches'"><a (click)="showFile(certDocDTO.certDocId)" style="cursor:pointer;color:blue;">{{certDocDTO.fileName}}</a></td>
             				<td><fa *ngIf="!editSolution.disabled" class="download-icon icons" [name]="'trash'"></fa></td>
             			</tr>
             		</tbody>
@@ -244,7 +258,7 @@
 								*ngFor=" let certDocDTO of solution.certDocDTOs ">
 								<li
 									*ngIf="certDocDTO.section == 'solution'">
-									<a (click)="openFile(certDocDTO.certDocId)">{{certDocDTO.fileName}}</a></li>
+									<a (click)="showFile(certDocDTO.certDocId)" style="cursor:pointer;color:blue;">{{certDocDTO.fileName}}</a></li>
 							</ul>
             </div>
          <input type="file" #fileInput *ngIf="!editSolution.disabled" (change)="createCertDTO($event,'solution')">
@@ -257,7 +271,7 @@
          <input type="file" #fileInput *ngIf="!editSolution.disabled">
             </div>  -->
          <div class="buttons">
-         	<button type="cancel" class="cancel btn btn-primary">Cancel</button>
-         	<button type="submit" class="cancel btn btn-primary" *ngIf="!editSolution.disabled">Submit</button>
+         	<button type="submit" (click)="open(content)" class="cancel btn btn-primary" *ngIf="!editSolution.disabled">Submit</button>
+         	<button type="cancel" class="cancel btn btn-primary" (click)="backClicked()">Cancel</button>
         </div>
 </form>

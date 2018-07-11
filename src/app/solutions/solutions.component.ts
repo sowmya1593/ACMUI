@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import {ApiserviceService} from '../apiservice.service';
 import { APP_CONFIG } from '../app.config';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-solutions',
@@ -16,17 +17,23 @@ import { APP_CONFIG } from '../app.config';
 })
 export class SolutionsComponent implements OnInit {
   @ViewChild('fileInput') inputEl: ElementRef;
-  @ViewChild('form') solutionsForm: NgForm;
+  @ViewChild('f') solutionsForm: NgForm;
   solution: Solution;
   public systemTypeDTO: any;
+  approveDate:any;
   public vendorDTO: any;
   public hostingTypeDTO: any;
   public labVendorsDTO: any;
   public solutionType: any;
+  public labId: number;
+  public labVendorsfirstName: string;
+  public labVendorslastName: string;
+  public labVendorsphoneNumber: string;
+  public labDetails: any;
    certDocDTO: CertDocDTO;
   files: File[] = [];
       //public labForm: string;
-  public labForm: string;
+  public labForm: boolean=false;
         date: Date = new Date();
         settings = {
         bigBanner: true,
@@ -34,7 +41,7 @@ export class SolutionsComponent implements OnInit {
         format: 'dd-MM-yyyy',
         defaultOpen: true
     }
-  constructor( private activatedRoute: ActivatedRoute, private _apiservice: ApiserviceService, private  http: Http) { 
+  constructor( private activatedRoute: ActivatedRoute, private _apiservice: ApiserviceService, private  http: Http, private modalService: NgbModal) { 
     this.solution = new Solution();
     this.solution.systemTypeDTO = new SystemType();
     this.solution.hostingTypeDTO = new HostingType();
@@ -46,6 +53,8 @@ export class SolutionsComponent implements OnInit {
 
   ngOnInit() {
    this.getSolutionsOnload();
+   var date = new Date(1531886000);
+   console.log(date);
     
   }
   
@@ -60,10 +69,44 @@ export class SolutionsComponent implements OnInit {
     this.solution.certDocDTOs.push(this.certDocDTO);
   }
   
-  labContact(lab) {
-      this.labForm = lab;
-
-}
+//  labContact(lab) {
+//      this.labForm = lab;
+//
+//}
+  showLabVendor(id)
+  {
+    this.solution.labVendorsDTO.labVendorId = id;
+    if(id === 'Choose')
+      {
+      this.labForm=false;
+    }
+    else{
+    this.labForm = true;
+     let details:any=this.labVendorsDTO;
+      console.log(details);
+     this.labDetails=details.filter(item => item.labVendorId == id);
+        this.labVendorsfirstName = this.labDetails[0].firstName;
+        this.labVendorslastName = this.labDetails[0].lastName;
+        this.labVendorsphoneNumber = this.labDetails[0].phoneNumber;
+//      
+//      console.log(this.labVendorsfirstName);
+//      console.log(this.labVendorslastName);
+//      console.log(this.labVendorsphoneNumber);
+      
+      
+      
+       
+    }
+    //this.getLabId(id);
+  }
+  
+  /*getLabId(id){
+    if(id===1){
+      this.labVendorsfirstName=this.solution.labVendorsDTO.firstName;
+      this.labVendorslastName=this.solution.labVendorsDTO.lastName;
+      this.labVendorsphoneNumber=this.solution.labVendorsDTO.phoneNumber;
+    }
+  }*/
   
   getSolutionsOnload() {
     this._apiservice.getSolutionsOnload()
@@ -77,6 +120,7 @@ export class SolutionsComponent implements OnInit {
         this.vendorDTO = data.vendorsDTOs;
         this.hostingTypeDTO = data.hostingTypeDTOs;
         this.labVendorsDTO = data.labVendorsDTOs;
+        console.log(this.labVendorsDTO);
 
       }, error => console.log(error));
   }
@@ -87,7 +131,9 @@ export class SolutionsComponent implements OnInit {
     //value['vendorId'] = this.vendorDTO.vendorId;
     //value['labVendorId'] = this.labVendorDTO.labVendorId;
     var formData = new FormData();
-    console.log(JSON.stringify(this.solution));
+        console.log(this.approveDate);
+        let date=this.approveDate.epoc;
+        this.solution.certDt = date;
     formData.append('solution', JSON.stringify(this.solution));
     //formData.append('certDocs', this.files);
     //formData.append('certDocs',files)
@@ -104,6 +150,12 @@ export class SolutionsComponent implements OnInit {
       console.log(data);
     }, error => console.log(error));
      console.log(this.solutionsForm);
+  }
+  
+   open(content) {
+   this.modalService.open(content);
+   //this.plus=false;
+
   }
   
   onSubmit(){

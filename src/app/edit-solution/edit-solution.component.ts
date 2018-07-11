@@ -7,7 +7,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Location} from '@angular/common';
 import {Http, HttpModule, Headers, RequestOptions} from '@angular/http';
 import {File} from 'babel-types';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
@@ -38,7 +38,7 @@ export class EditSolutionComponent implements OnInit {
 //  public systemTyp:any
   
   constructor( private activatedRoute: ActivatedRoute,  private _apiservice: ApiserviceService,private   fb: FormBuilder
-    , private  http: Http,  private _location: Location) {
+    , private  http: Http,  private _location: Location, private modalService: NgbModal) {
     this.solution = new Solution();
     this.solution.systemTypeDTO = new SystemType();
     this.solution.hostingTypeDTO = new HostingType();
