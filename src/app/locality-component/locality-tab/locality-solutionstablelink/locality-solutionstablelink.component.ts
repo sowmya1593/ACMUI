@@ -1,80 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, Params } from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-locality-solutionstablelink',
   templateUrl: './locality-solutionstablelink.component.html',
   styleUrls: ['./locality-solutionstablelink.component.css']
 })
 export class LocalitySolutionstablelinkComponent implements OnInit {
- public showTable: boolean = false;
-  public showSection: boolean = false;
-  public showMainTable: boolean = true;
-  public invoiceForm: FormGroup;
-  public modalForm: FormGroup
-
-  constructor(private _fb: FormBuilder,private modalService: NgbModal) { }
-
-  ngOnInit() {
-    this.invoiceForm = this._fb.group({
-      itemRows: this._fb.array([])
-    });
-    
-    this.modalForm = this._fb.group({
-      model:[''],
-      serial:['']
-    });
-  }
-  selectLocality(locality) {
-    this.showTable = true;
-    this.showMainTable = false;
-
-  }
-  selectBox(systemType) {
-    this.showSection = true;
-
-
-  }
-  onUnitsChange(value) {
-    console.log(value)
-   
-     let control = <FormArray>this.invoiceForm.controls['itemRows'];
-    
-     if(value<control.length){
-control.removeAt(control.length-1);
-}else{
-control.push(this.initItemRows());
+public solutionForm: FormGroup;
+constructor(private _fb: FormBuilder,private modalService: NgbModal) {
 }
-     
-     
-     
-  }
-
-  initItemRows() {
-    return this._fb.group({
-      one: [''],
-      two: ['']
+ngOnInit() {
+ 
+this.solutionForm = this._fb.group({
+      system:[''],
+      model:[''],
+      solution:[''],
+      version:[''],
+      equipment:[''],
+      vendor:[''],
+      name:[''],
+      plus:['']
     });
-  }
-  onSubmit() {
-    console.log(this.invoiceForm.value);
-  }
-   editClick(): void {
-    console.log(this.modalForm.disabled);
-	  if(this.modalForm.disabled){
-	 	 this.modalForm.enable();
-	  }
-	  else{
-	 	 this.modalForm.disable();
-	  }
-  }
-   open(content) {
-   this.modalForm.disable();
-   this.modalForm.get('model').setValue("1");
+    this.solutionForm.disable();
+
+}
+ open(content) {
    this.modalService.open(content);
+    this.solutionForm.disable();
  
 
   }
-  
+  editClick(): void {
+    console.log(this.solutionForm.disabled);
+    
+	  if(this.solutionForm.disabled){
+	 	 this.solutionForm.enable();
+	 	 this.solutionForm.enable()
+	  }
+	  else{
+	 	 this.solutionForm.disable();
+	 	 this.solutionForm.disable();
+	  }
+  }
+
 }
+
+

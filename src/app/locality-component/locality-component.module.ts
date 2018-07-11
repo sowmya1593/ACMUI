@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { LocalityComponentRoutingModule } from './locality-component-routing.module';
+import { LocalityComponentRoutingModule} from '.././app.routing';
+import { BrowserModule } from '@angular/platform-browser';
 import { NavigationComponentModule } from '../navigation-component/navigation-component.module';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { LocalityAddComponentComponent } from './locality-add-component/locality-add-component.component';
@@ -24,12 +24,13 @@ import { AuditManagementComponent } from './locality-tab/locality-audit/audit-ma
 @NgModule({
   imports: [
     CommonModule,
-    LocalityComponentRoutingModule,
     NavigationComponentModule,
     Angular2FontawesomeModule,
     OptionListModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserModule,
+    LocalityComponentRoutingModule
   ],
   declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent, LocalityAuditComponent, AuditDetailsComponent, AuditFindingsComponent, AuditRecomendationsComponent, LocalityLegalComponent, AuditManagementComponent]
 })

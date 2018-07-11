@@ -1,4 +1,4 @@
-<form class="former clear-right">
+<form class="former clear-right" (ngSubmit)="createSolution()" enctype="multipart/form-data">
 
 	
 
@@ -35,7 +35,7 @@
 
 				<label for="inputState">Locality Code</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" id="lastName" value="enter here">
+				<input type="text" class="form-control" name="localityCd" [(ngModel)] = "locality.localityCd">
 			</div>
 
 		</div>
@@ -43,17 +43,11 @@
 
 			<div class="form-group col-md-6">
 				<label for="lastName">FIPS Code</label> <input type="text"
-					class="form-control" id="lastName" value="enter here">
+					class="form-control" name="fipsCd" [(ngModel)] = "locality.fipsCd">
 
 			</div>
 		</div>
-	</form>
-
-
-
-
-	<form class="former clear-right" (ngSubmit)="onSubmit()" #form="ngForm">
-
+	
 		<p>
 			<b>Contact Information</b>
 		</p>
@@ -62,12 +56,12 @@
 
 				<label for="inputState">First Name</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" id="lastName" value="enter here">
+				<input type="text" class="form-control" name="firstName" [(ngModel)] = "locality.firstName">
 			</div>
 			<div class="form-group col-md-6">
 				<label for="lastName">Last Name</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" id="lastName" value="enter here">
+				<input type="text" class="form-control" name="lastName" [(ngModel)] = "locality.lastName">
 			</div>
 		</div>
 
@@ -279,7 +273,7 @@
          <textarea name="" id="" rows="10" class="form-control"></textarea>
          <div class="buttons">
       
-        	<button type="submit" class="submit btn btn-primary" [disabled]="!form.valid">Submit</button>
+        	<button type="submit" class="submit btn btn-primary" >Submit</button>
         	<button type="cancel" class="cancel btn btn-primary">Cancel</button>
         </div>
 		

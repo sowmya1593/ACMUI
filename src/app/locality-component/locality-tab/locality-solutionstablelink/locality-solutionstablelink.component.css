@@ -16,6 +16,11 @@ tbody tr:nth-child(even) {
   background-color:white;
 }
 
+.form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff;
+   
+}
+
 
 .plus{
 	float:right;

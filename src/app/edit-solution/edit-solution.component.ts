@@ -16,7 +16,7 @@ import {finalize} from 'rxjs/operators';
   selector: 'app-edit-solution',
   templateUrl: './edit-solution.component.html',
   styleUrls: ['./edit-solution.component.css'],
-  providers: [ApiserviceService],
+  providers: [ApiserviceService]
   
 })
 
@@ -26,6 +26,7 @@ export class EditSolutionComponent implements OnInit {
   @ViewChild('editForm') solutionsForm: NgForm;
   color: String;
   solution: Solution;
+ 
   editSolution: FormGroup;
   certDocDTO: CertDocDTO;
   files: File[] = [];
