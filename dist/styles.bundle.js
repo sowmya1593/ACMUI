@@ -62,7 +62,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\n\r\n.former {\r\n    padding: 20px;\r\n    border-radius: 10px;\r\n    border: 1px solid transparent;\r\n    margin: 20px;\r\n    background-color: #EEEEEE;\r\n}\r\n\r\n.asterisk {\r\n    display: inline;\r\n    color: red;\r\n    margin-left: 2px;\r\n}\r\n\r\n.btn {\r\n    float: right;\r\n    margin-top: 25px;\r\n    background-color: #3A539B;\r\n    border-color: #3A539B;\r\n    color: white;\r\n    padding: 10px 10px;\r\n    width: auto;\r\n    text-align: center;\r\n    text-decoration: none;\r\n    display: inline-block;\r\n    font-size: 16px;\r\n    margin-left: 3px;\r\n}\r\n\r\nlabel{\r\n\tfont-weight:bolder;\r\n\t\r\n}", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n.former {\n    padding: 20px;\n    border-radius: 10px;\n    border: 1px solid transparent;\n    margin: 20px;\n    background-color: #EEEEEE;\n}\n\n.asterisk {\n    display: inline;\n    color: red;\n    margin-left: 2px;\n}\n\n.btn {\n    float: right;\n    margin-top: 25px;\n    background-color: #3A539B;\n    border-color: #3A539B;\n    color: white;\n    padding: 10px 10px;\n    width: auto;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n    margin-left: 3px;\n}\n\nlabel{\n\tfont-weight:bolder;\n\t\n}", ""]);
 
 // exports
 

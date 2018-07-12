@@ -133,7 +133,9 @@ export class SolutionsComponent implements OnInit {
     var formData = new FormData();
         console.log(this.approveDate);
         let date=this.approveDate.epoc;
+        //var certificationDate = new Date(date);
         this.solution.certDt = date;
+        //this.solution.certDt = certificationDate;
     formData.append('solution', JSON.stringify(this.solution));
     //formData.append('certDocs', this.files);
     //formData.append('certDocs',files)

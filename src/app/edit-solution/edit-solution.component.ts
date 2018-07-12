@@ -9,6 +9,9 @@ import {Http, HttpModule, Headers, RequestOptions} from '@angular/http';
 import {File} from 'babel-types';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { IMyDate } from 'mydatepicker';
+
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 
@@ -27,9 +30,16 @@ export class EditSolutionComponent implements OnInit {
   color: String;
   solution: Solution;
  
+   certDate: NgbDateStruct;
+  
+    renewDate: NgbDateStruct;
+  
+  
   editSolution: FormGroup;
   certDocDTO: CertDocDTO;
   files: File[] = [];
+  approveDate:any;
+  public selectDate: IMyDate = null;
   public systemTypeDTO: any;
   public vendorDTO: any;
   public hostingTypeDTO: any;
@@ -105,6 +115,7 @@ export class EditSolutionComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.solution.solutionId = params['id'];
       this.editSolution.disable();
+      //this.solutionsForm.form.disabled;
       
       //if (params['id'] != null)
         //{
@@ -113,6 +124,8 @@ export class EditSolutionComponent implements OnInit {
       this.getSolutionsOnload();
 
     });
+    
+    
   }
   
   createCertDTO(fileInput: any, section: string)
@@ -139,6 +152,16 @@ export class EditSolutionComponent implements OnInit {
         this.solution.labVendorsDTO = data.labVendorsDTO;
         this.solution.vendor = data.vendor;
         this.solution.certDocDTOs = data.certDocDTOs;
+     //this.approveDate = this.solution.certDt;
+        let d = new Date(this.solution.certDt * 1000);
+//          let d = new Date("07/12/2018");
+        
+        this.selectDate = {
+           year: d.getFullYear(),
+          month: d.getMonth() + 1,
+          day: d.getDate()
+        }
+        console.log(this.selectDate);
         if(this.solution.certDocDTOs == null)
           {
           this.solution.certDocDTOs = [] as CertDocDTO[];
@@ -179,6 +202,11 @@ export class EditSolutionComponent implements OnInit {
     //value['vendorId'] = this.vendorDTO.vendorId;
     //value['labVendorId'] = this.labVendorDTO.labVendorId;
     var formData = new FormData();
+      console.log(this.approveDate);
+    let date = this.approveDate.epoc;
+    console.log(new Date(this.approveDate));
+    this.solution.certDt = this.approveDate.formatted;
+//    this.solution.certDt = new Date(date);
     console.log(JSON.stringify(this.solution));
     formData.append('solution', JSON.stringify(this.solution));
     //formData.append('certDocs', this.files);
@@ -213,7 +241,19 @@ export class EditSolutionComponent implements OnInit {
     this._location.back();
   }
   
+   open(content) {
+   this.modalService.open(content);
+   //this.plus=false;
+
+  }
+  
   editorGroup(): void {
+    /*if (this.solutionsForm.form.disabled) {
+      this.solutionsForm.form.enabled;
+    }
+    else {
+      this.solutionsForm.form.disabled;
+    }*/
     if (this.editSolution.disabled) {
       this.editSolution.enable();
     }

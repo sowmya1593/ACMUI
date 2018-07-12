@@ -6,7 +6,7 @@ import { IMyDate } from 'mydatepicker';
 
 export class Solution {
   solutionId: number;
-  certDt: IMyDate = null;
+  certDt: any;
   certStadard: string;
   // certRenewalDueDt:Date;
   name: string;

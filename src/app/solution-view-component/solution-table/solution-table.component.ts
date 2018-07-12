@@ -22,6 +22,7 @@ export class SolutionTableComponent implements OnInit {
      this._apiservice.getSolutions()
     .subscribe((data:any) => {
      this.solutions = data.solutionsDTOs;
+      console.log(this.solutions);
       console.log(data);
       
     },error => console.log(error));
