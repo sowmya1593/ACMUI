@@ -20,7 +20,7 @@ import {finalize} from 'rxjs/operators';
   templateUrl: './edit-solution.component.html',
   styleUrls: ['./edit-solution.component.css'],
   providers: [ApiserviceService]
-  
+
 })
 
 
@@ -29,12 +29,12 @@ export class EditSolutionComponent implements OnInit {
   @ViewChild('editForm') solutionsForm: NgForm;
   color: String;
   solution: Solution;
- 
+
    certDate: NgbDateStruct;
-  
+
     renewDate: NgbDateStruct;
-  
-  
+
+
   editSolution: FormGroup;
   certDocDTO: CertDocDTO;
   files: File[] = [];
@@ -46,7 +46,7 @@ export class EditSolutionComponent implements OnInit {
   public labVendorsDTO: any;
   public solutionType: any;
 //  public systemTyp:any
-  
+
   constructor( private activatedRoute: ActivatedRoute,  private _apiservice: ApiserviceService,private   fb: FormBuilder
     , private  http: Http,  private _location: Location, private modalService: NgbModal) {
     this.solution = new Solution();
@@ -116,7 +116,7 @@ export class EditSolutionComponent implements OnInit {
       this.solution.solutionId = params['id'];
       this.editSolution.disable();
       //this.solutionsForm.form.disabled;
-      
+
       //if (params['id'] != null)
         //{
        this.onDisplaySolution();
@@ -124,10 +124,10 @@ export class EditSolutionComponent implements OnInit {
       this.getSolutionsOnload();
 
     });
-    
-    
+
+
   }
-  
+
   createCertDTO(fileInput: any, section: string)
   {
     this.certDocDTO = new CertDocDTO();
@@ -152,10 +152,10 @@ export class EditSolutionComponent implements OnInit {
         this.solution.labVendorsDTO = data.labVendorsDTO;
         this.solution.vendor = data.vendor;
         this.solution.certDocDTOs = data.certDocDTOs;
-     //this.approveDate = this.solution.certDt;
+     var utcSeconds = this.solution.certDt;
+     var dt = new Date(0);
+     console.log(dt.setUTCSeconds(utcSeconds));
         let d = new Date(this.solution.certDt * 1000);
-//          let d = new Date("07/12/2018");
-        
         this.selectDate = {
            year: d.getFullYear(),
           month: d.getMonth() + 1,
@@ -166,19 +166,19 @@ export class EditSolutionComponent implements OnInit {
           {
           this.solution.certDocDTOs = [] as CertDocDTO[];
         }
-        
+
          console.log('data ' + data.systemTypeDTO.name);
-        
+
         //this.editSolution.controls['name'].setValue(data.name);
         //this.editSolution.controls['versionNumber'].setValue(data.versionNumber);
        // this.editSolution.controls['systemType.systemTypeId'].setValue(data.systemType.systemTypeId);
         console.log(data.systemTypeDTO.systemTypeId);
 //           this.editSolution.controls['systemTypeTry1'].setValue(data.systemTypeDTO.name);
         //this.systemTyp =data.systemTypeDTO.name;
-        
+
   });
 }
-  
+
   getSolutionsOnload() {
     this._apiservice.getSolutionsOnload()
       .subscribe((data: any) => {
@@ -194,7 +194,7 @@ export class EditSolutionComponent implements OnInit {
 
       }, error => console.log(error));
   }
-  
+
     createSolution() {
     let url_update = APP_CONFIG.postSolution;
     let url_add = APP_CONFIG.addSolutions;
@@ -202,11 +202,8 @@ export class EditSolutionComponent implements OnInit {
     //value['vendorId'] = this.vendorDTO.vendorId;
     //value['labVendorId'] = this.labVendorDTO.labVendorId;
     var formData = new FormData();
-      console.log(this.approveDate);
     let date = this.approveDate.epoc;
-    console.log(new Date(this.approveDate));
-    this.solution.certDt = this.approveDate.formatted;
-//    this.solution.certDt = new Date(date);
+    this.solution.certDt = date;
     console.log(JSON.stringify(this.solution));
     formData.append('solution', JSON.stringify(this.solution));
     //formData.append('certDocs', this.files);
@@ -219,7 +216,7 @@ export class EditSolutionComponent implements OnInit {
     console.log(formData.get('certDocs'));
     console.log(formData.get('solution'));
     //this._apiservice.updateSolution(formData)
-    
+
     //if(this.solution.solutionId != null)
       //{
             this.http.post(url_update, formData).subscribe((data: any) => {
@@ -236,17 +233,17 @@ export class EditSolutionComponent implements OnInit {
     }*/
      console.log(this.solutionsForm);
   }
-  
+
   backClicked() {
     this._location.back();
   }
-  
+
    open(content) {
    this.modalService.open(content);
    //this.plus=false;
 
   }
-  
+
   editorGroup(): void {
     /*if (this.solutionsForm.form.disabled) {
       this.solutionsForm.form.enabled;
@@ -261,16 +258,16 @@ export class EditSolutionComponent implements OnInit {
       this.editSolution.disable();
     }
   }
-  
+
   /*findId(value){
     this.solution.systemTypeDTO.systemTypeId = value;
   }*/
-  
+
   showFile(id){
     console.log(id);
 //    this._apiservice.getSolutionFile(id);
     window.open(APP_CONFIG.getSolutionFile + '?' + 'fileID' + '=' + id)
-    
+
   }
 
    @HostListener('window:scroll', [])
@@ -286,7 +283,7 @@ export class EditSolutionComponent implements OnInit {
     }
 
   }
-  
+
    getColor() {
     return this.color === 'online' ? '#ffffff' : 'white';
   }

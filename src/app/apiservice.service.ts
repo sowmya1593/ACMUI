@@ -89,4 +89,10 @@ return this._httpService.post(url,body).map((res:Response) => res.json())
     return this._httpService.get(url + '?' + 'fileId' + '=' + id)
     .map(res =><Response>res.json());
   }
+  
+  fetchPolicies(id){
+  	let url = APP_CONFIG.fetchPolicies;
+  	return this._httpService.get(url + '?' + 'policyGrpId' + '=' + id)
+    .map(res =><Response>res.json());
+  }
 }

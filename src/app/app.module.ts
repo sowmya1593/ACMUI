@@ -41,6 +41,7 @@ import { ApplicationsComponent } from './policy-view-component/policy-view-forms
 import { DialogBoxComponent } from './policy-view-component/policy-view-forms-component/documents/dialog-box/dialog-box.component';
 import { EditNavigationComponent } from './edit-navigation/edit-navigation.component';
 import { EditVendorComponent } from './edit-vendor/edit-vendor.component';
+import { FilterPipe } from './convertDate.pipe';
 
 
 import {  LocalityComponentModule} from "./locality-component/locality-component.module";
@@ -73,7 +74,8 @@ import {  LocalityComponentModule} from "./locality-component/locality-component
     ApplicationsComponent,
     DialogBoxComponent,
     EditVendorComponent,
-    EditNavigationComponent
+    EditNavigationComponent,
+    FilterPipe
 
    
     

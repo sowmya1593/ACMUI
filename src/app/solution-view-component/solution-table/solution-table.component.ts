@@ -1,6 +1,6 @@
 import { ApiserviceService } from '../../apiservice.service';
 import { Component, OnInit } from '@angular/core';
-
+import { FilterPipe } from '../../convertDate.pipe';
 @Component({
   selector: 'app-solution-table',
   templateUrl: './solution-table.component.html',

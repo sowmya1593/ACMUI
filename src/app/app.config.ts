@@ -18,7 +18,8 @@ export const APP_CONFIG = {
   getSolutionTypes: apiBaseUrl + 'getSolutionOnType',
   getSolutionsOnload: apiBaseUrl + 'getSolutionsOnload',
   addSolutions: apiBaseUrl + 'registerSolution',
-  getSolutionFile: apiBaseUrl + 'getSolutionFile'
+  getSolutionFile: apiBaseUrl + 'getSolutionFile',
+  fetchPolicies: apiBaseUrl + 'fetchPolicies'
 }
 
 
