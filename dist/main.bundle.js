@@ -108,6 +108,11 @@ var ApiserviceService = (function () {
         return this._httpService.get(url + '?' + 'fileId' + '=' + id)
             .map(function (res) { return res.json(); });
     };
+    ApiserviceService.prototype.fetchPolicies = function (id) {
+        var url = __WEBPACK_IMPORTED_MODULE_0__app_config__["a" /* APP_CONFIG */].fetchPolicies;
+        return this._httpService.get(url + '?' + 'policyGrpId' + '=' + id)
+            .map(function (res) { return res.json(); });
+    };
     return ApiserviceService;
 }());
 ApiserviceService = __decorate([
@@ -196,7 +201,8 @@ var APP_CONFIG = {
     getSolutionTypes: apiBaseUrl + 'getSolutionOnType',
     getSolutionsOnload: apiBaseUrl + 'getSolutionsOnload',
     addSolutions: apiBaseUrl + 'registerSolution',
-    getSolutionFile: apiBaseUrl + 'getSolutionFile'
+    getSolutionFile: apiBaseUrl + 'getSolutionFile',
+    fetchPolicies: apiBaseUrl + 'fetchPolicies'
 };
 //# sourceMappingURL=app.config.js.map
 
@@ -246,7 +252,8 @@ var APP_CONFIG = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__policy_view_component_policy_view_forms_component_documents_dialog_box_dialog_box_component__ = __webpack_require__("../../../../../src/app/policy-view-component/policy-view-forms-component/documents/dialog-box/dialog-box.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__edit_navigation_edit_navigation_component__ = __webpack_require__("../../../../../src/app/edit-navigation/edit-navigation.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__edit_vendor_edit_vendor_component__ = __webpack_require__("../../../../../src/app/edit-vendor/edit-vendor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__locality_component_locality_component_module__ = __webpack_require__("../../../../../src/app/locality-component/locality-component.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__convertDate_pipe__ = __webpack_require__("../../../../../src/app/convertDate.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__locality_component_locality_component_module__ = __webpack_require__("../../../../../src/app/locality-component/locality-component.module.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -254,6 +261,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -327,7 +335,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_35__policy_view_component_policy_view_forms_component_applications_applications_component__["a" /* ApplicationsComponent */],
             __WEBPACK_IMPORTED_MODULE_36__policy_view_component_policy_view_forms_component_documents_dialog_box_dialog_box_component__["a" /* DialogBoxComponent */],
             __WEBPACK_IMPORTED_MODULE_38__edit_vendor_edit_vendor_component__["a" /* EditVendorComponent */],
-            __WEBPACK_IMPORTED_MODULE_37__edit_navigation_edit_navigation_component__["a" /* EditNavigationComponent */]
+            __WEBPACK_IMPORTED_MODULE_37__edit_navigation_edit_navigation_component__["a" /* EditNavigationComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__convertDate_pipe__["a" /* FilterPipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -337,7 +346,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__core_core_module__["a" /* CoreModule */],
             __WEBPACK_IMPORTED_MODULE_11__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_10__app_routing__["a" /* LocalityComponentRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_39__locality_component_locality_component_module__["a" /* LocalityComponentModule */],
+            __WEBPACK_IMPORTED_MODULE_40__locality_component_locality_component_module__["a" /* LocalityComponentModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
             __WEBPACK_IMPORTED_MODULE_12__navigation_component_navigation_component_module__["a" /* NavigationComponentModule */],
             __WEBPACK_IMPORTED_MODULE_13__option_list_option_list_module__["a" /* OptionListModule */],
@@ -443,6 +452,43 @@ LocalityComponentRoutingModule = __decorate([
 ], LocalityComponentRoutingModule);
 
 //# sourceMappingURL=app.routing.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/convertDate.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterPipe; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var FilterPipe = (function () {
+    function FilterPipe() {
+    }
+    FilterPipe.prototype.transform = function (date) {
+        if (date === null) {
+            return '';
+        }
+        else {
+            var d = new Date(date * 1000);
+            return d;
+        }
+    };
+    return FilterPipe;
+}());
+FilterPipe = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+        name: 'filter'
+    })
+], FilterPipe);
+
+//# sourceMappingURL=convertDate.pipe.js.map
 
 /***/ }),
 
@@ -1159,9 +1205,10 @@ var EditSolutionComponent = (function () {
             _this.solution.labVendorsDTO = data.labVendorsDTO;
             _this.solution.vendor = data.vendor;
             _this.solution.certDocDTOs = data.certDocDTOs;
-            //this.approveDate = this.solution.certDt;
+            var utcSeconds = _this.solution.certDt;
+            var dt = new Date(0);
+            console.log(dt.setUTCSeconds(utcSeconds));
             var d = new Date(_this.solution.certDt * 1000);
-            //          let d = new Date("07/12/2018");
             _this.selectDate = {
                 year: d.getFullYear(),
                 month: d.getMonth() + 1,
@@ -1202,11 +1249,8 @@ var EditSolutionComponent = (function () {
         //value['vendorId'] = this.vendorDTO.vendorId;
         //value['labVendorId'] = this.labVendorDTO.labVendorId;
         var formData = new FormData();
-        console.log(this.approveDate);
         var date = this.approveDate.epoc;
-        console.log(new Date(this.approveDate));
-        this.solution.certDt = this.approveDate.formatted;
-        //    this.solution.certDt = new Date(date);
+        this.solution.certDt = date;
         console.log(JSON.stringify(this.solution));
         formData.append('solution', JSON.stringify(this.solution));
         //formData.append('certDocs', this.files);
@@ -4197,7 +4241,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/policy-view-component/policy-view-forms-component/policy-view-forms-component.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"forms\">\n\t<div class=\"form-row\">\n\t\t<div class=\"form-group col-md-6\">\n\t\t\t<label class=\"label-form\" for=\"definitiveSource\"><b>Definitive Source</b></label><div class=\"asterisk\">*</div>\n              <select class=\"form-control\" id=\"definitiveSource\" required (change)=\"selectDefinitive($event.target.value)\">\n                <option selected>Choose...</option>\n                <option value=\"VITA\">VITA</option>\n              </select>\n\t\t</div>\n\t\t<div class=\"form-group col-md-6\">\n\t\t\t<label class=\"label-form\" for=\"typePolicy\"><b>Type/Policy</b></label><div class=\"asterisk\">*</div>\n              <select class=\"form-control\" id=\"typePolicy\" required (change)=\"selectType($event.target.value)\">\n                <option selected>Choose...</option>\n                <option value=\"IT Information Security Standard (SEC501-09.1)\">IT Information Security Standard (SEC501-09.1)</option>\n              </select>\n\t\t</div>\n\t</div>\n\t<div class=\"prepopulated\" *ngIf = \"definitive == 'VITA' && policy== true \">\n\t\t<div class=\"model-solution-row form-row\">\n            \t<div class=\"model form-group col-md-6\">\n            <label class=\"label-form\" for=\"definitiveSourceInput\">Definitive Source</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"definitiveSourceInput\" readonly value=\"VITA\">\n              <!-- <div class=\"hover-icon\"><fa class=\"ban\" [name]=\"'ban'\"></fa></div>-->\n            \t</div>\n            \t<div class=\"version form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updatedBy\">Updated By</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"updatedBy\" readonly value=\"Sunny Singh\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            <label class=\"label-form\" for=\"Type/Policy\">Type/Policy</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"Type/Policy\" readonly value=\"IT Information Security Standard (SEC501-09.1)\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updtedAt\">Updated At</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"updatedAt\" readonly value=\"14-05-2018\">\n            \t</div>\n            </div>\n\t</div>\n</form>\n<div class=\"forms\" *ngIf = \"definitive == 'VITA' && policy== true \">\n\t<div class=\"policy-section\">\n\t\t<div><ul class=\"nav nav-tabs\">\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link active\" routerLinkActive=\"active\" routerLink=\"policyDetails\" [routerLinkActiveOptions]=\"{exact: true}\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Policy Details</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"review\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Review Section</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"documents\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Documents</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"applications\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Applications</a>\n\t\t  </li>\n\t\t</ul>\n\t\t</div>\n\t\t<router-outlet></router-outlet>\n\t</div>\n</div>\n"
+module.exports = "<form class=\"forms\">\n\t<div class=\"form-row\">\n\t\t<div class=\"form-group col-md-6\">\n\t\t\t<label class=\"label-form\" for=\"definitiveSource\"><b>Definitive Source</b></label><div class=\"asterisk\">*</div>\n              <select class=\"form-control\" id=\"definitiveSource\" required (change)=\"selectDefinitive($event.target.value)\">\n                <option selected>Choose...</option>\n                <option value=\"VITA\">VITA</option>\n              </select>\n\t\t</div>\n\t\t<div class=\"form-group col-md-6\">\n\t\t\t<label class=\"label-form\" for=\"typePolicy\"><b>Type/Policy</b></label><div class=\"asterisk\">*</div>\n              <select class=\"form-control\" id=\"typePolicy\" required (change)=\"selectType($event.target.value)\">\n                <option selected>Choose...</option>\n                <option value=\"IT Information Security Standard (SEC501-09.1)\">IT Information Security Standard (SEC501-09.1)</option>\n              </select>\n\t\t</div>\n\t</div>\n\t<div class=\"prepopulated\" *ngIf = \"definitive == 'VITA' && policy== true \">\n\t\t<div class=\"model-solution-row form-row\">\n            \t<div class=\"model form-group col-md-6\">\n            <label class=\"label-form\" for=\"definitiveSourceInput\">Definitive Source</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"definitiveSourceInput\" readonly value=\"{{ policyData.definitiveSource }}\">\n              <!-- <div class=\"hover-icon\"><fa class=\"ban\" [name]=\"'ban'\"></fa></div>-->\n            \t</div>\n            \t<div class=\"version form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updatedBy\">Updated By</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"updatedBy\" readonly value=\"{{ policyData.updatedBy }}\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            <label class=\"label-form\" for=\"Type/Policy\">Type/Policy</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"Type/Policy\" readonly value=\"{{ policyData.description }}\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updtedAt\">Updated At</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"updatedAt\" readonly value=\"{{ policyData.updatedTs }}\">\n            \t</div>\n            </div>\n\t</div>\n</form>\n<div class=\"forms\" *ngIf = \"definitive == 'VITA' && policy== true \">\n\t<div class=\"policy-section\">\n\t\t<div><ul class=\"nav nav-tabs\">\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link active\" routerLinkActive=\"active\" routerLink=\"policyDetails\" [routerLinkActiveOptions]=\"{exact: true}\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Policy Details</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"review\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Review Section</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"documents\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Documents</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"applications\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Applications</a>\n\t\t  </li>\n\t\t</ul>\n\t\t</div>\n\t\t<router-outlet></router-outlet>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -4205,7 +4249,8 @@ module.exports = "<form class=\"forms\">\n\t<div class=\"form-row\">\n\t\t<div c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__apiservice_service__ = __webpack_require__("../../../../../src/app/apiservice.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PolicyViewFormsComponentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4217,14 +4262,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var PolicyViewFormsComponentComponent = (function () {
-    function PolicyViewFormsComponentComponent() {
+    function PolicyViewFormsComponentComponent(_apiservice) {
+        this._apiservice = _apiservice;
         this.policy = false;
     }
     PolicyViewFormsComponentComponent.prototype.ngOnInit = function () {
+        this.fetchPolicies(2);
     };
     PolicyViewFormsComponentComponent.prototype.selectDefinitive = function (definitive) {
         this.definitive = definitive;
+        console.log(definitive);
+    };
+    PolicyViewFormsComponentComponent.prototype.fetchPolicies = function (id) {
+        var _this = this;
+        this._apiservice.fetchPolicies(id)
+            .subscribe(function (data) {
+            _this.policyData = data.policyGrpDTO;
+            console.log(_this.policyData);
+            console.log(data);
+        }, function (error) { return console.log(error); });
     };
     PolicyViewFormsComponentComponent.prototype.selectType = function (policy) {
         this.policy = true;
@@ -4232,14 +4290,16 @@ var PolicyViewFormsComponentComponent = (function () {
     return PolicyViewFormsComponentComponent;
 }());
 PolicyViewFormsComponentComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
         selector: 'app-policy-view-forms-component',
         template: __webpack_require__("../../../../../src/app/policy-view-component/policy-view-forms-component/policy-view-forms-component.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/policy-view-component/policy-view-forms-component/policy-view-forms-component.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/policy-view-component/policy-view-forms-component/policy-view-forms-component.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_0__apiservice_service__["a" /* ApiserviceService */]]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__apiservice_service__["a" /* ApiserviceService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__apiservice_service__["a" /* ApiserviceService */]) === "function" && _a || Object])
 ], PolicyViewFormsComponentComponent);
 
+var _a;
 //# sourceMappingURL=policy-view-forms-component.component.js.map
 
 /***/ }),
@@ -4451,7 +4511,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/solution-view-component/solution-table/solution-table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"forms\">\n  <table class=\"fixed_header\">\n    <thead>\n    <tr>\n      <th>Solution/Modal</th>\n      <th>Vendor</th>\n      <th>Equipment Type</th>\n      <th>System Type</th>\n      <th>Certificate Date</th>\n      <th>Due Date</th> \n\n\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let solution of solutions\">\n                         <td><a routerLink=\"/editSolutions/{{ solution.solutionId }}\">{{ solution.name }}</a></td>\n                         <td>{{ solution.vendor.name }}</td>\n                         <td>{{solution.solutionTypeName }}</td>\n                         <td>{{ solution.systemTypeDTO.name }}</td>\n                         <td>{{ solution.certDt }}</td>\n                         <!-- <td>{{ solution.certDt | date : 'M/d/yyyy' }}</td> -->\n                         <td>{{ solution.certRenewalDueDt }}</td>\n                    </tr>\n    </tbody>\n  </table>\n</form>\n"
+module.exports = "<form class=\"forms\">\n  <table class=\"fixed_header\">\n    <thead>\n    <tr>\n      <th>Solution/Modal</th>\n      <th>Vendor</th>\n      <th>Equipment Type</th>\n      <th>System Type</th>\n      <th>Certificate Date</th>\n      <th>Due Date</th> \n\n\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let solution of solutions\">\n                         <td><a routerLink=\"/editSolutions/{{ solution.solutionId }}\">{{ solution.name }}</a></td>\n                         <td>{{ solution.vendor.name }}</td>\n                         <td>{{solution.solutionTypeName }}</td>\n                         <td>{{ solution.systemTypeDTO.name }}</td>\n                         <td>{{ solution.certDt }}</td>\n                         <td>{{ solution.certDt | filter  }}</td> \n                         <td>{{ solution.certRenewalDueDt }}</td>\n                    </tr>\n    </tbody>\n  </table>\n</form>\n"
 
 /***/ }),
 
