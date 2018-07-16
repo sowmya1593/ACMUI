@@ -1,5 +1,8 @@
 import { ApiserviceService } from '../../apiservice.service';
 import { Component, OnInit } from '@angular/core';
+import { PolicyGrp } from '../../data_modelPolicy';
+import { FilterPipe } from '../../convertDate.pipe';
+import { IMyDate } from 'mydatepicker';
 
 
 @Component({
@@ -9,35 +12,83 @@ import { Component, OnInit } from '@angular/core';
   providers: [ ApiserviceService ]
 })
 export class PolicyViewFormsComponentComponent implements OnInit {
-  public definitive: string;
-  public policy: boolean=false;
+  policyDisplay: PolicyGrp;
+  public definitive: boolean;
+  public policy: boolean;
   public policyData: any;
+  public auditTypes: any;
+  public policyTypes: any;
+  //public selectDate: IMyDate = null;
 
-  constructor(private _apiservice: ApiserviceService) { }
+  constructor(private _apiservice: ApiserviceService) { 
+  	this.policyDisplay = new PolicyGrp();
+  }
 
   ngOnInit() {
-  this.fetchPolicies(2);
+  this.fetchPolicies(1);
+  this.showDropdown();
   }
   
   
-  selectDefinitive(definitive){
-    this.definitive = definitive;
-    console.log(definitive);
+selectType(policy){
+  if(policy === 'Choose...')
+  { this.policy = false;
+  }
+  else{
+    this.policy =true;
+    }
+}
+
+showDropdown()
+{
+
+this._apiservice.getAuditTypes()
+.subscribe((data: any) => {
+this.auditTypes = data;
+},error => { console.log(error);});
+
 
 }
+
+selectDefinitive(auditID)
+	
+{
+
+if(auditID === 'Choose...')
+{
+this.definitive = false
+}
+else {
+this.definitive =  true;
+}
+if(this.policyTypes == undefined){
+this._apiservice.getPolicyGroup(auditID)
+.subscribe((data: any) => {
+this.policyTypes = data;
+},error => {console.log(error)});
+}
+}
+
 
 fetchPolicies(id){
 	this._apiservice.fetchPolicies(id)
-    .subscribe((data:any) => {
-     this.policyData = data.policyGrpDTO;
-      console.log(this.policyData);
-      console.log(data);
+    .subscribe((data: any) => {
+    	this.policyDisplay=data.policyGrpDTO;
+    	//console.log(this.policies);
+    	console.log(this.policyDisplay);
+      	console.log(this.policyDisplay.updatedBy);
+      	console.log(this.policyDisplay.updatedTs);
+      	var date = this.policyDisplay.updatedTs;
+     /*var dt = new Date(0);
+     //console.log(dt.setUTCSeconds(utcSeconds));
+        let d = new Date(this.policyDisplay.updatedTs * 1000);
+        this.selectDate = {
+           year: d.getFullYear(),
+          month: d.getMonth() + 1,
+          day: d.getDate()
+        }*/
       
     },error => console.log(error));	
 
-}
-  
-  selectType(policy){
-    this.policy =true;
 }
 }

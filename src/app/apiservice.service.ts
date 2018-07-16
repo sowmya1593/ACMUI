@@ -95,4 +95,15 @@ return this._httpService.post(url,body).map((res:Response) => res.json())
   	return this._httpService.get(url + '?' + 'policyGrpId' + '=' + id)
     .map(res =><Response>res.json());
   }
+  
+  getAuditTypes(){
+    let url = APP_CONFIG.getAuditTypes;
+    return this._httpService.get(url)
+    .map(res =><Response>res.json());
+  }
+  getPolicyGroup(auditId){
+    let url = APP_CONFIG.getPolicyGroup;
+    return this._httpService.get(url + '?' + 'auditTypeId' + '=' + auditId)
+    .map(res =><Response>res.json());
+  }
 }

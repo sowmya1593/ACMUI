@@ -113,6 +113,16 @@ var ApiserviceService = (function () {
         return this._httpService.get(url + '?' + 'policyGrpId' + '=' + id)
             .map(function (res) { return res.json(); });
     };
+    ApiserviceService.prototype.getAuditTypes = function () {
+        var url = __WEBPACK_IMPORTED_MODULE_0__app_config__["a" /* APP_CONFIG */].getAuditTypes;
+        return this._httpService.get(url)
+            .map(function (res) { return res.json(); });
+    };
+    ApiserviceService.prototype.getPolicyGroup = function (auditId) {
+        var url = __WEBPACK_IMPORTED_MODULE_0__app_config__["a" /* APP_CONFIG */].getPolicyGroup;
+        return this._httpService.get(url + '?' + 'auditTypeId' + '=' + auditId)
+            .map(function (res) { return res.json(); });
+    };
     return ApiserviceService;
 }());
 ApiserviceService = __decorate([
@@ -202,7 +212,9 @@ var APP_CONFIG = {
     getSolutionsOnload: apiBaseUrl + 'getSolutionsOnload',
     addSolutions: apiBaseUrl + 'registerSolution',
     getSolutionFile: apiBaseUrl + 'getSolutionFile',
-    fetchPolicies: apiBaseUrl + 'fetchPolicies'
+    fetchPolicies: apiBaseUrl + 'fetchPolicies',
+    getAuditTypes: apiBaseUrl + 'getAuditTypes',
+    getPolicyGroup: apiBaseUrl + 'fetchPolicyGroup'
 };
 //# sourceMappingURL=app.config.js.map
 
@@ -742,7 +754,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"pos-f-t\">\n          <nav class=\"navbar\">\n            <img src=\"assets/img/logo.png\">\n            <h2 class=\"heading\">Application and Audit Manager</h2>\n            <div class=\"login\"><p class=\"user\">Sunny Singh<fa class=\"down-icon\" [name]=\"'chevron-down'\"></fa></p></div>\n          </nav>\n    </div>\n    <div class=\"dashboard\">\n         <div class=\"first-row\">\n        <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Locality</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a routerLink=\"/locality/map\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a routerLink=\"/localityView\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Vendors</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a routerLink=\"/vendors\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a [routerLink]=\"['/vendorsView']\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa>/ <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Solutions</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a routerLink=\"/solutions\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <!-- <a routerLink=\"/solutionsView\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a> -->\n    <a routerLink=\"/solutionsView\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Audit</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n        </div>\n    <div class=\"second-row\">\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Assessment</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Reports</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Dashboard</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n   <div class=\"card-heading\"><h5 class=\"card-title\">Systems</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n</div>\n        <div class=\"third-row\">\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Security Life Cycle</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Compliance Check</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Policy</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a routerLink=\"/policy\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a routerLink=\"/policyView\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n   <div class=\"card-heading\"><h5 class=\"card-title\">Systems</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n        \n        </div>\n        \n        </div>    "
+module.exports = "<div class=\"pos-f-t\">\n          <nav class=\"navbar\">\n            <img src=\"assets/img/logo.png\">\n            <h2 class=\"heading\">Application and Audit Manager</h2>\n            <div class=\"login\"><p class=\"user\">Sunny Singh<fa class=\"down-icon\" [name]=\"'chevron-down'\"></fa></p></div>\n          </nav>\n    </div>\n    <div class=\"dashboard\">\n         <div class=\"first-row\">\n        <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Locality</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a routerLink=\"/locality/map\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a routerLink=\"/localityView\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Vendors</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a routerLink=\"/vendors\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a [routerLink]=\"['/vendorsView']\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa>/ <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Solutions</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a routerLink=\"/solutions\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <!-- <a routerLink=\"/solutionsView\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a> -->\n    <a routerLink=\"/solutionsView\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Audit</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n        </div>\n    <div class=\"second-row\">\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Assessment</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Reports</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Dashboard</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n   <div class=\"card-heading\"><h5 class=\"card-title\">Systems</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n</div>\n        <div class=\"third-row\">\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Security Life Cycle</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Compliance Check</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n    <div class=\"card-heading\"><h5 class=\"card-title\">Policies</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a routerLink=\"/policy\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a routerLink=\"/policyView\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n    <div class=\"card\" style=\"width: 18rem;\">\n  <div class=\"card-body\">\n   <div class=\"card-heading\"><h5 class=\"card-title\">Systems</h5>\n      </div>\n    <hr />\n    <!--<h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>-->\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n    <a href=\"#\" class=\"card-link\"><fa [name]=\"'plus-circle'\"></fa></a>\n    <a href=\"#\" class=\"view-edit card-link\"><fa [name]=\"'eye'\"></fa> / <fa [name]=\"'edit'\"></fa></a>\n  </div>\n</div>\n        \n        </div>\n        \n        </div>    "
 
 /***/ }),
 
@@ -847,6 +859,35 @@ var CertDocDTO = (function () {
 }());
 
 //# sourceMappingURL=data_model.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/data_modelPolicy.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PolicyGrp; });
+/* unused harmony export Policy */
+/* unused harmony export Documents */
+var PolicyGrp = (function () {
+    function PolicyGrp() {
+    }
+    return PolicyGrp;
+}());
+
+var Policy = (function () {
+    function Policy() {
+    }
+    return Policy;
+}());
+
+var Documents = (function () {
+    function Documents() {
+    }
+    return Documents;
+}());
+
+//# sourceMappingURL=data_modelPolicy.js.map
 
 /***/ }),
 
@@ -4166,7 +4207,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/policy-view-component/policy-view-forms-component/policy-details/policy-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"policies\">\n\t\t\t\t<span><b>POLICIES</b></span>\n\t\t\t\t<div class=\"policy-edit\">\n\t\t\t\t<fa *ngIf=\"plus\" [name]=\"'download'\" class=\"download-icon icons\"></fa>\n\t\t\t\t<fa class=\"edit-icon icons\" (click)=\"changeButton()\" *ngIf=\"plus\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Save\" data-animation=\"true\" data-delay=\"0\" [name]=\"'edit'\"></fa>\n\t\t\t\t\t\t<fa (click)=\"open(content)\" *ngIf=\"!plus\" [name]=\"'upload'\" class=\"upload-icon icons\"></fa>\n\t\t\t\t\t\t<fa *ngIf=\"!plus\" [name]=\"'plus'\" class=\"plus-icon icons\"></fa>\n\t\t\t\t\t\t<fa *ngIf=\"!plus\" class=\"save-icon icons\" [name]=\"'save'\"></fa>\n\t\t\t\t\t\t<fa (click)=\"close()\" *ngIf=\"!plus\" class=\"close-icon icons\" [name]=\"'times-circle'\"></fa>\n\t\t\t\t\t</div>\n\t\t\t<hr />\n\t\t\t</div>\n\t\t\t<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n\t\t\t  <div class=\"modal-header\">\n\t\t\t    <h4 class=\"modal-title\" id=\"modal-basic-title\">Policy File</h4>\n\t\t\t    <!-- <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n\t\t\t      <span aria-hidden=\"true\">&times;</span>\n\t\t\t    </button> -->\n\t\t\t  </div>\n\t\t\t  <div class=\"modal-body\">\n\t\t\t    <form>\n\t\t\t    \t<div class=\"form-row\">\n\t\t\t    \t\t<div class=\"form-group col-12\">\n\t\t\t    \t\t\t<!-- <label for=\"attachments\"><b>Attachment</b></label> -->\n\t\t\t    \t\t\t<input id=\"attachments\" class=\"form-control\" type=\"file\" />\n\t\t\t    \t\t</div>\n\t\t\t    \t</div>\n\t\t\t    \t<hr />\n\t\t\t    \t<!-- <div class=\"form-row\">\n\t\t\t    \t\t<div class=\"form-group col-12\">\n\t\t\t    \t\t\t<label for=\"fileList\"><b>Attachment</b></label>\n\t\t\t    \t\t</div>\n\t\t\t    \t</div> -->\n\t\t\t    </form>\n\t\t\t  </div>\n\t\t\t  <div class=\"modal-footer\">\n\t\t\t    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">Close</button>\n\t\t\t    <button type=\"button\" class=\"btn btn-outline-dark\">Upload</button>\n\t\t\t  </div>\n</ng-template>\n\t\t\t<!-- <div class=\"model-solution-row form-row\">\n            \t<div class=\"model form-group col-md-6\">\n            <label class=\"label-form\" for=\"definitiveSourceInput\">Definitive Source</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"form-control\" id=\"definitiveSourceInput\" readonly value=\"VITA\">\n              <!-- <div class=\"hover-icon\"><fa class=\"ban\" [name]=\"'ban'\"></fa></div>\n            \t</div>\n            \t<div class=\"version form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updatedBy\">Updated By</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"form-control\" id=\"updatedBy\" readonly value=\"Sunny Singh\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            <label class=\"label-form\" for=\"Type/Policy\">Type/Policy</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"form-control\" id=\"Type/Policy\" readonly value=\"IT Information Security Standard (SEC501-09.1)\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updtedAt\">Updated At</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"form-control\" id=\"updatedAt\" readonly value=\"14-05-2018\">\n            \t</div>\n            </div> -->\n\t\t<div class=\"description\">\n\t\t\t<h5>DESCRIPTION</h5>\n\t\t\t<div class=\"model-solution-row form-row\">\n            \t<div class=\"model form-group col-md-6\">\n            <label class=\"label-form\" for=\"lastReviewDate\">Last Review Date</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"lastReviewDate\" readonly value=\"17-10-2017\">\n            \t</div>\n            \t<div class=\"version form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"nextReviewDate\">Next Review Date</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"nextReviewDate\" readonly value=\"15-10-2018\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            <label class=\"label-form\" for=\"owner\">Owner</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"owner\" readonly>\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"policyReviewTeam\">Policy Review Team</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"policyReviewTeam\" readonly>\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"status\">Status</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"form-control\" id=\"status\" readonly value=\"Open\">\n            \t</div>\n            </div>\n\t\t</div>\n\t\t<hr />\n\t\t<h5>CONTROLS</h5>\n\t\t<table class=\"table table-bordered table-dark\">\n\t\t  <thead>\n\t\t    <tr>\n\t\t      <th scope=\"col\">Control Number</th>\n\t\t      <th scope=\"col\">Policy Name</th>\n\t\t      <th scope=\"col\">Priority</th>\n\t\t      <th scope=\"col\">Policy Value</th>\n\t\t      <th scope=\"col\">Assigned To</th>\n\t\t      <th scope=\"col\">Assigned By</th>\n\t\t      <th scope=\"col\">Assigned On</th>\n\t\t      <th scope=\"col\">Target Date</th>\n\t\t      <th scope=\"col\">Status</th>\n\t\t    </tr>\n\t\t  </thead>\n\t\t  <!--   <tbody>\n\t\t    <tr>\n\t\t      <th scope=\"row\">1</th>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t    </tr>\n\t\t    <tr>\n\t\t      <th scope=\"row\">2</th>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t    </tr>\n\t\t    <tr>\n\t\t      <th scope=\"row\">3</th>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t    </tr>\n\t\t  </tbody>\n\t\t   -->\n\t\t\t</table>"
+module.exports = "<div class=\"policies\">\n\t\t\t\t<span><b>POLICIES</b></span>\n\t\t\t\t<div class=\"policy-edit\">\n\t\t\t\t<fa *ngIf=\"plus\" [name]=\"'download'\" class=\"download-icon icons\"></fa>\n\t\t\t\t<fa class=\"edit-icon icons\" (click)=\"changeButton()\" *ngIf=\"plus\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Save\" data-animation=\"true\" data-delay=\"0\" [name]=\"'edit'\"></fa>\n\t\t\t\t\t\t<fa (click)=\"open(content)\" *ngIf=\"!plus\" [name]=\"'upload'\" class=\"upload-icon icons\"></fa>\n\t\t\t\t\t\t<fa *ngIf=\"!plus\" [name]=\"'plus'\" class=\"plus-icon icons\"></fa>\n\t\t\t\t\t\t<fa *ngIf=\"!plus\" class=\"save-icon icons\" [name]=\"'save'\"></fa>\n\t\t\t\t\t\t<fa (click)=\"close()\" *ngIf=\"!plus\" class=\"close-icon icons\" [name]=\"'times-circle'\"></fa>\n\t\t\t\t\t</div>\n\t\t\t<hr />\n\t\t\t</div>\n\t\t\t<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n\t\t\t  <div class=\"modal-header\">\n\t\t\t    <h4 class=\"modal-title\" id=\"modal-basic-title\">Policy File</h4>\n\t\t\t    <!-- <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n\t\t\t      <span aria-hidden=\"true\">&times;</span>\n\t\t\t    </button> -->\n\t\t\t  </div>\n\t\t\t  <div class=\"modal-body\">\n\t\t\t    <form>\n\t\t\t    \t<div class=\"form-row\">\n\t\t\t    \t\t<div class=\"form-group col-12\">\n\t\t\t    \t\t\t<!-- <label for=\"attachments\"><b>Attachment</b></label> -->\n\t\t\t    \t\t\t<input id=\"attachments\" class=\"form-control\" type=\"file\" />\n\t\t\t    \t\t</div>\n\t\t\t    \t</div>\n\t\t\t    \t<hr />\n\t\t\t    \t<!-- <div class=\"form-row\">\n\t\t\t    \t\t<div class=\"form-group col-12\">\n\t\t\t    \t\t\t<label for=\"fileList\"><b>Attachment</b></label>\n\t\t\t    \t\t</div>\n\t\t\t    \t</div> -->\n\t\t\t    </form>\n\t\t\t  </div>\n\t\t\t  <div class=\"modal-footer\">\n\t\t\t    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">Close</button>\n\t\t\t    <button type=\"button\" class=\"btn btn-outline-dark\">Upload</button>\n\t\t\t  </div>\n</ng-template>\n\t\t\t<!-- <div class=\"model-solution-row form-row\">\n            \t<div class=\"model form-group col-md-6\">\n            <label class=\"label-form\" for=\"definitiveSourceInput\">Definitive Source</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"form-control\" id=\"definitiveSourceInput\" readonly value=\"VITA\">\n              <!-- <div class=\"hover-icon\"><fa class=\"ban\" [name]=\"'ban'\"></fa></div>\n            \t</div>\n            \t<div class=\"version form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updatedBy\">Updated By</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"form-control\" id=\"updatedBy\" readonly value=\"Sunny Singh\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            <label class=\"label-form\" for=\"Type/Policy\">Type/Policy</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"form-control\" id=\"Type/Policy\" readonly value=\"IT Information Security Standard (SEC501-09.1)\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updtedAt\">Updated At</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"form-control\" id=\"updatedAt\" readonly value=\"14-05-2018\">\n            \t</div>\n            </div> -->\n\t\t<div class=\"description\">\n\t\t\t<h5>DESCRIPTION</h5>\n\t\t\t<div class=\"model-solution-row form-row\">\n            \t<div class=\"model form-group col-md-6\">\n            <label class=\"label-form\" for=\"lastReviewDate\">Last Review Date</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"lastReviewDate\" readonly value=\"17-10-2017\">\n            \t</div>\n            \t<div class=\"version form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"nextReviewDate\">Next Review Date</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"nextReviewDate\" readonly value=\"15-10-2018\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            <label class=\"label-form\" for=\"owner\">Owner</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"owner\" readonly>\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"policyReviewTeam\">Policy Review Team</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"policyReviewTeam\" readonly>\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"status\">Status</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"form-control\" id=\"status\" readonly value=\"Open\">\n            \t</div>\n            </div>\n\t\t</div>\n\t\t<hr />\n\t\t<h5>CONTROLS</h5>\n\t\t<table class=\"table table-bordered table-dark\">\n\t\t  <thead>\n\t\t    <tr>\n\t\t      <th scope=\"col\">Control Number</th>\n\t\t      <th scope=\"col\">Policy Name</th>\n\t\t      <th scope=\"col\">Priority</th>\n\t\t      <th scope=\"col\">Policy Value</th>\n\t\t      <th scope=\"col\">Assigned To</th>\n\t\t      <th scope=\"col\">Assigned By</th>\n\t\t      <th scope=\"col\">Assigned On</th>\n\t\t      <th scope=\"col\">Target Date</th>\n\t\t      <th scope=\"col\">Status</th>\n\t\t    </tr>\n\t\t  </thead>\n\t\t  <tbody>\n\t\t    <tr *ngFor = \"let policy of policies\">\n\t\t      <td>{{ policy.controlNumber }}</td>\n\t\t      <td>{{ policy.policyName }}</td>\n\t\t      <td>{{ policy.priority }}</td>\n\t\t      <td>{{ policy.policyVal }}</td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td></td>\n\t\t      <td>{{ policy.status }}</td>\n\t\t    </tr>\n\t\t  </tbody>\n\t\t   \n\t\t\t</table>"
 
 /***/ }),
 
@@ -4176,6 +4217,8 @@ module.exports = "<div class=\"policies\">\n\t\t\t\t<span><b>POLICIES</b></span>
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_modelPolicy__ = __webpack_require__("../../../../../src/app/data_modelPolicy.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__apiservice_service__ = __webpack_require__("../../../../../src/app/apiservice.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PolicyDetailsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4188,10 +4231,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var PolicyDetailsComponent = (function () {
-    function PolicyDetailsComponent(modalService) {
+    function PolicyDetailsComponent(modalService, _apiservice) {
         this.modalService = modalService;
+        this._apiservice = _apiservice;
         this.plus = true;
+        this.policyDisplay = new __WEBPACK_IMPORTED_MODULE_2__data_modelPolicy__["a" /* PolicyGrp */]();
+        this.policies = [];
     }
     PolicyDetailsComponent.prototype.open = function (content) {
         this.modalService.open(content);
@@ -4203,6 +4251,28 @@ var PolicyDetailsComponent = (function () {
         this.plus = true;
     };
     PolicyDetailsComponent.prototype.ngOnInit = function () {
+        this.fetchPolicies(1);
+    };
+    PolicyDetailsComponent.prototype.fetchPolicies = function (id) {
+        var _this = this;
+        this._apiservice.fetchPolicies(id)
+            .subscribe(function (data) {
+            _this.policyDisplay = data.policyGrpDTO;
+            _this.policies = data.policyDTOs;
+            console.log(_this.policies);
+            console.log(_this.policyDisplay);
+            console.log(_this.policyDisplay.updatedBy);
+            console.log(_this.policyDisplay.updatedTs);
+            var date = _this.policyDisplay.updatedTs;
+            /*var dt = new Date(0);
+            //console.log(dt.setUTCSeconds(utcSeconds));
+               let d = new Date(this.policyDisplay.updatedTs * 1000);
+               this.selectDate = {
+                  year: d.getFullYear(),
+                 month: d.getMonth() + 1,
+                 day: d.getDate()
+               }*/
+        }, function (error) { return console.log(error); });
     };
     return PolicyDetailsComponent;
 }());
@@ -4210,12 +4280,13 @@ PolicyDetailsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-policy-details',
         template: __webpack_require__("../../../../../src/app/policy-view-component/policy-view-forms-component/policy-details/policy-details.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/policy-view-component/policy-view-forms-component/policy-details/policy-details.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/policy-view-component/policy-view-forms-component/policy-details/policy-details.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_3__apiservice_service__["a" /* ApiserviceService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__apiservice_service__["a" /* ApiserviceService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__apiservice_service__["a" /* ApiserviceService */]) === "function" && _b || Object])
 ], PolicyDetailsComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=policy-details.component.js.map
 
 /***/ }),
@@ -4241,7 +4312,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/policy-view-component/policy-view-forms-component/policy-view-forms-component.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"forms\">\n\t<div class=\"form-row\">\n\t\t<div class=\"form-group col-md-6\">\n\t\t\t<label class=\"label-form\" for=\"definitiveSource\"><b>Definitive Source</b></label><div class=\"asterisk\">*</div>\n              <select class=\"form-control\" id=\"definitiveSource\" required (change)=\"selectDefinitive($event.target.value)\">\n                <option selected>Choose...</option>\n                <option value=\"VITA\">VITA</option>\n              </select>\n\t\t</div>\n\t\t<div class=\"form-group col-md-6\">\n\t\t\t<label class=\"label-form\" for=\"typePolicy\"><b>Type/Policy</b></label><div class=\"asterisk\">*</div>\n              <select class=\"form-control\" id=\"typePolicy\" required (change)=\"selectType($event.target.value)\">\n                <option selected>Choose...</option>\n                <option value=\"IT Information Security Standard (SEC501-09.1)\">IT Information Security Standard (SEC501-09.1)</option>\n              </select>\n\t\t</div>\n\t</div>\n\t<div class=\"prepopulated\" *ngIf = \"definitive == 'VITA' && policy== true \">\n\t\t<div class=\"model-solution-row form-row\">\n            \t<div class=\"model form-group col-md-6\">\n            <label class=\"label-form\" for=\"definitiveSourceInput\">Definitive Source</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"definitiveSourceInput\" readonly value=\"{{ policyData.definitiveSource }}\">\n              <!-- <div class=\"hover-icon\"><fa class=\"ban\" [name]=\"'ban'\"></fa></div>-->\n            \t</div>\n            \t<div class=\"version form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updatedBy\">Updated By</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"updatedBy\" readonly value=\"{{ policyData.updatedBy }}\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            <label class=\"label-form\" for=\"Type/Policy\">Type/Policy</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"Type/Policy\" readonly value=\"{{ policyData.description }}\">\n            \t</div>\n            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updtedAt\">Updated At</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"updatedAt\" readonly value=\"{{ policyData.updatedTs }}\">\n            \t</div>\n            </div>\n\t</div>\n</form>\n<div class=\"forms\" *ngIf = \"definitive == 'VITA' && policy== true \">\n\t<div class=\"policy-section\">\n\t\t<div><ul class=\"nav nav-tabs\">\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link active\" routerLinkActive=\"active\" routerLink=\"policyDetails\" [routerLinkActiveOptions]=\"{exact: true}\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Policy Details</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"review\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Review Section</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"documents\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Documents</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"applications\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Applications</a>\n\t\t  </li>\n\t\t</ul>\n\t\t</div>\n\t\t<router-outlet></router-outlet>\n\t</div>\n</div>\n"
+module.exports = "<form class=\"forms\">\n\t<div class=\"form-row\">\n\t\t<div class=\"form-group col-md-6\">\n\t\t\t<label class=\"label-form\" for=\"definitiveSource\"><b>Definitive Source</b></label><div class=\"asterisk\">*</div>\n              <select class=\"form-control\" id=\"definitiveSource\" required (change)=\"selectDefinitive($event.target.value)\">\n                <option selected>Choose...</option>\n                <option  *ngFor=\"let auditType of auditTypes\" value=\"{{ auditType.auditTypeId }}\">{{ auditType.auditTypeName  }}</option>\n              </select>\n\t\t</div>\n\t\t<div class=\"form-group col-md-6\">\n\t\t\t<label class=\"label-form\" for=\"typePolicy\"><b>Type/Policy</b></label><div class=\"asterisk\">*</div>\n              <select class=\"form-control\" id=\"typePolicy\" required (change)=\"selectType($event.target.value)\">\n                <option selected>Choose...</option>\n                <option *ngFor=\"let policyType of  policyTypes\" value=\"{{ policyType.policyGrpId }}\">{{ policyType.policyGrpName }}</option>\n              </select>\n\t\t</div>\n\t</div>\n\t<div class=\"prepopulated\" *ngIf = \"definitive == true && policy== true \">\n\t\t<div class=\"model-solution-row form-row\">\n            \t<!-- <div class=\"model form-group col-md-6\">\n            <label class=\"label-form\" for=\"definitiveSourceInput\">Definitive Source</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"definitiveSourceInput\" readonly [(ngModel)] = \"policy.definitiveSource\">\n              <div class=\"hover-icon\"><fa class=\"ban\" [name]=\"'ban'\"></fa></div>\n            \t</div> -->\n            \t<div class=\"version form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updatedBy\">Updated By</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"updatedBy\" readonly [(ngModel)] = \"policyDisplay.updatedBy\" [name] = \"'updated_by'\">\n            \t</div>\n            \t<!-- <div class=\"form-group col-md-6\">\n            <label class=\"label-form\" for=\"Type/Policy\">Type/Policy</label><div class=\"asterisk\">*</div>\n              <input type=\"text\" class=\"edit-disable form-control\" id=\"Type/Policy\" readonly [(ngModel)] = \"policy.description\">\n            \t</div>\n -->            \t<div class=\"form-group col-md-6\">\n            \t\t<label class=\"label-form\" for=\"updtedAt\">Updated At</label><div class=\"asterisk\">*</div>\n\t\t              <input type=\"text\" class=\"edit-disable form-control\" id=\"updatedAt\" readonly [(ngModel)] = \"policyDisplay.updatedTs\" [name] = \"'updated_ts'\">\n\t\t              <!-- <input type=\"text\" class=\"edit-disable form-control\" id=\"updatedAt\" readonly [(ngModel)] = \"policyDisplay.updatedTs\" [selDate] = \"selectDate\"> -->\n            \t</div> \n            </div>\n\t</div>\n</form>\n<div class=\"forms\" *ngIf = \"definitive == true && policy== true \">\n\t<div class=\"policy-section\">\n\t\t<div><ul class=\"nav nav-tabs\">\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link active\" routerLinkActive=\"active\" routerLink=\"policyDetails\" [routerLinkActiveOptions]=\"{exact: true}\"><fa class=\"help\" [name]=\"'info-circle'\"></fa>Policy Details</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"review\"><fa class=\"file-signature help\" [name]=\"'info-circle'\"></fa>Review Section</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"documents\"><fa class=\"file-alt help\" [name]=\"'info-circle'\"></fa>Documents</a>\n\t\t  </li>\n\t\t  <li class=\"nav-item\">\n\t\t    <a class=\"nav-link\" routerLinkActive=\"active\" routerLink=\"applications\"><fa class=\"mobile-android help\" [name]=\"'info-circle'\"></fa>Applications</a>\n\t\t  </li>\n\t\t</ul>\n\t\t</div>\n\t\t<router-outlet></router-outlet>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -4251,6 +4322,7 @@ module.exports = "<form class=\"forms\">\n\t<div class=\"form-row\">\n\t\t<div c
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__apiservice_service__ = __webpack_require__("../../../../../src/app/apiservice.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_modelPolicy__ = __webpack_require__("../../../../../src/app/data_modelPolicy.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PolicyViewFormsComponentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4263,29 +4335,66 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var PolicyViewFormsComponentComponent = (function () {
+    //public selectDate: IMyDate = null;
     function PolicyViewFormsComponentComponent(_apiservice) {
         this._apiservice = _apiservice;
-        this.policy = false;
+        this.policyDisplay = new __WEBPACK_IMPORTED_MODULE_2__data_modelPolicy__["a" /* PolicyGrp */]();
     }
     PolicyViewFormsComponentComponent.prototype.ngOnInit = function () {
-        this.fetchPolicies(2);
+        this.fetchPolicies(1);
+        this.showDropdown();
     };
-    PolicyViewFormsComponentComponent.prototype.selectDefinitive = function (definitive) {
-        this.definitive = definitive;
-        console.log(definitive);
+    PolicyViewFormsComponentComponent.prototype.selectType = function (policy) {
+        if (policy === 'Choose...') {
+            this.policy = false;
+        }
+        else {
+            this.policy = true;
+        }
+    };
+    PolicyViewFormsComponentComponent.prototype.showDropdown = function () {
+        var _this = this;
+        this._apiservice.getAuditTypes()
+            .subscribe(function (data) {
+            _this.auditTypes = data;
+        }, function (error) { console.log(error); });
+    };
+    PolicyViewFormsComponentComponent.prototype.selectDefinitive = function (auditID) {
+        var _this = this;
+        if (auditID === 'Choose...') {
+            this.definitive = false;
+        }
+        else {
+            this.definitive = true;
+        }
+        if (this.policyTypes == undefined) {
+            this._apiservice.getPolicyGroup(auditID)
+                .subscribe(function (data) {
+                _this.policyTypes = data;
+            }, function (error) { console.log(error); });
+        }
     };
     PolicyViewFormsComponentComponent.prototype.fetchPolicies = function (id) {
         var _this = this;
         this._apiservice.fetchPolicies(id)
             .subscribe(function (data) {
-            _this.policyData = data.policyGrpDTO;
-            console.log(_this.policyData);
-            console.log(data);
+            _this.policyDisplay = data.policyGrpDTO;
+            //console.log(this.policies);
+            console.log(_this.policyDisplay);
+            console.log(_this.policyDisplay.updatedBy);
+            console.log(_this.policyDisplay.updatedTs);
+            var date = _this.policyDisplay.updatedTs;
+            /*var dt = new Date(0);
+            //console.log(dt.setUTCSeconds(utcSeconds));
+               let d = new Date(this.policyDisplay.updatedTs * 1000);
+               this.selectDate = {
+                  year: d.getFullYear(),
+                 month: d.getMonth() + 1,
+                 day: d.getDate()
+               }*/
         }, function (error) { return console.log(error); });
-    };
-    PolicyViewFormsComponentComponent.prototype.selectType = function (policy) {
-        this.policy = true;
     };
     return PolicyViewFormsComponentComponent;
 }());

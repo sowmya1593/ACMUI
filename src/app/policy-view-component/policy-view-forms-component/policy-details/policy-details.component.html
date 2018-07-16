@@ -98,42 +98,18 @@
 		      <th scope="col">Status</th>
 		    </tr>
 		  </thead>
-		  <!--   <tbody>
-		    <tr>
-		      <th scope="row">1</th>
+		  <tbody>
+		    <tr *ngFor = "let policy of policies">
+		      <td>{{ policy.controlNumber }}</td>
+		      <td>{{ policy.policyName }}</td>
+		      <td>{{ policy.priority }}</td>
+		      <td>{{ policy.policyVal }}</td>
 		      <td></td>
 		      <td></td>
 		      <td></td>
 		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		    </tr>
-		    <tr>
-		      <th scope="row">2</th>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		    </tr>
-		    <tr>
-		      <th scope="row">3</th>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
-		      <td></td>
+		      <td>{{ policy.status }}</td>
 		    </tr>
 		  </tbody>
-		   -->
+		   
 			</table>
