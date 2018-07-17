@@ -21,7 +21,8 @@ export const APP_CONFIG = {
   getSolutionFile: apiBaseUrl + 'getSolutionFile',
   fetchPolicies: apiBaseUrl + 'fetchPolicies',
   getAuditTypes: apiBaseUrl + 'getAuditTypes',
-  getPolicyGroup: apiBaseUrl + 'fetchPolicyGroup'
+  getPolicyGroup: apiBaseUrl + 'fetchPolicyGroup',
+  addPolicyGroup: apiBaseUrl + 'addPolicyGrp'
 }
 
 

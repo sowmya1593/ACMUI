@@ -48,6 +48,7 @@ import { LocalityAddComponentComponent } from "./locality-component/locality-add
 const appRoutes: Routes = [
 
     {path: '', component: DashboardComponent },
+    {path: 'dashboard', component: DashboardComponent },
     {path: 'vendors', component: VendorsComponentComponent },
     {path: 'solutions', component: SolutionsComponent },
     {path: 'vendorsView', component: VendorsViewComponent },

@@ -106,4 +106,12 @@ return this._httpService.post(url,body).map((res:Response) => res.json())
     return this._httpService.get(url + '?' + 'auditTypeId' + '=' + auditId)
     .map(res =><Response>res.json());
   }
+  
+  addPolicyGroup(formData)
+  {
+  
+     let url = APP_CONFIG.addPolicyGroup;
+    return this._httpService.post(url, formData).map((res: Response) => res.json())
+                            .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
+  }
 }

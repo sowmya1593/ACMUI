@@ -18,7 +18,8 @@ export class PolicyViewFormsComponentComponent implements OnInit {
   public policyData: any;
   public auditTypes: any;
   public policyTypes: any;
-  //public selectDate: IMyDate = null;
+  public selectDate: IMyDate = null;
+  public date: string;
 
   constructor(private _apiservice: ApiserviceService) { 
   	this.policyDisplay = new PolicyGrp();
@@ -79,15 +80,19 @@ fetchPolicies(id){
       	console.log(this.policyDisplay.updatedBy);
       	console.log(this.policyDisplay.updatedTs);
       	var date = this.policyDisplay.updatedTs;
-     /*var dt = new Date(0);
+     var dt = new Date(0);
      //console.log(dt.setUTCSeconds(utcSeconds));
-        let d = new Date(this.policyDisplay.updatedTs * 1000);
+        let d = new Date(this.policyDisplay.updatedTs);
         this.selectDate = {
            year: d.getFullYear(),
           month: d.getMonth() + 1,
           day: d.getDate()
-        }*/
-      
+        }
+        this.date = d.getMonth()+"/"+d.getDate()+"/"+d.getFullYear();
+        console.log(this.date);
+        console.log(this.selectDate.year);
+        console.log(this.selectDate.month);
+        console.log(this.selectDate.day);
     },error => console.log(error));	
 
 }

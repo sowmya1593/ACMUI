@@ -38,6 +38,20 @@
 			    <button type="button" class="btn btn-outline-dark">Upload</button>
 			  </div>
 </ng-template>
+<ng-template #control let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Control Number</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <p></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+  </div>
+</ng-template>
 			<!-- <div class="model-solution-row form-row">
             	<div class="model form-group col-md-6">
             <label class="label-form" for="definitiveSourceInput">Definitive Source</label><div class="asterisk">*</div>
@@ -62,11 +76,11 @@
 			<div class="model-solution-row form-row">
             	<div class="model form-group col-md-6">
             <label class="label-form" for="lastReviewDate">Last Review Date</label><div class="asterisk">*</div>
-              <input type="text" class="edit-disable form-control" id="lastReviewDate" readonly value="17-10-2017">
+              <input type="text" class="edit-disable form-control" id="lastReviewDate" readonly [(ngModel)] = "reviewDate">
             	</div>
             	<div class="version form-group col-md-6">
             		<label class="label-form" for="nextReviewDate">Next Review Date</label><div class="asterisk">*</div>
-		              <input type="text" class="edit-disable form-control" id="nextReviewDate" readonly value="15-10-2018">
+		              <input type="text" class="edit-disable form-control" id="nextReviewDate" readonly [(ngModel)] = "reviewDateNext">
             	</div>
             	<div class="form-group col-md-6">
             <label class="label-form" for="owner">Owner</label><div class="asterisk">*</div>
@@ -100,7 +114,8 @@
 		  </thead>
 		  <tbody>
 		    <tr *ngFor = "let policy of policies">
-		      <td>{{ policy.controlNumber }}</td>
+		      <!-- <td>{{ policy.controlNumber }}</td> -->
+		      <td><a (click) = "show(control)" style="cursor:pointer;color:blue;">{{ policy.controlNumber }}</a></td>
 		      <td>{{ policy.policyName }}</td>
 		      <td>{{ policy.priority }}</td>
 		      <td>{{ policy.policyVal }}</td>

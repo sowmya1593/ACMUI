@@ -13,6 +13,11 @@
 	margin-left: 2px;
 }
 
+.display{
+	display: inline;
+	margin-left: 2px;
+}
+
 .installation{
 	padding: 1%;
 }
@@ -24,4 +29,9 @@
 .btn{
 	background-color: #3A539B;
 	border-color: #3A539B;
+}
+
+.modal-header{
+	background-color:#3A539B !important;
+	color:white;
 }
