@@ -590,7 +590,7 @@ export class LocalityAddComponentComponent implements OnInit {
   
   selectLocal(locality){
    
-     this.router.navigate(['/locality/tab/info']);
+     this.router.navigate(['/locality/tab/info/' + locality]);
 }
 
 

@@ -4,6 +4,8 @@
 const baseUrl = 'http://localhost:8080/ApplicationPortfolioManager/services/';
 
 
+//http://ec2-54-86-177-206.compute-1.amazonaws.com/
+
 const apiBaseUrl = baseUrl;
 
 
@@ -22,7 +24,11 @@ export const APP_CONFIG = {
   fetchPolicies: apiBaseUrl + 'fetchPolicies',
   getAuditTypes: apiBaseUrl + 'getAuditTypes',
   getPolicyGroup: apiBaseUrl + 'fetchPolicyGroup',
-  addPolicyGroup: apiBaseUrl + 'addPolicyGrp'
+  addPolicyGroup: apiBaseUrl + 'addPolicyGrp',
+  addLocality: apiBaseUrl + 'createApplication',
+  viewApplication: apiBaseUrl + 'viewApplication',
+  updateLocality: apiBaseUrl + 'updateApplication'
+
 }
 
 

@@ -114,4 +114,19 @@ return this._httpService.post(url,body).map((res:Response) => res.json())
     return this._httpService.post(url, formData).map((res: Response) => res.json())
                             .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
   }
+  
+  addLocality(data){
+   let url = APP_CONFIG.addLocality;
+   console.log("data 95",data);
+    return this._httpService.post(url, data).map((res: Response) => res.json())
+                            .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
+  
+  
+  }
+  
+  viewApplication(name){
+  let url = APP_CONFIG.viewApplication;
+     return this._httpService.get(url + '?' + 'acronym' + '=' + name)
+     .map(res =><Response>res.json());
+  }
 }

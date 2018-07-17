@@ -45,6 +45,7 @@ import { FilterPipe } from './convertDate.pipe';
 
 
 import {  LocalityComponentModule} from "./locality-component/locality-component.module";
+import { ControlNameComponent } from './control-name/control-name.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import {  LocalityComponentModule} from "./locality-component/locality-component
     DialogBoxComponent,
     EditVendorComponent,
     EditNavigationComponent,
-    FilterPipe
+    FilterPipe,
+    ControlNameComponent
 
    
     

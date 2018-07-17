@@ -62,12 +62,12 @@ this.definitive = false
 else {
 this.definitive =  true;
 }
-if(this.policyTypes == undefined){
+
 this._apiservice.getPolicyGroup(auditID)
 .subscribe((data: any) => {
 this.policyTypes = data;
 },error => {console.log(error)});
-}
+
 }
 
 

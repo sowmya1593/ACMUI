@@ -1,6 +1,9 @@
 export class Locality {
 
   localityCd:string;
+
+	updatedTime:any;
+	acronym:string;
 	 fipsCd:string;
 	 firstName:string;
 	 lastName:string;
@@ -8,12 +11,21 @@ export class Locality {
 	 phoneNumber:string;
 	 website:string;
 	 verisId:string;
-	capInd:boolean;
-	 bailoutInd:boolean;
+	capInd:boolean = false;
+	 bailoutInd:boolean = false;
  penality:string;
-	 vebaRegion:boolean;
-	 vravRegion:boolean;
-	 paperPollbook:boolean;
-electronicPollbook:boolean;
+	 vebaRegion:boolean  = false;
+	 vravRegion:boolean  = false;
+	 paperPollbook:boolean  = false;
+electronicPollbook:boolean  = false;
  notes:string ;
+ applicationId:number;
+ 
 }
+ export class applicationView{
+
+ acronym:string;
+ applicationId:number;
+ name:string;
+ updatedTs:any;
+ }

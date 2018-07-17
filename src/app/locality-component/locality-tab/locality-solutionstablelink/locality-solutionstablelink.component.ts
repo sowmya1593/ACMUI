@@ -20,8 +20,8 @@ this.solutionForm = this._fb.group({
       equipment:[''],
       vendor:[''],
       name:[''],
-      plus:['']
-    });
+      serial:['']
+          });
     this.solutionForm.disable();
 
 }

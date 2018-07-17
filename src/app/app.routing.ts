@@ -12,9 +12,15 @@ import { LocalitySolutionsLinkComponent } from './locality-component/locality-ta
 import { LocalitySolutionstablelinkComponent } from './locality-component/locality-tab/locality-solutionstablelink/locality-solutionstablelink.component';
 import { LocalityBusinessComponent } from './locality-component/locality-tab/locality-business/locality-business.component';
 import { LocalityAuditComponent } from './locality-component/locality-tab/locality-audit/locality-audit.component';
+import { LocalitySecurityComponent } from './locality-component/locality-tab/locality-security/locality-security.component';
 import { AuditDetailsComponent } from './locality-component/locality-tab/locality-audit/audit-details/audit-details.component';
 import { AuditFindingsComponent } from './locality-component/locality-tab/locality-audit/audit-findings/audit-findings.component';
 import { AuditRecomendationsComponent } from './locality-component/locality-tab/locality-audit/audit-recomendations/audit-recomendations.component';
+import { AuditActionComponent } from './locality-component/locality-tab/locality-audit/audit-action/audit-action.component';
+import { AuditBusinessriskComponent } from './locality-component/locality-tab/locality-audit/audit-businessrisk/audit-businessrisk.component';
+import { AuditSecurityriskComponent } from './locality-component/locality-tab/locality-audit/audit-securityrisk/audit-securityrisk.component';
+import { AuditBudgetComponent } from './locality-component/locality-tab/locality-audit/audit-budget/audit-budget.component';
+import { AuditAttachmentsComponent } from './locality-component/locality-tab/locality-audit/audit-attachments/audit-attachments.component';
 import { LocalityLegalComponent } from './locality-component/locality-tab/locality-legal/locality-legal.component';
 import { AuditManagementComponent } from './locality-component/locality-tab/locality-audit/audit-management/audit-management.component';
 import {Routes, RouterModule} from '@angular/router';
@@ -47,20 +53,96 @@ import { LocalityAddComponentComponent } from "./locality-component/locality-add
 
 const appRoutes: Routes = [
 
-    {path: '', component: DashboardComponent },
+   
+   
+    
+   {path: '', component: DashboardComponent },
     {path: 'dashboard', component: DashboardComponent },
     {path: 'vendors', component: VendorsComponentComponent },
     {path: 'solutions', component: SolutionsComponent },
     {path: 'vendorsView', component: VendorsViewComponent },
     {path: 'policy', component: PolicyComponentComponent },
-    {path:"locality", component: LocalityComponentComponent, children: [
-    {path: 'map',component: LocalityAddComponentComponent},
-    {path: 'tab' ,component: LocalityTabComponent, children:[
-    
-    {path: 'info' , component: LocalityDetailsComponent}
-     ]},
-   
-    ]} ,         
+    {path:"locality", component: LocalityComponentComponent, 
+         children: [
+          {
+            path: 'map',
+            component: LocalityAddComponentComponent,
+          },
+          {
+            path: 'tab',
+            component: LocalityTabComponent,
+            children: [
+             {
+              path: 'info/:Locality',
+              component: LocalityDetailsComponent
+             },
+             {
+             path: 'legal',
+             component: LocalityLegalComponent
+             },
+             {
+              path: 'solutions',
+              component: LocalitySolutionsComponent,
+              },
+              {
+               path: 'security',
+              component: LocalitySecurityComponent,
+              },
+              {
+              path: 'link' ,
+              component:LocalitySolutionstablelinkComponent
+              },
+              {
+              path: 'business' ,
+              component:LocalityBusinessComponent
+              },
+              {
+              path: 'Audit' ,
+              component:LocalityAuditComponent,
+              children: [
+                {
+                  path:'',
+                  component:AuditDetailsComponent
+                },
+                {
+                	path:'find',
+                	component:AuditFindingsComponent
+                	},
+                	{
+                	path:'recomendation',
+                	component:AuditRecomendationsComponent
+                	},
+                	{
+                	path:'management',
+                	component:AuditManagementComponent
+                	},
+                	{
+                	path:'action',
+                	component:AuditActionComponent
+                	},
+                	{
+                	path:'brisk',
+                	component:AuditBusinessriskComponent
+                	},
+                	{
+                	path:'srisk',
+                	component:AuditSecurityriskComponent
+                	},
+                	{
+                	path:'budget',
+                	component:AuditBudgetComponent
+                	},
+                	{
+                	path:'attachment',
+                	component:AuditAttachmentsComponent
+                	}
+              ]
+              }
+            
+            ]
+          }
+       ]
+     },         
         {path: 'localityView', component: LocalityViewComponentComponent},
     {path: 'solutionsView', component: SolutionViewComponentComponent },
     {path: 'editSolutions/:id', component: EditSolutionComponent },

@@ -20,6 +20,12 @@ import { AuditFindingsComponent } from './locality-tab/locality-audit/audit-find
 import { AuditRecomendationsComponent } from './locality-tab/locality-audit/audit-recomendations/audit-recomendations.component';
 import { LocalityLegalComponent } from './locality-tab/locality-legal/locality-legal.component';
 import { AuditManagementComponent } from './locality-tab/locality-audit/audit-management/audit-management.component';
+import { LocalitySecurityComponent } from './locality-tab/locality-security/locality-security.component';
+import { AuditActionComponent } from './locality-tab/locality-audit/audit-action/audit-action.component';
+import { AuditBusinessriskComponent } from './locality-tab/locality-audit/audit-businessrisk/audit-businessrisk.component';
+import { AuditSecurityriskComponent } from './locality-tab/locality-audit/audit-securityrisk/audit-securityrisk.component';
+import { AuditBudgetComponent } from './locality-tab/locality-audit/audit-budget/audit-budget.component';
+import { AuditAttachmentsComponent } from './locality-tab/locality-audit/audit-attachments/audit-attachments.component';
 
 @NgModule({
   imports: [
@@ -32,6 +38,6 @@ import { AuditManagementComponent } from './locality-tab/locality-audit/audit-ma
     BrowserModule,
     LocalityComponentRoutingModule
   ],
-  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent, LocalityAuditComponent, AuditDetailsComponent, AuditFindingsComponent, AuditRecomendationsComponent, LocalityLegalComponent, AuditManagementComponent]
+  declarations: [LocalityAddComponentComponent, LocalityTabComponent,LocalityComponentComponent, LocalityDetailsComponent, LocalitySolutionsComponent, LocalitySolutionsLinkComponent, LocalitySolutionstablelinkComponent, LocalityBusinessComponent, LocalityAuditComponent, AuditDetailsComponent, AuditFindingsComponent, AuditRecomendationsComponent, LocalityLegalComponent, AuditManagementComponent, LocalitySecurityComponent, AuditActionComponent, AuditBusinessriskComponent, AuditSecurityriskComponent, AuditBudgetComponent, AuditAttachmentsComponent]
 })
 export class LocalityComponentModule { }

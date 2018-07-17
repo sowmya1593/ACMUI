@@ -1,11 +1,12 @@
 
-import {Solution, SystemType, HostingType, LabVendors, CertDocDTO, Vendor} from '../../../data_model';
+
 import {APP_CONFIG} from '../../../app.config';
 import {Location} from '@angular/common';
 import {Http, HttpModule, Headers, RequestOptions} from '@angular/http';
 import {File} from 'babel-types';
+import {Locality, applicationView} from '../../../data_model_locality';
 import {Component, OnInit, HostListener, ViewChild, ElementRef, NgModule} from '@angular/core';
-import { Locality } from '../../../data_model_locality';
+
 import {ApiserviceService} from '../../../apiservice.service';
 import {FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule, NgForm} from '@angular/forms';
 import {Router, ActivatedRoute, Params} from '@angular/router';
@@ -19,185 +20,84 @@ export class LocalityDetailsComponent implements OnInit {
 @ViewChild('fileInput') inputEl: ElementRef;
   @ViewChild('editForm') solutionsForm: NgForm;
   color: String;
-  solution: Solution;
+   public applicationViewDTO: any;
    locality: Locality;
-  editSolution: FormGroup;
-  certDocDTO: CertDocDTO;
-  files: File[] = [];
-  public systemTypeDTO: any;
-  public vendorDTO: any;
-  public hostingTypeDTO: any;
-  public labVendorsDTO: any;
-  public solutionType: any;
-//  public systemTyp:any
+   loc:any;
+   appId:number;
+ updatedTime:any;
   
-  constructor( private activatedRoute: ActivatedRoute,  private _apiservice: ApiserviceService,private   fb: FormBuilder
+  constructor( private route: ActivatedRoute,  private _apiservice: ApiserviceService,private   fb: FormBuilder
     , private  http: Http,  private _location: Location) {
-    this.solution = new Solution();
-    this.locality = new Locality();
-    this.solution.systemTypeDTO = new SystemType();
-    this.solution.hostingTypeDTO = new HostingType();
-    this.solution.labVendorsDTO = new LabVendors();
-    this.solution.vendor = new Vendor();
-     this.solution.certDocDTOs = [] as CertDocDTO[];
-    this.files = [] as File[];
-    this.editSolution = this.fb.group({
-      solutionId: 0,
-      name: ['', Validators.required],
-      versionNumber: ['', Validators.required],
-      solutionTypeName: ['', Validators.required],
-      labVendorId: [0, Validators.required],
-      solutionType : 0,
-      vendorId : 0,
-      systemTypeTry: ['', Validators.required],
-      systemTypeTry1: ['', Validators.required],
-      systemType: this.fb.group({
-        name: '',
-        systemTypeId: 0
-      }),
-      hostingType : this.fb.group({
-        name: '',
-        hostingTypeId: '',
-      }),
-      labVendors: this.fb.group({
-           name : '',
-           firstName :  '',
-           lastName :  '',
-           middleName :  '',
-           suffix :  '',
-           emailId :  '',
-           streetName :  '',
-           city :  '',
-           state :  '',
-           zipcode :  '',
-           phoneNumber :  '',
-      }),
-      vendor: this.fb.group({
-        vendorId: 0 ,
-        name: '' ,
-        createdBy: '' ,
-        vendorAddress:  this.fb.group({
-        addressId: 0 ,
-        streetName: '' ,
-        city: '' ,
-        state: '' ,
-        zipcode: '' ,
-       }) ,
-        vendorContact:  this.fb.group({
-         contactId: 0 ,
-         firstName: '' ,
-         lastName: '' ,
-         middleName: '' ,
-         suffix: '' ,
-         emailId: '' ,
-         phoneNumber: '' ,
-        }) ,
-      }),
-    });
-  }
+    this.route.params.subscribe(params => {
+    this.loc = params['Locality'];
+   
+        
+   });
+   this.locality = new Locality();
+      }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      this.solution.solutionId = params['id'];
-      this.editSolution.disable();
-      
-      //if (params['id'] != null)
-        //{
-       this.onDisplaySolution();
-      //}
-      this.getSolutionsOnload();
+  this.viewApplication(this.loc);
+    
+  }
+ 
+  
+  
+  
 
-    });
+  
+  
+  
+ createLocality() {
+     let url_update = APP_CONFIG.addLocality;
+     var formData = new FormData();
+     
+      console.log(JSON.stringify(this.locality));
+   
+      formData.append('createApp',JSON.stringify(this.locality));
+    console.log(formData.get("createApp"));
+    console.log(this.appId);
+    if(this.appId === undefined){
+   console.log('saving');
+    this.http.post(url_update, formData).subscribe((data: any) => {
+              console.log(data);
+            }, error => console.log(error));
+    
+     }
+     else{
+     console.log('update');
+     console.log(this.appId);
+     this.locality.applicationId = this.appId;
+     console.log(JSON.stringify(this.locality));
+      formData.append('application',JSON.stringify(this.locality));
+     this.http.post(APP_CONFIG.updateLocality , formData).subscribe((data: any) => {
+              console.log(data);
+            }, error => console.log(error));
+     }
+     
   }
   
-  createCertDTO(fileInput: any, section: string)
-  {
-    this.certDocDTO = new CertDocDTO();
-    this.certDocDTO.fileName = fileInput.target.files[0].name;
-    this.certDocDTO.section = section;
-    console.log(fileInput.target.files[0]);
-    this.files.push(fileInput.target.files[0]);
-    console.log(this.solution.certDocDTOs)
-    this.solution.certDocDTOs.push(this.certDocDTO);
-  }
-  onDisplaySolution() {
-    this._apiservice.getSolutionExtra(this.solution.solutionId)
-      .subscribe((data: Solution) => {
-        console.log('data' + JSON.stringify(data));
-        // this.editSolution.patchValue(data, {onlySelf: true});
-//        let systemType = JSON.stringify(data.systemTypeDTO.name);
-//        console.log(JSON.stringify(data.systemTypeDTO.name));
-//        console.log(systemType);
-        this.solution = data;
-        this.solution.systemTypeDTO = data.systemTypeDTO;
-        this.solution.hostingTypeDTO = data.hostingTypeDTO;
-        this.solution.labVendorsDTO = data.labVendorsDTO;
-        this.solution.vendor = data.vendor;
-        this.solution.certDocDTOs = data.certDocDTOs;
-        if(this.solution.certDocDTOs == null)
-          {
-          this.solution.certDocDTOs = [] as CertDocDTO[];
-        }
-        
-         console.log('data ' + data.systemTypeDTO.name);
-        
-        //this.editSolution.controls['name'].setValue(data.name);
-        //this.editSolution.controls['versionNumber'].setValue(data.versionNumber);
-       // this.editSolution.controls['systemType.systemTypeId'].setValue(data.systemType.systemTypeId);
-        console.log(data.systemTypeDTO.systemTypeId);
-//           this.editSolution.controls['systemTypeTry1'].setValue(data.systemTypeDTO.name);
-        //this.systemTyp =data.systemTypeDTO.name;
-        
-  });
-}
-  
-  getSolutionsOnload() {
-    this._apiservice.getSolutionsOnload()
+    viewApplication(local) {
+    this._apiservice.viewApplication(local)
       .subscribe((data: any) => {
-        //console.log(data);
-        this.systemTypeDTO = data.systemTypeDTOs;
-        //this.editSolution.controls['systemTypeTry1'].setValue(data.systemTypeDTO.name);
-//        this.systemTyp = data.systemTypeDTO.name;
-       // console.log(this.systemTypeDTO);
-        this.solutionType = data.solutionTypeDTOs;
-        this.vendorDTO = data.vendorsDTOs;
-        this.hostingTypeDTO = data.hostingTypeDTOs;
-        this.labVendorsDTO = data.labVendorsDTOs;
+      console.log(data);
+      if(data.applicationViewDTO === null){
+       console.log('there is no local data');
+      }
+      else {
+      this.appId=data.applicationViewDTO.applicationId;
+      this.locality = data.applicationViewDTO;
+      let d = new Date(this.locality.updatedTime);
+      this.updatedTime = d.getMonth() + '/' +  d.getDay() + '/' + d.getFullYear();
+      console.log(this.locality);
+      }
+        
 
       }, error => console.log(error));
   }
   
-    createSolution() {
-    
+ 
   
-    console.log(JSON.stringify(this.locality));
-    
-     
-  }
-  
-  backClicked() {
-    this._location.back();
-  }
-  
-  editorGroup(): void {
-    if (this.editSolution.disabled) {
-      this.editSolution.enable();
-    }
-    else {
-      this.editSolution.disable();
-    }
-  }
-  
-  /*findId(value){
-    this.solution.systemTypeDTO.systemTypeId = value;
-  }*/
-  
-  showFile(id){
-    console.log(id);
-//    this._apiservice.getSolutionFile(id);
-    window.open(APP_CONFIG.getSolutionFile + '?' + 'fileID' + '=' + id)
-    
-  }
 
    @HostListener('window:scroll', [])
   onWindowScroll() {
