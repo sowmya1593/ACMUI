@@ -50,6 +50,7 @@ import { DialogBoxComponent } from './policy-view-component/policy-view-forms-co
 import { EditNavigationComponent } from './edit-navigation/edit-navigation.component';
 import { EditVendorComponent } from './edit-vendor/edit-vendor.component';
 import { LocalityAddComponentComponent } from "./locality-component/locality-add-component/locality-add-component.component";
+import { ControlNameComponent } from './control-name/control-name.component';
 
 const appRoutes: Routes = [
 
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     {path: 'solutions', component: SolutionsComponent },
     {path: 'vendorsView', component: VendorsViewComponent },
     {path: 'policy', component: PolicyComponentComponent },
+    {path: 'policy/accessControl', component: ControlNameComponent},
     {path:"locality", component: LocalityComponentComponent, 
          children: [
           {

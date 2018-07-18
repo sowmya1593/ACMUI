@@ -97,6 +97,7 @@
             </div>
 		</div>
 		<hr />
+		
 		<h5>CONTROLS</h5>
 		<table class="table table-bordered table-dark">
 		  <thead>
@@ -115,7 +116,7 @@
 		  <tbody>
 		    <tr *ngFor = "let policy of policies">
 		      <!-- <td>{{ policy.controlNumber }}</td> -->
-		      <td><a (click) = "show(control)" style="cursor:pointer;color:blue;">{{ policy.controlNumber }}</a></td>
+		      <td><a routerLink="policy/accessControl" style="cursor:pointer;color:blue;">{{ policy.controlNumber }}</a></td>
 		      <td>{{ policy.policyName }}</td>
 		      <td>{{ policy.priority }}</td>
 		      <td>{{ policy.policyVal }}</td>

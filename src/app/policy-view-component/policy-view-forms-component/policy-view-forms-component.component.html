@@ -14,6 +14,7 @@
                 <option *ngFor="let policyType of  policyTypes" value="{{ policyType.policyGrpId }}">{{ policyType.policyGrpName }}</option>
               </select>
 		</div>
+		
 	</div>
 	<div class="prepopulated" *ngIf = "definitive == true && policy== true ">
 		<div class="model-solution-row form-row">

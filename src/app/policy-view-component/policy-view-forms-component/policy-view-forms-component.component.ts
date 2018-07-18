@@ -5,6 +5,8 @@ import { FilterPipe } from '../../convertDate.pipe';
 import { IMyDate } from 'mydatepicker';
 
 
+
+
 @Component({
   selector: 'app-policy-view-forms-component',
   templateUrl: './policy-view-forms-component.component.html',
@@ -58,15 +60,17 @@ selectDefinitive(auditID)
 if(auditID === 'Choose...')
 {
 this.definitive = false
+this.policyTypes = [];
 }
 else {
 this.definitive =  true;
-}
-
 this._apiservice.getPolicyGroup(auditID)
 .subscribe((data: any) => {
 this.policyTypes = data;
 },error => {console.log(error)});
+}
+
+
 
 }
 
