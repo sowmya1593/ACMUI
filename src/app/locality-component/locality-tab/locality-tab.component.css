@@ -12,3 +12,13 @@ i.fa {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.nav-link{
+	color: black;
+	margin-left: 10px;
+}
+.help{
+	font-size: 15px;
+	color: #3A539B;
+}
+

@@ -1,9 +1,9 @@
 /**
  * New typescript file
  */
-//const baseUrl = 'http://localhost:8080/ApplicationPortfolioManager/services/';
+const baseUrl = 'http://localhost:8080/ApplicationPortfolioManager/services/';
 
-const baseUrl = 'http://ec2-54-86-177-206.compute-1.amazonaws.com/ApplicationPortfolioManager/services/';
+//const baseUrl = 'http://ec2-54-86-177-206.compute-1.amazonaws.com/ApplicationPortfolioManager/services/';
 
 //http://ec2-54-86-177-206.compute-1.amazonaws.com/
 

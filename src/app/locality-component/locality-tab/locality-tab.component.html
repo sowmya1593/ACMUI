@@ -2,29 +2,29 @@
     <div class="head">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/locality/tab/info/{{loc}}"> <i class="fa fa-info-circle"></i>Information </a>
+                <a class="nav-link active"  routerLinkActive="active" routerLink="/locality/tab/info/{{loc}}" [routerLinkActiveOptions]="{exact: true}"><fa class="help" [name]="'info-circle'"></fa>Information </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link hover" routerLink="/locality/tab/solutions"><i class="fa fa-info-circle"></i>Solutions</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/locality/tab/solutions"><fa class="help" [name]="'info-circle'"></fa>Solutions</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link "  routerLink="/locality/tab/legal"><i class="fa fa-info-circle"></i>Legal</a>
+                <a class="nav-link "  routerLinkActive="active" routerLink="/locality/tab/legal"><fa class="help" [name]="'info-circle'"></fa>Legal</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " routerLink="/locality/tab/Audit"><i class="fa fa-bell"></i>Audit/Compliance</a>
+                <a class="nav-link " routerLinkActive="active" routerLink="/locality/tab/Audit"><fa class="help" [name]="'bell'"></fa>Audit/Compliance</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ">Assessment</a>
+                <a class="nav-link " routerLinkActive="active" routerLink="/locality/tab/assessment"><fa class="help" [name]="'bell'"></fa>Assessment</a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link " routerLink="/locality/tab/security">Security</a>
+                <a class="nav-link " routerLinkActive="active" routerLink="/locality/tab/security"><fa class="help" [name]="'bell'"></fa>Security</a>
             </li>
              <li class="nav-item">
-                <a class="nav-link ">Technical</a>
+                <a class="nav-link "  routerLinkActive="active" routerLink="/locality/tab/technical"><fa class="help" [name]="'desktop'"></fa>Technical</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link "  routerLink="/locality/tab/business"><i class="fa fa-building-o"></i>Business</a> 
+              <a class="nav-link "   routerLinkActive="active" routerLink="/locality/tab/business"><fa class="help" [name]="'building'"></fa>Business</a> 
             </li>
         </ul>
     </div>

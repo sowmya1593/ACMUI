@@ -11,6 +11,8 @@ import { LocalitySolutionsComponent } from './locality-component/locality-tab/lo
 import { LocalitySolutionsLinkComponent } from './locality-component/locality-tab/locality-solutions/locality-solutions-link/locality-solutions-link.component';
 import { LocalitySolutionstablelinkComponent } from './locality-component/locality-tab/locality-solutionstablelink/locality-solutionstablelink.component';
 import { LocalityBusinessComponent } from './locality-component/locality-tab/locality-business/locality-business.component';
+import { LocalityAssessmentComponent } from './locality-component/locality-tab/locality-assessment/locality-assessment.component';
+import { LocalityTechnicalComponent } from './locality-component/locality-tab/locality-technical/locality-technical.component';
 import { LocalityAuditComponent } from './locality-component/locality-tab/locality-audit/locality-audit.component';
 import { LocalitySecurityComponent } from './locality-component/locality-tab/locality-security/locality-security.component';
 import { AuditDetailsComponent } from './locality-component/locality-tab/locality-audit/audit-details/audit-details.component';
@@ -77,6 +79,14 @@ const appRoutes: Routes = [
              {
               path: 'info/:Locality',
               component: LocalityDetailsComponent
+             },
+             {
+             path: 'assessment',
+             component: LocalityAssessmentComponent
+             },
+             {
+             path: 'technical' ,
+             component: LocalityTechnicalComponent
              },
              {
              path: 'legal',

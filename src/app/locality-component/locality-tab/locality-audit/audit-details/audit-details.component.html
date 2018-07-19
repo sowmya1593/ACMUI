@@ -6,8 +6,8 @@
 				<label for="inputState">Definitive Source</label>
 				<div class="asterisk">*</div>
 				<select id="modelSolution" class="form-control">
-					<option selected></option>
-					<option>---Select---</option>
+					<option selected>---Choose---</option>
+					
 					<option>VITA</option>
 				</select>
 			</div>
@@ -16,32 +16,32 @@
 				<div class="asterisk">*</div>
 				<select id="modelSolution" class="form-control"
 				(change)="selectBox($event.target.value)">
-					<option selected></option>
-					<option></option>
+					<option selected>---Choose---</option>
+				
 					<option>IT Information Security Standard(SEC501-09.1)</option>
 				</select>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="lastName">Audit type</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" id="lastName" value="Value">
+				<input type="text" class="form-control" id="lastName" value="enter here">
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="lastName">Audit Date</label>
-				<div class="asterisk">*</div>
-				<input type="text" class="form-control" id="lastName" value="Value">
+				
+				<my-date-picker> name="myname"></my-date-picker> 
+				
+				
 			</div>
 
 
 
 
-
-			<div class="form-group col-md-6">
-				<label for="email">Next Date</label>
-				<div class="asterisk">*</div>
-				<input type="email" class="form-control" id="email" value="Value">
-			</div>
+ <div class="form-group col-md-6">
+                <label for="dueDate">Next Date</label>
+                <my-date-picker> name="myname"></my-date-picker> 
+            </div>
 			<div class="form-group col-md-6">
 
 				<label for="inputState">Overall Status</label>
